@@ -1,65 +1,321 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  Shield,
+  Server,
+  Mail,
+  Key,
+  Briefcase,
+  Users,
+  Globe,
+  GraduationCap,
+  ArrowRight,
+  CheckCircle,
+  Zap,
+  Award,
+  TrendingUp,
+} from "lucide-react";
+import { Header, Footer } from "@/components/layout";
+import { ProductCard, DisclosureBanner } from "@/components/comparison";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getActiveVerticals, getFeaturedVpnProducts } from "@/data";
 
-export default function Home() {
+const iconMap: Record<string, React.ElementType> = {
+  Shield,
+  Server,
+  Mail,
+  Key,
+  Briefcase,
+  Users,
+  Globe,
+  GraduationCap,
+};
+
+const features = [
+  {
+    icon: CheckCircle,
+    title: "Unbiased Reviews",
+    description:
+      "Our team tests every product thoroughly without influence from advertisers.",
+  },
+  {
+    icon: Zap,
+    title: "Up-to-Date",
+    description:
+      "We continuously update our reviews to reflect the latest features and pricing.",
+  },
+  {
+    icon: Award,
+    title: "Expert Analysis",
+    description:
+      "Our experts have years of experience in evaluating software products.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Data-Driven",
+    description:
+      "Our ratings are based on measurable metrics, not just opinions.",
+  },
+];
+
+export default function HomePage() {
+  const verticals = getActiveVerticals();
+  const featuredVpns = getFeaturedVpnProducts();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 via-accent/30 to-background">
+          <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+          <div className="container mx-auto px-4 py-16 md:py-24 relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <Badge variant="secondary" className="mb-4">
+                Trusted by 50,000+ readers monthly
+              </Badge>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
+                Pick Smart.{" "}
+                <span className="text-primary">Save Time.</span>
+              </h1>
+              <p className="text-xl text-muted-foreground mb-8">
+                Compare the best software products with honest reviews, detailed
+                comparisons, and expert recommendations. Find the perfect
+                solution for your needs in minutes.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="gradient-primary" asChild>
+                  <Link href="/vpn">
+                    Explore VPNs
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link href="/methodology">How We Test</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Categories Grid */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Browse by Category</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Explore our comprehensive guides across multiple software
+                categories. Each category features in-depth reviews, head-to-head
+                comparisons, and expert recommendations.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {verticals.map((vertical) => {
+                const Icon = iconMap[vertical.icon] || Shield;
+                return (
+                  <Link
+                    key={vertical.slug}
+                    href={`/${vertical.slug}`}
+                    className="group"
+                  >
+                    <Card className="h-full hover:border-primary hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
+                      <CardHeader className="pb-2">
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-colors"
+                          style={{ backgroundColor: `${vertical.color}15` }}
+                        >
+                          <Icon
+                            className="w-6 h-6"
+                            style={{ color: vertical.color }}
+                          />
+                        </div>
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                          {vertical.name}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {vertical.description.slice(0, 100)}...
+                        </p>
+                        <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
+                          View comparisons
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured VPNs */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <Badge variant="secondary" className="mb-2">
+                  Most Popular
+                </Badge>
+                <h2 className="text-3xl font-bold">Best VPNs of 2025</h2>
+              </div>
+              <Button variant="outline" asChild className="hidden md:flex">
+                <Link href="/vpn">
+                  View All VPNs
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+            <div className="space-y-4">
+              {featuredVpns.slice(0, 3).map((product, index) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  rank={index + 1}
+                  verticalSlug="vpn"
+                  variant={index === 0 ? "featured" : "default"}
+                />
+              ))}
+            </div>
+            <div className="mt-6 text-center md:hidden">
+              <Button asChild>
+                <Link href="/vpn">
+                  View All VPNs
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Trust Us */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Why Trust Pickify?</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We're committed to providing honest, accurate, and helpful
+                information to help you make informed decisions.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {features.map((feature, index) => (
+                <Card key={index} className="text-center">
+                  <CardContent className="pt-6">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                      <feature.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Popular Comparisons */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Popular Comparisons</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Can't decide between two products? Our head-to-head comparisons
+                break down the differences so you can make the right choice.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  a: "NordVPN",
+                  b: "ExpressVPN",
+                  slug: "nordvpn-vs-expressvpn",
+                  vertical: "vpn",
+                },
+                {
+                  a: "NordVPN",
+                  b: "Surfshark",
+                  slug: "nordvpn-vs-surfshark",
+                  vertical: "vpn",
+                },
+                {
+                  a: "ExpressVPN",
+                  b: "Surfshark",
+                  slug: "expressvpn-vs-surfshark",
+                  vertical: "vpn",
+                },
+              ].map((comparison) => (
+                <Link
+                  key={comparison.slug}
+                  href={`/${comparison.vertical}/compare/${comparison.slug}`}
+                  className="group"
+                >
+                  <Card className="hover:border-primary hover:shadow-md transition-all">
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center font-bold text-muted-foreground">
+                            {comparison.a.charAt(0)}
+                          </div>
+                          <span className="text-muted-foreground font-medium">
+                            vs
+                          </span>
+                          <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center font-bold text-muted-foreground">
+                            {comparison.b.charAt(0)}
+                          </div>
+                        </div>
+                      </div>
+                      <h3 className="font-semibold group-hover:text-primary transition-colors">
+                        {comparison.a} vs {comparison.b}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1 mb-3">
+                        Compare features, pricing & performance
+                      </p>
+                      <span className="text-sm font-medium text-primary inline-flex items-center gap-1">
+                        View comparison
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Disclosure */}
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <DisclosureBanner variant="banner" />
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Ready to Find Your Perfect Match?
+            </h2>
+            <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+              Start comparing products now and make informed decisions with our
+              comprehensive reviews and comparisons.
+            </p>
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/vpn">
+                Get Started
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+          </div>
+        </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
