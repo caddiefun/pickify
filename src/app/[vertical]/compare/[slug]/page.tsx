@@ -27,6 +27,7 @@ import {
   generateComparison,
 } from "@/data";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
+import { ComparisonSchema, BreadcrumbSchema } from "@/components/seo";
 
 interface PageProps {
   params: Promise<{ vertical: string; slug: string }>;
@@ -117,8 +118,23 @@ export default async function ComparisonPage({ params }: PageProps) {
     },
   ];
 
+  const breadcrumbs = [
+    { name: "Home", url: "https://pickify.io" },
+    { name: vertical.name, url: `https://pickify.io/${verticalSlug}` },
+    { name: `${productA.name} vs ${productB.name}`, url: `https://pickify.io/${verticalSlug}/compare/${slug}` },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Schema Markup for SEO */}
+      <ComparisonSchema
+        productA={productA}
+        productB={productB}
+        verticalSlug={verticalSlug}
+        winner={winner}
+      />
+      <BreadcrumbSchema items={breadcrumbs} />
+
       <Header />
 
       <main className="flex-1">

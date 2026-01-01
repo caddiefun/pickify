@@ -33,6 +33,11 @@ import {
   getStartingPrice,
   formatPrice,
 } from "@/lib/affiliate";
+import {
+  ProductSchema,
+  ReviewSchema,
+  BreadcrumbSchema,
+} from "@/components/seo";
 
 interface PageProps {
   params: Promise<{ vertical: string; product: string }>;
@@ -76,8 +81,19 @@ export default async function ProductPage({ params }: PageProps) {
     .filter((p) => p.id !== product.id)
     .slice(0, 3);
 
+  const breadcrumbs = [
+    { name: "Home", url: "https://pickify.io" },
+    { name: vertical.name, url: `https://pickify.io/${verticalSlug}` },
+    { name: product.name, url: `https://pickify.io/${verticalSlug}/${product.slug}` },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Schema Markup for SEO */}
+      <ProductSchema product={product} verticalSlug={verticalSlug} />
+      <ReviewSchema product={product} verticalSlug={verticalSlug} />
+      <BreadcrumbSchema items={breadcrumbs} />
+
       <Header />
 
       <main className="flex-1">

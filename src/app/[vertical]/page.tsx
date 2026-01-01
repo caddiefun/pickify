@@ -12,6 +12,7 @@ import {
   getProductsByVertical,
   bestForConfigs,
 } from "@/data";
+import { ItemListSchema, BreadcrumbSchema } from "@/components/seo";
 
 interface PageProps {
   params: Promise<{ vertical: string }>;
@@ -50,8 +51,23 @@ export default async function VerticalPage({ params }: PageProps) {
   const otherProducts = products.filter((p) => !p.is_editors_choice);
   const bestForPages = bestForConfigs[verticalSlug as keyof typeof bestForConfigs] || [];
 
+  const breadcrumbs = [
+    { name: "Home", url: "https://pickify.io" },
+    { name: vertical.name, url: `https://pickify.io/${verticalSlug}` },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Schema Markup for SEO */}
+      <ItemListSchema
+        name={`Best ${vertical.name} of 2025`}
+        description={vertical.description}
+        url={`https://pickify.io/${verticalSlug}`}
+        products={products}
+        verticalSlug={verticalSlug}
+      />
+      <BreadcrumbSchema items={breadcrumbs} />
+
       <Header />
 
       <main className="flex-1">
