@@ -12,6 +12,7 @@ import {
   getProductsByVertical,
   bestForConfigs,
 } from "@/data";
+import { getEditorialContent } from "@/data/editorial";
 import { ItemListSchema, BreadcrumbSchema } from "@/components/seo";
 
 interface PageProps {
@@ -50,6 +51,7 @@ export default async function VerticalPage({ params }: PageProps) {
   const editorsChoice = products.find((p) => p.is_editors_choice);
   const otherProducts = products.filter((p) => !p.is_editors_choice);
   const bestForPages = bestForConfigs[verticalSlug as keyof typeof bestForConfigs] || [];
+  const editorial = getEditorialContent(verticalSlug);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -88,6 +90,32 @@ export default async function VerticalPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Editorial Intro */}
+        {editorial?.hubIntro && (
+          <section className="py-8 border-b">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mx-auto">
+                <div className="prose prose-lg dark:prose-invert max-w-none">
+                  {editorial.hubIntro.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="text-muted-foreground leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-6">
+                  <Link
+                    href={`/${verticalSlug}/compare`}
+                    className="text-primary hover:underline font-medium inline-flex items-center gap-1"
+                  >
+                    Read my complete comparison of all {products.length} {vertical.name.toLowerCase()}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Quick Navigation */}
         <section className="border-b bg-background sticky top-16 z-40">

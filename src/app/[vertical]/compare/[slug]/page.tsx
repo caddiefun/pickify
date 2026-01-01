@@ -26,6 +26,7 @@ import {
   getProductsByVertical,
   generateComparison,
 } from "@/data";
+import { getEditorialContent } from "@/data/editorial";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
 import { ComparisonSchema, BreadcrumbSchema } from "@/components/seo";
 
@@ -88,6 +89,8 @@ export default async function ComparisonPage({ params }: PageProps) {
 
   const comparison = generateComparison(productA, productB);
   const winner = comparison.winner;
+  const editorial = getEditorialContent(verticalSlug);
+  const editorialIntro = editorial?.comparisonIntro(productA.name, productB.name);
 
   // Define comparison features based on vertical
   const comparisonFeatures = [
@@ -173,11 +176,20 @@ export default async function ComparisonPage({ params }: PageProps) {
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
               {productA.name} vs {productB.name}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mb-6">
-              Compare {productA.name} and {productB.name} side by side to find
-              the best choice for your needs in 2025.
-            </p>
-            <DisclosureBanner variant="inline" />
+            {editorialIntro && (
+              <p className="text-lg text-muted-foreground max-w-3xl mb-6 leading-relaxed">
+                {editorialIntro}
+              </p>
+            )}
+            <div className="flex flex-wrap items-center gap-4 mb-6">
+              <DisclosureBanner variant="inline" />
+              <Link
+                href={`/${verticalSlug}/compare`}
+                className="text-sm text-primary hover:underline"
+              >
+                See all {vertical.name.toLowerCase()} compared →
+              </Link>
+            </div>
           </div>
         </section>
 
