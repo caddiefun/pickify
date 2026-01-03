@@ -390,36 +390,34 @@ export default async function ComparisonPage({ params }: PageProps) {
         {/* FAQ Section - AI Citation Optimized */}
         <section className="py-8">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6">
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="border rounded-lg p-4"
-                    itemScope
-                    itemType="https://schema.org/Question"
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
                   >
-                    <h3
-                      className="font-semibold text-foreground mb-2"
-                      itemProp="name"
-                    >
-                      {faq.question}
-                    </h3>
-                    <div
-                      itemScope
-                      itemType="https://schema.org/Answer"
-                      itemProp="acceptedAnswer"
-                    >
-                      <p className="text-muted-foreground" itemProp="text">
-                        {faq.answer}
-                      </p>
-                    </div>
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p className="text-muted-foreground text-sm leading-relaxed" itemProp="text">
+                      {faq.answer}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

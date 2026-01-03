@@ -106,57 +106,86 @@ export default async function VerticalPage({ params }: PageProps) {
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-accent/50 to-background border-b">
           <div className="container mx-auto px-4 py-12 md:py-16">
-            <div className="max-w-3xl">
-              <Badge variant="secondary" className="mb-4">
-                Updated January 2025
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                Best {vertical.name} of 2025
-              </h1>
-              <p className="text-xl text-muted-foreground mb-6">
-                {vertical.description}
-              </p>
-              <DisclosureBanner variant="inline" />
+            <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+              <div className="lg:col-span-3">
+                <Badge variant="secondary" className="mb-4">
+                  Updated January 2025
+                </Badge>
+                <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                  Best {vertical.name} of 2025
+                </h1>
+                <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
+                  {vertical.description}
+                </p>
+                <DisclosureBanner variant="inline" />
+              </div>
+              {/* Quick Stats Summary */}
+              <div className="lg:col-span-2">
+                <div className="bg-card border rounded-xl p-6 shadow-sm">
+                  <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
+                    At a Glance
+                  </h2>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Products Tested</span>
+                      <span className="font-semibold">{products.length}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Editor&apos;s Choice</span>
+                      <span className="font-semibold text-primary">{editorsChoice?.name || "TBD"}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Top Rating</span>
+                      <span className="font-semibold">{editorsChoice?.overall_rating.toFixed(1) || "-"}/10</span>
+                    </div>
+                    <Separator />
+                    <div className="flex justify-between items-center">
+                      <span className="text-muted-foreground">Price Range</span>
+                      <span className="font-semibold">
+                        ${Math.min(...products.flatMap(p => p.pricing?.map(pr => pr.price) || [0])).toFixed(0)} - ${Math.max(...products.flatMap(p => p.pricing?.map(pr => pr.price) || [0])).toFixed(0)}/mo
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Quick Answer - AI Citation Optimized */}
-        {quickAnswerProps && (
-          <section className="py-8 border-b">
-            <div className="container mx-auto px-4">
-              <div className="max-w-3xl mx-auto">
-                <QuickAnswer {...quickAnswerProps} />
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* Editorial Intro */}
-        {editorial?.hubIntro && (
-          <section className="py-8 border-b">
-            <div className="container mx-auto px-4">
-              <div className="max-w-3xl mx-auto">
-                <div className="prose prose-lg dark:prose-invert max-w-none">
-                  {editorial.hubIntro.split('\n\n').map((paragraph, index) => (
-                    <p key={index} className="text-muted-foreground leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
+        {/* Quick Answer + Editorial Intro - Combined for better flow */}
+        <section className="py-10 border-b">
+          <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Quick Answer */}
+              {quickAnswerProps && (
+                <div>
+                  <QuickAnswer {...quickAnswerProps} />
                 </div>
-                <div className="mt-6">
-                  <Link
-                    href={`/${verticalSlug}/compare`}
-                    className="text-primary hover:underline font-medium inline-flex items-center gap-1"
-                  >
-                    Read my complete comparison of all {products.length} {vertical.name.toLowerCase()}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+              )}
+              {/* Editorial Intro */}
+              {editorial?.hubIntro && (
+                <div className="flex flex-col justify-center">
+                  <div className="prose prose-lg dark:prose-invert max-w-none">
+                    {editorial.hubIntro.split('\n\n').map((paragraph, index) => (
+                      <p key={index} className="text-muted-foreground leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="mt-6">
+                    <Link
+                      href={`/${verticalSlug}/compare`}
+                      className="text-primary hover:underline font-medium inline-flex items-center gap-1"
+                    >
+                      Read my complete comparison of all {products.length} {vertical.name.toLowerCase()}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* Quick Navigation */}
         <section className="border-b bg-background sticky top-16 z-40">
@@ -321,39 +350,37 @@ export default async function VerticalPage({ params }: PageProps) {
         {/* FAQ Section - AI Citation Optimized */}
         <section id="faq" className="py-12">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6">
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="border rounded-lg p-4"
-                    itemScope
-                    itemType="https://schema.org/Question"
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
                   >
-                    <h3
-                      className="font-semibold text-foreground mb-2"
-                      itemProp="name"
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="text"
                     >
-                      {faq.question}
-                    </h3>
-                    <div
-                      itemScope
-                      itemType="https://schema.org/Answer"
-                      itemProp="acceptedAnswer"
-                    >
-                      <p
-                        className="text-muted-foreground"
-                        itemProp="text"
-                      >
-                        {faq.answer}
-                      </p>
-                    </div>
+                      {faq.answer}
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -361,16 +388,22 @@ export default async function VerticalPage({ params }: PageProps) {
         {/* Methodology Section */}
         <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl font-bold mb-4">How We Test</h2>
-              <p className="text-muted-foreground mb-6">
-                Our team tests every product thoroughly before making
-                recommendations. We evaluate performance, features, ease of use,
-                customer support, and value for money.
-              </p>
-              <Button variant="outline" asChild>
-                <Link href="/methodology">Learn About Our Methodology</Link>
-              </Button>
+            <div className="grid lg:grid-cols-3 gap-8 items-center">
+              <div className="lg:col-span-2">
+                <h2 className="text-2xl font-bold mb-4">How We Test</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our team tests every product thoroughly before making
+                  recommendations. We evaluate performance, features, ease of use,
+                  customer support, and value for money. Each product goes through
+                  real-world testing scenarios to ensure our ratings reflect actual
+                  user experience.
+                </p>
+              </div>
+              <div className="flex lg:justify-end">
+                <Button variant="outline" asChild>
+                  <Link href="/methodology">Learn About Our Methodology</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
