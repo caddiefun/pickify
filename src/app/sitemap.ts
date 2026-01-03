@@ -4,6 +4,10 @@ import {
   getProductsByVertical,
   getComparisonPairs,
   bestForConfigs,
+  usStates,
+  usCities,
+  getAllZipCodes,
+  ispProducts,
 } from "@/data";
 
 const BASE_URL = "https://pickify.io";
@@ -56,15 +60,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    {
+      url: `${BASE_URL}/hosting/uptime-report`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/vpn/speed-tests`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
+      url: `${BASE_URL}/internet-providers`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/internet-providers/compare`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
   ];
 
-  // Vertical hub pages
-  const verticalPages: MetadataRoute.Sitemap = verticals.map((vertical) => ({
-    url: `${BASE_URL}/${vertical.slug}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
+  // Vertical hub pages + compare hubs
+  const verticalPages: MetadataRoute.Sitemap = verticals.flatMap((vertical) => [
+    {
+      url: `${BASE_URL}/${vertical.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/${vertical.slug}/compare`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+  ]);
 
   // Product review pages
   const productPages: MetadataRoute.Sitemap = verticals.flatMap((vertical) => {
@@ -103,11 +139,63 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
   });
 
+  // ISP State pages
+  const ispStatePages: MetadataRoute.Sitemap = usStates.map((state) => ({
+    url: `${BASE_URL}/internet-providers/${state.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  // ISP City pages
+  const ispCityPages: MetadataRoute.Sitemap = usCities.map((city) => {
+    const state = usStates.find((s) => s.code === city.stateCode);
+    return {
+      url: `${BASE_URL}/internet-providers/${state?.slug}/${city.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    };
+  });
+
+  // ISP Zip code pages
+  const zipCodes = getAllZipCodes();
+  const ispZipPages: MetadataRoute.Sitemap = zipCodes.map((zip) => ({
+    url: `${BASE_URL}/internet-providers/zip/${zip}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  // ISP Provider pages
+  const ispProviderPages: MetadataRoute.Sitemap = ispProducts.map((provider) => ({
+    url: `${BASE_URL}/internet-providers/provider/${provider.slug}`,
+    lastModified: new Date(provider.updated_at),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  // ISP Comparison pages
+  const ispComparisonPairs = getComparisonPairs(ispProducts);
+  const ispComparisonPages: MetadataRoute.Sitemap = ispComparisonPairs.map(
+    ([productA, productB]) => ({
+      url: `${BASE_URL}/internet-providers/compare/${productA.slug}-vs-${productB.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    })
+  );
+
   return [
     ...staticPages,
     ...verticalPages,
     ...productPages,
     ...comparisonPages,
     ...bestForPages,
+    ...ispStatePages,
+    ...ispCityPages,
+    ...ispZipPages,
+    ...ispProviderPages,
+    ...ispComparisonPages,
   ];
 }

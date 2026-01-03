@@ -63,11 +63,11 @@ export const websiteBuilderProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "$100+ per sale",
-    meta_title: "Wix Review 2025 - Best Website Builder?",
+    meta_title: "Wix Review 2026 - Best Website Builder?",
     meta_description:
       "Our in-depth Wix review covers ease of use, templates, features, and pricing. Is Wix right for your website?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "wb-2",
@@ -131,11 +131,11 @@ export const websiteBuilderProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "Impact",
     commission_rate: "$100-200 per sale",
-    meta_title: "Squarespace Review 2025 - Best for Design?",
+    meta_title: "Squarespace Review 2026 - Best for Design?",
     meta_description:
       "Squarespace review covering templates, design features, and whether it's worth the price.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "wb-3",
@@ -199,11 +199,11 @@ export const websiteBuilderProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "Up to $150 per referral",
-    meta_title: "Shopify Review 2025 - Best E-commerce Platform?",
+    meta_title: "Shopify Review 2026 - Best E-commerce Platform?",
     meta_description:
       "Shopify review covering features, pricing, apps, and whether it's the right e-commerce platform for your store.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "wb-4",
@@ -267,11 +267,11 @@ export const websiteBuilderProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "50% first year",
-    meta_title: "Webflow Review 2025 - Best for Designers?",
+    meta_title: "Webflow Review 2026 - Best for Designers?",
     meta_description:
       "Webflow review covering the visual builder, design capabilities, and learning curve.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "wb-5",
@@ -335,11 +335,11 @@ export const websiteBuilderProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "20% per sale",
-    meta_title: "WordPress.com Review 2025 - Best for Blogging?",
+    meta_title: "WordPress.com Review 2026 - Best for Blogging?",
     meta_description:
       "WordPress.com review covering hosted WordPress features, pricing, and limitations.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "wb-6",
@@ -403,11 +403,11 @@ export const websiteBuilderProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "ShareASale",
     commission_rate: "30% per sale",
-    meta_title: "Weebly Review 2025 - Easy Website Builder?",
+    meta_title: "Weebly Review 2026 - Easy Website Builder?",
     meta_description:
       "Weebly review covering ease of use, Square integration, and e-commerce features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

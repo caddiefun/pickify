@@ -27,7 +27,10 @@ import {
 } from "@/data";
 import { getEditorialContent } from "@/data/editorial";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
-import { BreadcrumbSchema, ItemListSchema } from "@/components/seo";
+import { BreadcrumbSchema, ItemListSchema, FAQSchema } from "@/components/seo";
+import { QuickAnswer } from "@/components/seo/QuickAnswer";
+import { generateHubFAQs } from "@/lib/faq-generator";
+import { getStartingPrice as getStartingPriceNum } from "@/lib/affiliate";
 
 interface PageProps {
   params: Promise<{ vertical: string }>;
@@ -70,8 +73,12 @@ export default async function MasterComparisonPage({ params }: PageProps) {
 
   const products = getProductsByVertical(verticalSlug);
   const editorial = getEditorialContent(verticalSlug);
-  const editorsChoice = products.find((p) => p.is_editors_choice);
+  const editorsChoice = products.find((p) => p.is_editors_choice) || products[0];
   const topThree = products.slice(0, 3);
+  const runnerUp = products.find((p) => p.id !== editorsChoice?.id) || products[1];
+
+  // Generate FAQs for schema
+  const faqs = generateHubFAQs(vertical.name, products);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -93,6 +100,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         products={products}
         verticalSlug={verticalSlug}
       />
+      <FAQSchema faqs={faqs} />
 
       <Header />
 
@@ -125,6 +133,28 @@ export default async function MasterComparisonPage({ params }: PageProps) {
               </p>
 
               <DisclosureBanner variant="inline" />
+            </div>
+          </div>
+        </section>
+
+        {/* AI-Optimized Quick Answer */}
+        <section className="py-8 border-b">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl">
+              {editorsChoice && runnerUp && (
+                <QuickAnswer
+                  question={`What is the best ${vertical.name.toLowerCase()} in 2025?`}
+                  answer={`${editorsChoice.name} is the best ${vertical.name.toLowerCase()} for most users in 2025. It scored ${editorsChoice.overall_rating}/10 in our testing and starts at ${getStartingPrice(editorsChoice)}. ${editorsChoice.pros[0]}. ${runnerUp.name} is a strong alternative if you need ${runnerUp.pros[0]?.toLowerCase() || "different features"}.`}
+                  supportingFacts={[
+                    { label: "Top Pick", value: editorsChoice.name },
+                    { label: "Rating", value: `${editorsChoice.overall_rating}/10` },
+                    { label: "From", value: getStartingPrice(editorsChoice) },
+                    { label: "Tested", value: `${products.length} products` },
+                  ]}
+                  updatedDate={new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                  variant="default"
+                />
+              )}
             </div>
           </div>
         </section>

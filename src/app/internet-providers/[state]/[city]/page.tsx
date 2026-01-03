@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowLeft } from "lucide-react";
 import { Header, Footer } from "@/components/layout";
-import { LocationSearch, ProviderCard, SpeedComparison } from "@/components/isp";
+import { LocationSearch, ProviderCard, SpeedComparison, SpeedTestCTA } from "@/components/isp";
 import { DisclosureBanner } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +15,7 @@ import {
   getIspByState,
   usCities,
   usStates,
+  getNearbyCities,
 } from "@/data";
 
 interface PageProps {
@@ -53,6 +54,9 @@ export default async function CityPage({ params }: PageProps) {
   }
 
   const providers = getIspByState(state.code);
+
+  // Get nearby cities for geo-SEO internal linking
+  const nearbyCities = getNearbyCities(state.code, citySlug, 5);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -154,6 +158,9 @@ export default async function CityPage({ params }: PageProps) {
                 </CardContent>
               </Card>
 
+              {/* Speed Test CTA */}
+              <SpeedTestCTA location={`${city.name}, ${state.code}`} />
+
               {/* Zip Codes */}
               <Card>
                 <CardHeader>
@@ -209,6 +216,35 @@ export default async function CityPage({ params }: PageProps) {
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Nearby Cities - Geo-SEO internal linking */}
+              {nearbyCities.length > 0 && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">
+                      Nearby Areas in {state.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      {nearbyCities.map((nearbyCity) => (
+                        <Link
+                          key={nearbyCity.slug}
+                          href={`/internet-providers/${stateSlug}/${nearbyCity.slug}`}
+                          className="flex items-center justify-between p-2 rounded-lg hover:bg-accent transition-colors group"
+                        >
+                          <span className="group-hover:text-primary transition-colors">
+                            {nearbyCity.name}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            {nearbyCity.zipCodes.length} zip codes
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </div>
           </div>
         </div>

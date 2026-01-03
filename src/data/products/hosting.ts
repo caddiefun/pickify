@@ -63,11 +63,11 @@ export const hostingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "$65+ per sale",
-    meta_title: "Bluehost Review 2025 - Best WordPress Hosting?",
+    meta_title: "Bluehost Review 2026 - Best WordPress Hosting?",
     meta_description:
       "Our in-depth Bluehost review covers performance, pricing, features, and support. Find out if Bluehost is right for your website.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "hosting-2",
@@ -131,11 +131,11 @@ export const hostingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "$50-125 per sale",
-    meta_title: "SiteGround Review 2025 - Best Managed WordPress Hosting?",
+    meta_title: "SiteGround Review 2026 - Best Managed WordPress Hosting?",
     meta_description:
       "SiteGround review covering speed tests, support quality, and features. Is SiteGround worth the premium price?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "hosting-3",
@@ -199,11 +199,11 @@ export const hostingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "60%+ per sale",
-    meta_title: "Hostinger Review 2025 - Best Budget Web Hosting?",
+    meta_title: "Hostinger Review 2026 - Best Budget Web Hosting?",
     meta_description:
       "Hostinger review: Is the cheapest hosting any good? We test performance, support, and features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "hosting-4",
@@ -267,11 +267,11 @@ export const hostingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "$50-125 per sale",
-    meta_title: "Cloudways Review 2025 - Best Managed Cloud Hosting?",
+    meta_title: "Cloudways Review 2026 - Best Managed Cloud Hosting?",
     meta_description:
       "Cloudways review: Managed cloud hosting with AWS, Google Cloud, and more. Is it right for your site?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "hosting-5",
@@ -335,11 +335,11 @@ export const hostingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "ShareASale",
     commission_rate: "$200+ per sale",
-    meta_title: "WP Engine Review 2025 - Premium WordPress Hosting",
+    meta_title: "WP Engine Review 2026 - Premium WordPress Hosting",
     meta_description:
       "WP Engine review: Is premium managed WordPress hosting worth the cost? We test performance and features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "hosting-6",
@@ -403,11 +403,11 @@ export const hostingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "$55-125 per sale",
-    meta_title: "A2 Hosting Review 2025 - Fastest Web Hosting?",
+    meta_title: "A2 Hosting Review 2026 - Fastest Web Hosting?",
     meta_description:
       "A2 Hosting review: Are turbo servers worth it? We test speeds, features, and support quality.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

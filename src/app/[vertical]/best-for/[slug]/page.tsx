@@ -6,7 +6,9 @@ import { Header, Footer } from "@/components/layout";
 import { ProductCard, DisclosureBanner } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, FAQSchema, ItemListSchema } from "@/components/seo";
+import { QuickAnswer, generateBestForQuickAnswer } from "@/components/seo/QuickAnswer";
+import { generateBestForFAQs } from "@/lib/faq-generator";
 import {
   getVerticalBySlug,
   getProductsByVertical,
@@ -80,6 +82,22 @@ export default async function BestForPage({ params }: PageProps) {
   const products = getProductsByVertical(verticalSlug);
   const rankedProducts = rankProductsForUseCase(products, config);
 
+  // Generate QuickAnswer props
+  const winner = rankedProducts[0];
+  const quickAnswerProps = winner ? generateBestForQuickAnswer(
+    vertical.name,
+    config.usecase,
+    {
+      name: winner.name,
+      rating: winner.overall_rating,
+      reason: winner.pros[0] || "It excels in this category",
+    },
+    rankedProducts.length
+  ) : null;
+
+  // Generate FAQs
+  const faqs = generateBestForFAQs(vertical.name, config.usecase, rankedProducts);
+
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
     { name: vertical.name, url: `https://pickify.io/${verticalSlug}` },
@@ -92,6 +110,14 @@ export default async function BestForPage({ params }: PageProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <ItemListSchema
+        name={config.title}
+        description={config.description}
+        url={`https://pickify.io/${verticalSlug}/best-for/${bestForSlug}`}
+        products={rankedProducts}
+        verticalSlug={verticalSlug}
+      />
+      <FAQSchema faqs={faqs} />
       <Header />
 
       <main className="flex-1">
@@ -124,29 +150,13 @@ export default async function BestForPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Quick Summary */}
+        {/* AI-Optimized Quick Answer */}
         <section className="py-8 border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl bg-muted/50 rounded-lg p-6">
-              <h2 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-success" />
-                Quick Answer
-              </h2>
-              <p className="text-muted-foreground">
-                <strong className="text-foreground">
-                  {rankedProducts[0]?.name}
-                </strong>{" "}
-                is our top pick for {config.usecase.toLowerCase()} with a rating
-                of {rankedProducts[0]?.overall_rating}/10.{" "}
-                {rankedProducts[1] && (
-                  <>
-                    <strong className="text-foreground">
-                      {rankedProducts[1].name}
-                    </strong>{" "}
-                    is a close second, offering excellent value.
-                  </>
-                )}
-              </p>
+            <div className="max-w-3xl">
+              {quickAnswerProps && (
+                <QuickAnswer {...quickAnswerProps} />
+              )}
             </div>
           </div>
         </section>

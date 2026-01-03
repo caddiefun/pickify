@@ -63,11 +63,11 @@ export const onlineLearningProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "15-45% per sale",
-    meta_title: "Coursera Review 2025 - Best Online Learning Platform?",
+    meta_title: "Coursera Review 2026 - Best Online Learning Platform?",
     meta_description:
       "Our in-depth Coursera review covers courses, certificates, degrees, and value. Is Coursera worth it?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "ol-2",
@@ -131,11 +131,11 @@ export const onlineLearningProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "Awin/Rakuten",
     commission_rate: "10-15% per sale",
-    meta_title: "Udemy Review 2025 - Best Online Course Marketplace?",
+    meta_title: "Udemy Review 2026 - Best Online Course Marketplace?",
     meta_description:
       "Udemy review covering course quality, pricing, sales, and whether it's worth buying courses.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "ol-3",
@@ -199,11 +199,11 @@ export const onlineLearningProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "Varies",
-    meta_title: "LinkedIn Learning Review 2025 - Best for Professionals?",
+    meta_title: "LinkedIn Learning Review 2026 - Best for Professionals?",
     meta_description:
       "LinkedIn Learning review covering courses, LinkedIn integration, and professional development.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "ol-4",
@@ -267,11 +267,11 @@ export const onlineLearningProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "Impact",
     commission_rate: "$7 per signup",
-    meta_title: "Skillshare Review 2025 - Best for Creatives?",
+    meta_title: "Skillshare Review 2026 - Best for Creatives?",
     meta_description:
       "Skillshare review covering creative courses, project-based learning, and subscription value.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "ol-5",
@@ -335,11 +335,11 @@ export const onlineLearningProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "50% first payment",
-    meta_title: "Pluralsight Review 2025 - Best for Tech Skills?",
+    meta_title: "Pluralsight Review 2026 - Best for Tech Skills?",
     meta_description:
       "Pluralsight review covering tech courses, skill assessments, and developer learning.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "ol-6",
@@ -403,11 +403,11 @@ export const onlineLearningProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "25% per sale",
-    meta_title: "MasterClass Review 2025 - Worth the Celebrity Hype?",
+    meta_title: "MasterClass Review 2026 - Worth the Celebrity Hype?",
     meta_description:
       "MasterClass review covering celebrity instructors, content quality, and subscription value.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

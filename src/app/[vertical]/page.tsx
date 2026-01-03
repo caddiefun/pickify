@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Filter, SlidersHorizontal } from "lucide-react";
 import { Header, Footer } from "@/components/layout";
-import { ProductCard, DisclosureBanner } from "@/components/comparison";
+import { ProductCard, DisclosureBanner, LastUpdatedBadge } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { getMostRecentUpdate } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 import {
   getVerticalBySlug,
@@ -21,6 +22,12 @@ import {
   generateHubQuickAnswer,
 } from "@/components/seo";
 import { generateHubFAQs } from "@/lib/faq-generator";
+import {
+  VPNLeakTestCTA,
+  PasswordBreachCTA,
+  AntivirusLabResultsCTA,
+  PageSpeedTestCTA,
+} from "@/components/cta";
 
 interface PageProps {
   params: Promise<{ vertical: string }>;
@@ -59,6 +66,7 @@ export default async function VerticalPage({ params }: PageProps) {
   const otherProducts = products.filter((p) => !p.is_editors_choice);
   const bestForPages = bestForConfigs[verticalSlug as keyof typeof bestForConfigs] || [];
   const editorial = getEditorialContent(verticalSlug);
+  const lastUpdated = getMostRecentUpdate(products);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -108,9 +116,7 @@ export default async function VerticalPage({ params }: PageProps) {
           <div className="container mx-auto px-4 py-12 md:py-16">
             <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
               <div className="lg:col-span-3">
-                <Badge variant="secondary" className="mb-4">
-                  Updated January 2025
-                </Badge>
+                <LastUpdatedBadge date={lastUpdated} className="mb-4" />
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
                   Best {vertical.name} of 2025
                 </h1>
@@ -246,25 +252,38 @@ export default async function VerticalPage({ params }: PageProps) {
                 </Button>
               </div>
             </div>
-            {products.length > 0 ? (
-              <div className="space-y-4">
-                {products.map((product, index) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    rank={index + 1}
-                    verticalSlug={verticalSlug}
-                    variant="default"
-                  />
-                ))}
+            <div className="grid lg:grid-cols-3 gap-8">
+              {/* Products List */}
+              <div className="lg:col-span-2">
+                {products.length > 0 ? (
+                  <div className="space-y-4">
+                    {products.map((product, index) => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        rank={index + 1}
+                        verticalSlug={verticalSlug}
+                        variant="default"
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12 border rounded-lg bg-card">
+                    <p className="text-muted-foreground">
+                      No products available in this category yet. Check back soon!
+                    </p>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="text-center py-12 border rounded-lg bg-card">
-                <p className="text-muted-foreground">
-                  No products available in this category yet. Check back soon!
-                </p>
+
+              {/* Sidebar with CTAs */}
+              <div className="space-y-6">
+                {verticalSlug === "vpn" && <VPNLeakTestCTA />}
+                {verticalSlug === "password-managers" && <PasswordBreachCTA />}
+                {verticalSlug === "antivirus" && <AntivirusLabResultsCTA />}
+                {verticalSlug === "hosting" && <PageSpeedTestCTA />}
               </div>
-            )}
+            </div>
           </div>
         </section>
 

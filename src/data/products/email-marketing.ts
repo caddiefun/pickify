@@ -63,11 +63,11 @@ export const emailMarketingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "Up to $300 per sale",
-    meta_title: "Mailchimp Review 2025 - Best Email Marketing Platform?",
+    meta_title: "Mailchimp Review 2026 - Best Email Marketing Platform?",
     meta_description:
       "Our in-depth Mailchimp review covers features, pricing, automation, and more. Is Mailchimp right for your business?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "email-2",
@@ -131,11 +131,11 @@ export const emailMarketingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "30% recurring",
-    meta_title: "ConvertKit Review 2025 - Best Email Marketing for Creators?",
+    meta_title: "ConvertKit Review 2026 - Best Email Marketing for Creators?",
     meta_description:
       "ConvertKit review for bloggers and creators. We cover automation, landing pages, and whether it's worth the price.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "email-3",
@@ -199,11 +199,11 @@ export const emailMarketingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "15% recurring (12 months)",
-    meta_title: "Klaviyo Review 2025 - Best E-commerce Email Marketing?",
+    meta_title: "Klaviyo Review 2026 - Best E-commerce Email Marketing?",
     meta_description:
       "Klaviyo review for Shopify stores. We cover automation, segmentation, and ROI potential.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "email-4",
@@ -267,11 +267,11 @@ export const emailMarketingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "20-30% recurring",
-    meta_title: "ActiveCampaign Review 2025 - Best Marketing Automation?",
+    meta_title: "ActiveCampaign Review 2026 - Best Marketing Automation?",
     meta_description:
       "ActiveCampaign review covering automation, CRM, and email marketing. Is it worth the investment?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "email-5",
@@ -335,11 +335,11 @@ export const emailMarketingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "€5 per free signup + €100 per paid",
-    meta_title: "Brevo Review 2025 - Best Affordable Email Marketing?",
+    meta_title: "Brevo Review 2026 - Best Affordable Email Marketing?",
     meta_description:
       "Brevo (Sendinblue) review covering email, SMS, and CRM features. Is it the best budget option?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "email-6",
@@ -403,11 +403,11 @@ export const emailMarketingProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "CJ Affiliate",
     commission_rate: "$105 per sale",
-    meta_title: "Constant Contact Review 2025 - Best for Small Business?",
+    meta_title: "Constant Contact Review 2026 - Best for Small Business?",
     meta_description:
       "Constant Contact review covering ease of use, support, and email features. Is it right for your business?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

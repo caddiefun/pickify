@@ -212,3 +212,32 @@ export function getStatesWithCities(): { state: USState; cities: USCity[] }[] {
     }))
     .filter((item) => item.cities.length > 0);
 }
+
+// Get city data from a zip code
+export function getCityByZipCode(zipCode: string): USCity | undefined {
+  const zipData = getZipCodeData(zipCode);
+  if (!zipData) return undefined;
+  return usCities.find(
+    (c) => c.name === zipData.city && c.stateCode === zipData.stateCode
+  );
+}
+
+// Get sibling zip codes (other zips in the same city)
+export function getSiblingZipCodes(zipCode: string): string[] {
+  const city = getCityByZipCode(zipCode);
+  if (!city) return [];
+  return city.zipCodes.filter((z) => z !== zipCode);
+}
+
+// Get nearby cities (same state, different city)
+export function getNearbyCities(stateCode: string, currentCitySlug: string, limit: number = 5): USCity[] {
+  return usCities
+    .filter((c) => c.stateCode === stateCode && c.slug !== currentCitySlug)
+    .slice(0, limit);
+}
+
+// Get state slug from state code
+export function getStateSlugFromCode(stateCode: string): string | undefined {
+  const state = getStateByCode(stateCode);
+  return state?.slug;
+}

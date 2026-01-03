@@ -15,48 +15,40 @@ import {
 import { BreadcrumbSchema, OrganizationSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
-  title: "About Pickify - Our Mission & Team",
+  title: "About Pickify - Software Comparison & Reviews",
   description:
-    "Learn about Pickify's mission to help consumers make informed software decisions through unbiased, expert reviews and comparisons.",
+    "Learn about Pickify and how we help you compare software products. We research options and provide helpful information to guide your decisions.",
   openGraph: {
-    title: "About Pickify - Our Mission & Team",
+    title: "About Pickify - Software Comparison & Reviews",
     description:
-      "Learn about Pickify's mission to help consumers make informed software decisions through unbiased, expert reviews and comparisons.",
+      "Learn about Pickify and how we help you compare software products. We research options and provide helpful information to guide your decisions.",
   },
 };
 
 const values = [
   {
     icon: Shield,
-    title: "Independence",
+    title: "Honesty",
     description:
-      "Our reviews are never influenced by advertisers. We maintain strict editorial independence to ensure our recommendations are always in your best interest.",
-  },
-  {
-    icon: Target,
-    title: "Accuracy",
-    description:
-      "Every product is tested using consistent methodologies. We verify claims, measure performance, and update our reviews as products evolve.",
+      "We aim to provide honest recommendations. While we earn affiliate commissions, we try not to let that influence our content.",
   },
   {
     icon: Users,
     title: "User-First",
     description:
-      "We design our content around your needs, not search engines. Clear comparisons, honest pros and cons, and actionable recommendations.",
+      "We focus on what matters to real people: features, pricing, ease of use, and whether something actually works.",
   },
   {
     icon: TrendingUp,
     title: "Transparency",
     description:
-      "We're upfront about how we make money. Affiliate links and sponsorships are clearly disclosed, and they never affect our ratings.",
+      "We're upfront about how we make money. Affiliate links are clearly disclosed. We're not a formal testing lab – just trying to be helpful.",
   },
 ];
 
 const stats = [
   { value: "50+", label: "Products Reviewed" },
-  { value: "1000+", label: "Hours of Testing" },
-  { value: "6", label: "Software Categories" },
-  { value: "100%", label: "Independent" },
+  { value: "12", label: "Software Categories" },
 ];
 
 export default function AboutPage() {
@@ -83,9 +75,8 @@ export default function AboutPage() {
                 Helping You Choose the Right Software
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Pickify is your trusted source for unbiased software reviews and
-                comparisons. We test every product ourselves so you don't have
-                to.
+                Pickify helps you compare software products and make better
+                decisions. We research options so you don't have to.
               </p>
             </div>
           </div>
@@ -94,7 +85,7 @@ export default function AboutPage() {
         {/* Stats Section */}
         <section className="py-12 border-b">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 gap-8 max-w-md mx-auto">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="text-4xl font-bold text-primary mb-2">
@@ -116,23 +107,22 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
               <div className="prose prose-lg text-muted-foreground">
                 <p className="mb-4">
-                  In a world of paid reviews and sponsored content, finding
-                  trustworthy software recommendations is harder than ever. We
-                  started Pickify to solve this problem.
+                  Finding trustworthy software recommendations shouldn't be this hard.
+                  We started Pickify to cut through the noise and help you make
+                  better decisions.
                 </p>
                 <p className="mb-4">
-                  Our mission is simple: provide honest, thoroughly-researched
-                  reviews that help you make confident software decisions.
-                  Whether you're looking for a VPN to protect your privacy, a
-                  web host for your business, or an email marketing platform to
-                  grow your audience – we've done the research so you don't have
-                  to.
+                  Our goal is simple: save you time by researching software so you
+                  don't have to. Whether you're looking for a VPN to protect your
+                  privacy, a web host for your business, or an email marketing
+                  platform to grow your audience – we aim to provide clear,
+                  helpful comparisons.
                 </p>
                 <p>
-                  Every product on Pickify goes through our rigorous testing
-                  process. We evaluate real-world performance, verify marketing
-                  claims, and consider value for money. The result is reviews
-                  you can trust.
+                  We research products, consider user reviews, compare features and
+                  pricing, and try products ourselves when possible. We can't
+                  promise perfection, but we try to keep our content accurate and
+                  up-to-date.
                 </p>
               </div>
             </div>
@@ -143,12 +133,12 @@ export default function AboutPage() {
         <section className="py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Our Values</h2>
+              <h2 className="text-3xl font-bold mb-4">Our Approach</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                These principles guide everything we do at Pickify
+                What guides our work
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {values.map((value) => (
                 <Card key={value.title}>
                   <CardContent className="p-6">
@@ -177,8 +167,7 @@ export default function AboutPage() {
               <h2 className="text-3xl font-bold mb-6">How We Make Money</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Transparency is one of our core values, so let's be clear
-                  about how Pickify generates revenue:
+                  We believe in being upfront about how the site works:
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
@@ -187,9 +176,9 @@ export default function AboutPage() {
                       <strong className="text-foreground">
                         Affiliate Commissions:
                       </strong>{" "}
-                      When you click a link and make a purchase, we may earn a
-                      commission at no extra cost to you. This never influences
-                      our ratings or recommendations.
+                      When you click a link and sign up for a product, we may
+                      earn a commission at no extra cost to you. This is how
+                      we keep the site running.
                     </span>
                   </li>
                   <li className="flex items-start gap-3">
@@ -198,16 +187,15 @@ export default function AboutPage() {
                       <strong className="text-foreground">
                         Sponsored Placements:
                       </strong>{" "}
-                      Some products may pay for featured placement. These are
-                      always clearly labeled and sponsorship never affects our
-                      review scores.
+                      Some companies may pay for featured placement. When this
+                      happens, it will be clearly labeled.
                     </span>
                   </li>
                 </ul>
                 <p>
-                  Our editorial team operates independently from our business
-                  team. Advertisers cannot pay for better ratings or influence
-                  our conclusions.
+                  We do our best to provide honest information regardless of
+                  affiliate relationships, but you should know that we benefit
+                  financially when you use our links.
                 </p>
               </div>
               <div className="mt-8">

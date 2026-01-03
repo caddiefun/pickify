@@ -84,6 +84,33 @@ export {
 } from "./products/isp";
 export type { ISPProduct } from "./products/isp";
 
+// Antivirus Products
+export {
+  antivirusProducts,
+  getAntivirusProducts,
+  getAntivirusProductBySlug,
+  getFeaturedAntivirusProducts,
+  getEditorsChoiceAntivirus,
+} from "./products/antivirus";
+
+// Home Security Products
+export {
+  homeSecurityProducts,
+  getHomeSecurityProducts,
+  getHomeSecurityProductBySlug,
+  getFeaturedHomeSecurityProducts,
+  getEditorsChoiceHomeSecurity,
+} from "./products/home-security";
+
+// Cloud Storage Products
+export {
+  cloudStorageProducts,
+  getCloudStorageProducts,
+  getCloudStorageProductBySlug,
+  getFeaturedCloudStorageProducts,
+  getEditorsChoiceCloudStorage,
+} from "./products/cloud-storage";
+
 // Geo Data
 export {
   usStates,
@@ -98,6 +125,10 @@ export {
   isValidZipCode,
   getAllZipCodes,
   getStatesWithCities,
+  getCityByZipCode,
+  getSiblingZipCodes,
+  getNearbyCities,
+  getStateSlugFromCode,
 } from "./geo";
 export type { USState, USCity, ZipCodeData } from "./geo";
 
@@ -111,6 +142,9 @@ import { crmProducts, getCrmProductBySlug } from "./products/crm";
 import { websiteBuilderProducts, getWebsiteBuilderProductBySlug } from "./products/website-builders";
 import { onlineLearningProducts, getOnlineLearningProductBySlug } from "./products/online-learning";
 import { ispProducts, getIspProductBySlug } from "./products/isp";
+import { antivirusProducts, getAntivirusProductBySlug } from "./products/antivirus";
+import { homeSecurityProducts, getHomeSecurityProductBySlug } from "./products/home-security";
+import { cloudStorageProducts, getCloudStorageProductBySlug } from "./products/cloud-storage";
 
 // Unified product fetching by vertical
 export function getProductsByVertical(verticalSlug: string): Product[] {
@@ -133,6 +167,12 @@ export function getProductsByVertical(verticalSlug: string): Product[] {
       return onlineLearningProducts.sort((a, b) => b.overall_rating - a.overall_rating);
     case "internet-providers":
       return ispProducts.sort((a, b) => b.overall_rating - a.overall_rating);
+    case "antivirus":
+      return antivirusProducts.sort((a, b) => b.overall_rating - a.overall_rating);
+    case "home-security":
+      return homeSecurityProducts.sort((a, b) => b.overall_rating - a.overall_rating);
+    case "cloud-storage":
+      return cloudStorageProducts.sort((a, b) => b.overall_rating - a.overall_rating);
     default:
       return [];
   }
@@ -161,6 +201,12 @@ export function getProductBySlug(
       return getOnlineLearningProductBySlug(productSlug);
     case "internet-providers":
       return getIspProductBySlug(productSlug);
+    case "antivirus":
+      return getAntivirusProductBySlug(productSlug);
+    case "home-security":
+      return getHomeSecurityProductBySlug(productSlug);
+    case "cloud-storage":
+      return getCloudStorageProductBySlug(productSlug);
     default:
       return undefined;
   }
@@ -179,6 +225,9 @@ export function findProductBySlug(productSlug: string): Product | undefined {
     ...websiteBuilderProducts,
     ...onlineLearningProducts,
     ...ispProducts,
+    ...antivirusProducts,
+    ...homeSecurityProducts,
+    ...cloudStorageProducts,
   ];
 
   return allProducts.find((p) => p.slug === productSlug);
@@ -510,14 +559,14 @@ export const bestForConfigs = {
     {
       slug: "streaming",
       usecase: "Streaming",
-      title: "Best Internet for Streaming",
+      title: "Best High Speed Internet for Streaming",
       description: "Fast, reliable internet for Netflix, gaming, and 4K video",
       criteria: ["max_download", "data_cap"],
     },
     {
       slug: "gaming",
       usecase: "Gaming",
-      title: "Best Internet for Gaming",
+      title: "Best High Speed Internet for Gaming",
       description: "Low latency and fast speeds for online gaming",
       criteria: ["max_download", "max_upload"],
     },
@@ -538,9 +587,120 @@ export const bestForConfigs = {
     {
       slug: "budget",
       usecase: "Budget",
-      title: "Best Cheap Internet Providers",
+      title: "Best Cheap High Speed Internet",
       description: "Affordable broadband that doesn't break the bank",
       criteria: ["price"],
+    },
+  ],
+  antivirus: [
+    {
+      slug: "windows",
+      usecase: "Windows",
+      title: "Best Antivirus for Windows PC",
+      description: "Top-rated virus protection for Windows 10 & 11",
+      criteria: ["malware_detection", "real_time_protection"],
+    },
+    {
+      slug: "mac",
+      usecase: "Mac",
+      title: "Best Antivirus for Mac",
+      description: "Security software designed for macOS",
+      criteria: ["malware_detection", "macos_support"],
+    },
+    {
+      slug: "free",
+      usecase: "Free",
+      title: "Best Free Antivirus Software",
+      description: "Quality virus protection that costs nothing",
+      criteria: ["free_tier", "malware_detection"],
+    },
+    {
+      slug: "gaming",
+      usecase: "Gaming",
+      title: "Best Antivirus for Gaming",
+      description: "Lightweight protection that won't slow down your games",
+      criteria: ["performance_impact", "gaming_mode"],
+    },
+    {
+      slug: "families",
+      usecase: "Families",
+      title: "Best Antivirus for Families",
+      description: "Protect all your family's devices with parental controls",
+      criteria: ["devices", "parental_controls"],
+    },
+  ],
+  "home-security": [
+    {
+      slug: "diy",
+      usecase: "DIY",
+      title: "Best DIY Home Security Systems",
+      description: "Self-install security systems with no contracts",
+      criteria: ["self_install", "no_contract"],
+    },
+    {
+      slug: "professional",
+      usecase: "Professional Monitoring",
+      title: "Best Professionally Monitored Security",
+      description: "24/7 professional monitoring and fast response",
+      criteria: ["professional_monitoring", "response_time"],
+    },
+    {
+      slug: "apartments",
+      usecase: "Apartments",
+      title: "Best Home Security for Apartments",
+      description: "Renter-friendly security with no drilling required",
+      criteria: ["wireless", "portable"],
+    },
+    {
+      slug: "cameras",
+      usecase: "Cameras",
+      title: "Best Home Security Cameras",
+      description: "Smart cameras with video recording and alerts",
+      criteria: ["video_quality", "cloud_storage"],
+    },
+    {
+      slug: "budget",
+      usecase: "Budget",
+      title: "Best Cheap Home Security Systems",
+      description: "Affordable protection without monthly fees",
+      criteria: ["price", "no_monthly_fee"],
+    },
+  ],
+  "cloud-storage": [
+    {
+      slug: "personal",
+      usecase: "Personal Use",
+      title: "Best Cloud Storage for Personal Use",
+      description: "Backup photos, documents, and files securely",
+      criteria: ["storage", "ease_of_use"],
+    },
+    {
+      slug: "business",
+      usecase: "Business",
+      title: "Best Cloud Storage for Business",
+      description: "Team collaboration and enterprise security",
+      criteria: ["team_features", "admin_controls"],
+    },
+    {
+      slug: "photos",
+      usecase: "Photos",
+      title: "Best Cloud Storage for Photos",
+      description: "Backup and organize your photo library",
+      criteria: ["photo_features", "storage"],
+    },
+    {
+      slug: "free",
+      usecase: "Free",
+      title: "Best Free Cloud Storage",
+      description: "Get free storage space for your files",
+      criteria: ["free_tier", "storage"],
+    },
+    {
+      slug: "security",
+      usecase: "Security",
+      title: "Most Secure Cloud Storage",
+      description: "End-to-end encryption and zero-knowledge privacy",
+      criteria: ["encryption", "zero_knowledge"],
     },
   ],
 };

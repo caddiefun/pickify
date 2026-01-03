@@ -11,10 +11,9 @@ export type VerticalSlug =
   | "website-builders"
   | "online-learning"
   | "internet-providers"
+  | "antivirus"
   | "home-security"
-  | "hr-payroll"
-  | "accounting"
-  | "antivirus";
+  | "cloud-storage";
 
 export interface Vertical {
   id: string;

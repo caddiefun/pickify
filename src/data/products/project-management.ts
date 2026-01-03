@@ -63,11 +63,11 @@ export const projectManagementProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "Up to $300 per sale",
-    meta_title: "Monday.com Review 2025 - Best Project Management Software?",
+    meta_title: "Monday.com Review 2026 - Best Project Management Software?",
     meta_description:
       "Our in-depth Monday.com review covers features, pricing, and real-world performance. Is it right for your team?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-2",
@@ -131,11 +131,11 @@ export const projectManagementProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "20% per sale",
-    meta_title: "Asana Review 2025 - Best Task Management Platform?",
+    meta_title: "Asana Review 2026 - Best Task Management Platform?",
     meta_description:
       "Asana review covering task management, workflows, and team collaboration features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-3",
@@ -199,11 +199,11 @@ export const projectManagementProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "PartnerStack",
     commission_rate: "20% recurring",
-    meta_title: "ClickUp Review 2025 - Best All-in-One Work Platform?",
+    meta_title: "ClickUp Review 2026 - Best All-in-One Work Platform?",
     meta_description:
       "ClickUp review covering features, pricing, and whether it can truly replace all your work tools.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-4",
@@ -267,11 +267,11 @@ export const projectManagementProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "50% first year",
-    meta_title: "Notion Review 2025 - Best Flexible Workspace?",
+    meta_title: "Notion Review 2026 - Best Flexible Workspace?",
     meta_description:
       "Notion review covering its use as a project management, wiki, and note-taking tool.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-5",
@@ -335,11 +335,11 @@ export const projectManagementProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "25% per sale",
-    meta_title: "Trello Review 2025 - Best Simple Project Management?",
+    meta_title: "Trello Review 2026 - Best Simple Project Management?",
     meta_description:
       "Trello review covering Kanban boards, Power-Ups, and simplicity. Is it enough for your team?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-6",
@@ -397,11 +397,11 @@ export const projectManagementProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "20% first year",
-    meta_title: "Basecamp Review 2025 - Simple Project Management",
+    meta_title: "Basecamp Review 2026 - Simple Project Management",
     meta_description:
       "Basecamp review covering flat pricing, team communication, and project management features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

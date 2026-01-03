@@ -4,7 +4,6 @@ import Link from "next/link";
 import {
   ExternalLink,
   Award,
-  Calendar,
   ArrowLeft,
   Check,
   X,
@@ -17,6 +16,7 @@ import {
   ProsConsList,
   DisclosureBanner,
   ProductLogo,
+  LastUpdatedBadge,
 } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -181,11 +181,8 @@ export default async function ProductPage({ params }: PageProps) {
                     <p className="text-lg text-muted-foreground">
                       {product.short_description}
                     </p>
-                    <div className="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        Updated December 2025
-                      </span>
+                    <div className="flex items-center gap-4 mt-3">
+                      <LastUpdatedBadge date={product.updated_at} variant="inline" />
                     </div>
                   </div>
                 </div>

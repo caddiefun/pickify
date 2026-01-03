@@ -63,11 +63,11 @@ export const crmProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "15-30% recurring",
-    meta_title: "HubSpot CRM Review 2025 - Best Free CRM Platform?",
+    meta_title: "HubSpot CRM Review 2026 - Best Free CRM Platform?",
     meta_description:
       "Our in-depth HubSpot CRM review covers the free features, paid upgrades, and whether it's right for your business.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "crm-2",
@@ -131,11 +131,11 @@ export const crmProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "Varies by partner tier",
-    meta_title: "Salesforce Review 2025 - Best Enterprise CRM?",
+    meta_title: "Salesforce Review 2026 - Best Enterprise CRM?",
     meta_description:
       "Salesforce CRM review covering features, pricing, and whether it's worth the investment for your business.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "crm-3",
@@ -199,11 +199,11 @@ export const crmProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "33% recurring",
-    meta_title: "Pipedrive Review 2025 - Best CRM for Sales Teams?",
+    meta_title: "Pipedrive Review 2026 - Best CRM for Sales Teams?",
     meta_description:
       "Pipedrive CRM review covering pipeline management, sales features, and value for money.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "crm-4",
@@ -267,11 +267,11 @@ export const crmProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "15% per sale",
-    meta_title: "Zoho CRM Review 2025 - Best Value CRM?",
+    meta_title: "Zoho CRM Review 2026 - Best Value CRM?",
     meta_description:
       "Zoho CRM review covering features, Zoho ecosystem integration, and value for businesses.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "crm-5",
@@ -335,11 +335,11 @@ export const crmProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "15-20% per sale",
-    meta_title: "Freshsales Review 2025 - Best SMB CRM?",
+    meta_title: "Freshsales Review 2026 - Best SMB CRM?",
     meta_description:
       "Freshsales CRM review covering built-in communication tools, AI features, and value for SMBs.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "crm-6",
@@ -403,11 +403,11 @@ export const crmProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "20% recurring",
-    meta_title: "Close CRM Review 2025 - Best for Inside Sales?",
+    meta_title: "Close CRM Review 2026 - Best for Inside Sales?",
     meta_description:
       "Close CRM review covering built-in calling, email sequences, and inside sales features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

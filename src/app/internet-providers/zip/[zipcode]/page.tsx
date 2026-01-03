@@ -3,18 +3,22 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowLeft, AlertCircle, Wifi } from "lucide-react";
 import { Header, Footer } from "@/components/layout";
-import { LocationSearch, ProviderCard, SpeedComparison } from "@/components/isp";
+import { LocationSearch, ProviderCard, SpeedComparison, SpeedTestCTA } from "@/components/isp";
 import { DisclosureBanner } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, FAQSchema, LocalBusinessSchema } from "@/components/seo";
+import { generateZipCodeFAQs } from "@/lib/faq-generator";
 import {
   getZipCodeData,
   getIspProductBySlug,
   getAllZipCodes,
   isValidZipCode,
+  getCityByZipCode,
+  getSiblingZipCodes,
+  getStateSlugFromCode,
 } from "@/data";
 import type { ISPProduct } from "@/data/products/isp";
 
@@ -61,22 +65,71 @@ export default async function ZipCodeResultsPage({ params }: PageProps) {
     ? `${zipData.city}, ${zipData.stateCode} ${zipcode}`
     : zipcode;
 
+  // Get city and sibling zip codes for geo-SEO
+  const cityData = getCityByZipCode(zipcode);
+  const siblingZips = getSiblingZipCodes(zipcode);
+  const stateSlug = zipData ? getStateSlugFromCode(zipData.stateCode) : undefined;
+
+  // Generate FAQs for this zip code
+  const faqs = availableProviders.length > 0
+    ? generateZipCodeFAQs(
+        zipcode,
+        availableProviders as unknown as import("@/types").Product[],
+        zipData?.city,
+        zipData?.stateCode
+      )
+    : [];
+
+  // Get price range for LocalBusiness schema
+  const lowestPrice = availableProviders.length > 0
+    ? Math.min(...availableProviders.flatMap(p => p.pricing.map(plan => plan.price)))
+    : 0;
+  const highestPrice = availableProviders.length > 0
+    ? Math.max(...availableProviders.flatMap(p => p.pricing.map(plan => plan.price)))
+    : 0;
+
+  // Enhanced breadcrumbs with full geographic hierarchy
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
     { name: "Internet Providers", url: "https://pickify.io/internet-providers" },
-    { name: location, url: `https://pickify.io/internet-providers/zip/${zipcode}` },
+    ...(stateSlug && zipData ? [{
+      name: zipData.stateCode,
+      url: `https://pickify.io/internet-providers/${stateSlug}`
+    }] : []),
+    ...(cityData && stateSlug ? [{
+      name: cityData.name,
+      url: `https://pickify.io/internet-providers/${stateSlug}/${cityData.slug}`
+    }] : []),
+    { name: zipcode, url: `https://pickify.io/internet-providers/zip/${zipcode}` },
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      {availableProviders.length > 0 && (
+        <>
+          <LocalBusinessSchema
+            name={`Internet Providers in ${location}`}
+            description={`Compare ${availableProviders.length} internet service providers available in ${location}. Find fiber, cable, DSL, and satellite options.`}
+            url={`https://pickify.io/internet-providers/zip/${zipcode}`}
+            areaServed={{
+              postalCode: zipcode,
+              addressLocality: zipData?.city,
+              addressRegion: zipData?.stateCode,
+            }}
+            serviceType="Internet Service Provider"
+            priceRange={`$${lowestPrice}-$${highestPrice}/mo`}
+          />
+          <FAQSchema faqs={faqs} />
+        </>
+      )}
       <Header />
 
       <main className="flex-1">
-        {/* Breadcrumb */}
+        {/* Enhanced Breadcrumb with full geo hierarchy */}
         <div className="border-b bg-muted/30">
           <div className="container mx-auto px-4 py-3">
-            <nav className="flex items-center gap-2 text-sm">
+            <nav className="flex items-center gap-2 text-sm flex-wrap">
               <Link href="/" className="text-muted-foreground hover:text-foreground">
                 Home
               </Link>
@@ -87,8 +140,30 @@ export default async function ZipCodeResultsPage({ params }: PageProps) {
               >
                 Internet Providers
               </Link>
+              {stateSlug && zipData && (
+                <>
+                  <span className="text-muted-foreground">/</span>
+                  <Link
+                    href={`/internet-providers/${stateSlug}`}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    {zipData.stateCode}
+                  </Link>
+                </>
+              )}
+              {cityData && stateSlug && (
+                <>
+                  <span className="text-muted-foreground">/</span>
+                  <Link
+                    href={`/internet-providers/${stateSlug}/${cityData.slug}`}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    {cityData.name}
+                  </Link>
+                </>
+              )}
               <span className="text-muted-foreground">/</span>
-              <span className="font-medium">{location}</span>
+              <span className="font-medium">{zipcode}</span>
             </nav>
           </div>
         </div>
@@ -153,6 +228,9 @@ export default async function ZipCodeResultsPage({ params }: PageProps) {
                       </CardContent>
                     </Card>
 
+                    {/* Speed Test CTA */}
+                    <SpeedTestCTA location={location} />
+
                     {/* Quick Stats */}
                     <Card>
                       <CardHeader>
@@ -216,6 +294,36 @@ export default async function ZipCodeResultsPage({ params }: PageProps) {
                         </div>
                       </CardContent>
                     </Card>
+
+                    {/* Other Zip Codes in City - Geo-SEO internal linking */}
+                    {siblingZips.length > 0 && cityData && stateSlug && (
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-lg">
+                            Other Zip Codes in {cityData.name}
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex flex-wrap gap-2">
+                            {siblingZips.map((zip) => (
+                              <Link
+                                key={zip}
+                                href={`/internet-providers/zip/${zip}`}
+                                className="px-3 py-1.5 rounded-full bg-muted text-sm hover:bg-accent transition-colors"
+                              >
+                                {zip}
+                              </Link>
+                            ))}
+                          </div>
+                          <Link
+                            href={`/internet-providers/${stateSlug}/${cityData.slug}`}
+                            className="inline-flex items-center text-sm text-primary hover:underline mt-4"
+                          >
+                            View all {cityData.name} providers →
+                          </Link>
+                        </CardContent>
+                      </Card>
+                    )}
                   </div>
                 </div>
               </div>

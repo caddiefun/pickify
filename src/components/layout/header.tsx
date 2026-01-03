@@ -13,6 +13,9 @@ import {
   GraduationCap,
   Wifi,
   Menu,
+  ShieldCheck,
+  Home,
+  Cloud,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,16 +37,10 @@ const verticals = [
     icon: Shield,
   },
   {
-    title: "Web Hosting",
-    href: "/hosting",
-    description: "Find the perfect host for your site",
-    icon: Server,
-  },
-  {
-    title: "Email Marketing",
-    href: "/email-marketing",
-    description: "Grow your audience with email",
-    icon: Mail,
+    title: "Antivirus",
+    href: "/antivirus",
+    description: "Protect against malware & viruses",
+    icon: ShieldCheck,
   },
   {
     title: "Password Managers",
@@ -52,16 +49,22 @@ const verticals = [
     icon: Key,
   },
   {
-    title: "Project Management",
-    href: "/project-management",
-    description: "Organize your team's work",
-    icon: Briefcase,
+    title: "Home Security",
+    href: "/home-security",
+    description: "Smart alarms & cameras",
+    icon: Home,
   },
   {
-    title: "CRM Software",
-    href: "/crm",
-    description: "Manage customer relationships",
-    icon: Users,
+    title: "High Speed Internet",
+    href: "/internet-providers",
+    description: "Find fast internet in your area",
+    icon: Wifi,
+  },
+  {
+    title: "Web Hosting",
+    href: "/hosting",
+    description: "Find the perfect host for your site",
+    icon: Server,
   },
   {
     title: "Website Builders",
@@ -70,16 +73,34 @@ const verticals = [
     icon: Globe,
   },
   {
+    title: "Cloud Storage",
+    href: "/cloud-storage",
+    description: "Backup & sync your files",
+    icon: Cloud,
+  },
+  {
+    title: "Email Marketing",
+    href: "/email-marketing",
+    description: "Grow your audience with email",
+    icon: Mail,
+  },
+  {
+    title: "CRM Software",
+    href: "/crm",
+    description: "Manage customer relationships",
+    icon: Users,
+  },
+  {
+    title: "Project Management",
+    href: "/project-management",
+    description: "Organize your team's work",
+    icon: Briefcase,
+  },
+  {
     title: "Online Learning",
     href: "/online-learning",
     description: "Learn new skills online",
     icon: GraduationCap,
-  },
-  {
-    title: "Internet Providers",
-    href: "/internet-providers",
-    description: "Find ISPs in your area",
-    icon: Wifi,
   },
 ];
 
@@ -106,7 +127,7 @@ export function Header() {
                   Categories
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[500px] gap-3 p-4 md:grid-cols-2">
+                  <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-3">
                     {verticals.map((vertical) => (
                       <li key={vertical.href}>
                         <NavigationMenuLink asChild>
@@ -142,13 +163,6 @@ export function Header() {
                 </Link>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <Link href="/methodology" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                    Methodology
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
@@ -193,13 +207,6 @@ export function Header() {
                   className="block rounded-md px-2 py-2 text-sm hover:bg-accent"
                 >
                   About
-                </Link>
-                <Link
-                  href="/methodology"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block rounded-md px-2 py-2 text-sm hover:bg-accent"
-                >
-                  Methodology
                 </Link>
               </div>
               <div className="border-t pt-4">

@@ -63,11 +63,11 @@ export const passwordManagerProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "Impact",
     commission_rate: "25% recurring",
-    meta_title: "1Password Review 2025 - Best Password Manager?",
+    meta_title: "1Password Review 2026 - Best Password Manager?",
     meta_description:
       "Our in-depth 1Password review covers security, features, and value. Find out if it's the right password manager for you.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-2",
@@ -131,11 +131,11 @@ export const passwordManagerProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "25% per sale",
-    meta_title: "Bitwarden Review 2025 - Best Free Password Manager?",
+    meta_title: "Bitwarden Review 2026 - Best Free Password Manager?",
     meta_description:
       "Bitwarden review: Is the free open-source password manager good enough? We test security and features.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-3",
@@ -199,11 +199,11 @@ export const passwordManagerProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "$3-6 per signup",
-    meta_title: "Dashlane Review 2025 - Best Premium Password Manager?",
+    meta_title: "Dashlane Review 2026 - Best Premium Password Manager?",
     meta_description:
       "Dashlane review covering security, VPN, dark web monitoring, and value. Is the premium price worth it?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-4",
@@ -267,11 +267,11 @@ export const passwordManagerProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "Impact",
     commission_rate: "40% per sale",
-    meta_title: "NordPass Review 2025 - Modern Password Manager",
+    meta_title: "NordPass Review 2026 - Modern Password Manager",
     meta_description:
       "NordPass review from NordVPN creators. We test security, features, and ease of use.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-5",
@@ -335,11 +335,11 @@ export const passwordManagerProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "25% per sale",
-    meta_title: "Keeper Review 2025 - Enterprise Password Security",
+    meta_title: "Keeper Review 2026 - Enterprise Password Security",
     meta_description:
       "Keeper password manager review for personal and business use. Is enterprise-grade security worth it?",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
   {
     id: "pm-6",
@@ -403,11 +403,11 @@ export const passwordManagerProducts: Product[] = [
     affiliate_url: null,
     affiliate_program: "In-house",
     commission_rate: "25% per sale",
-    meta_title: "LastPass Review 2025 - Still Safe After Breaches?",
+    meta_title: "LastPass Review 2026 - Still Safe After Breaches?",
     meta_description:
       "LastPass review covering security, recent incidents, and whether it's still a safe choice.",
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
+    created_at: "2025-01-03T00:00:00.000Z",
+    updated_at: "2025-01-03T00:00:00.000Z",
   },
 ];
 

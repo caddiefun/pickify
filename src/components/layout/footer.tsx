@@ -12,7 +12,6 @@ const footerLinks = {
   ],
   resources: [
     { label: "About Us", href: "/about" },
-    { label: "Methodology", href: "/methodology" },
     { label: "Contact", href: "/contact" },
     { label: "Advertise", href: "/advertise" },
   ],
