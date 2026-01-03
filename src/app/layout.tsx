@@ -82,6 +82,11 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans min-h-screen`}
       >
         <Providers>{children}</Providers>
+        {/* CJ Affiliate Deep Link Automation */}
+        <script
+          src="https://www.anrdoezrs.net/am/101624161/impressions/page/am.js"
+          async
+        />
       </body>
     </html>
   );
