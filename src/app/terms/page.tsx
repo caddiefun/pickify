@@ -200,7 +200,7 @@ export default function TermsPage() {
                 If you have questions about these Terms, please contact us at:
               </p>
               <ul>
-                <li>Email: legal@pickify.io</li>
+                <li>Email: contact@pickify.io</li>
                 <li>Mail: Pickify, [Address to be added]</li>
               </ul>
             </div>

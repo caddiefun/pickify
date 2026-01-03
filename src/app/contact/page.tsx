@@ -24,19 +24,19 @@ const contactReasons = [
   {
     icon: MessageSquare,
     title: "General Inquiries",
-    email: "hello@pickify.io",
+    email: "contact@pickify.io",
     description: "Questions, feedback, or just want to say hi",
   },
   {
     icon: Building,
     title: "Business & Partnerships",
-    email: "partners@pickify.io",
+    email: "contact@pickify.io",
     description: "Advertising, sponsorships, and collaboration opportunities",
   },
   {
     icon: Mail,
     title: "Press & Media",
-    email: "press@pickify.io",
+    email: "contact@pickify.io",
     description: "Media inquiries and press requests",
   },
 ];

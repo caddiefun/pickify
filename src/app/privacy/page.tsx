@@ -193,7 +193,7 @@ export default function PrivacyPage() {
                 practices, please contact us at:
               </p>
               <ul>
-                <li>Email: privacy@pickify.io</li>
+                <li>Email: contact@pickify.io</li>
                 <li>
                   Mail: Pickify, [Address to be added]
                 </li>
