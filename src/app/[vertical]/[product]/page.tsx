@@ -37,7 +37,12 @@ import {
   ProductSchema,
   ReviewSchema,
   BreadcrumbSchema,
+  FAQSchema,
+  QuickAnswer,
+  generateReviewQuickAnswer,
+  HowToSchema,
 } from "@/components/seo";
+import { generateAllFAQs } from "@/lib/faq-generator";
 
 interface PageProps {
   params: Promise<{ vertical: string; product: string }>;
@@ -87,12 +92,45 @@ export default async function ProductPage({ params }: PageProps) {
     { name: product.name, url: `https://pickify.io/${verticalSlug}/${product.slug}` },
   ];
 
+  // Generate QuickAnswer for AI citation
+  const bestForCases = product.is_editors_choice
+    ? ["most users", "overall value"]
+    : product.pros.slice(0, 2).map((p) => p.toLowerCase().split(" ").slice(0, 3).join(" "));
+  const quickAnswerProps = generateReviewQuickAnswer(
+    {
+      name: product.name,
+      rating: product.overall_rating,
+      price: product.pricing?.[0]?.price || 0,
+      pros: product.pros,
+      cons: product.cons,
+    },
+    bestForCases
+  );
+
+  // Generate FAQs for AI citation
+  const faqs = generateAllFAQs(product, verticalSlug, vertical.name);
+
+  // Generate HowTo steps for setup
+  const howToSteps = [
+    { name: "Visit website", text: `Go to ${product.website_url} and click on the pricing or sign-up button.` },
+    { name: "Choose a plan", text: `Select the plan that fits your needs. ${product.pricing?.[0]?.plan_name || "Basic"} plan starts at $${product.pricing?.[0]?.price || "varies"}/mo.` },
+    { name: "Create account", text: `Enter your email and create a password to set up your account.` },
+    { name: "Complete setup", text: `Follow the onboarding wizard to configure ${product.name} for your needs.` },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Schema Markup for SEO */}
       <ProductSchema product={product} verticalSlug={verticalSlug} />
       <ReviewSchema product={product} verticalSlug={verticalSlug} />
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
+      <HowToSchema
+        name={`How to set up ${product.name}`}
+        description={`Step-by-step guide to getting started with ${product.name}`}
+        steps={howToSteps}
+        totalTime="PT10M"
+      />
 
       <Header />
 
@@ -192,6 +230,11 @@ export default async function ProductPage({ params }: PageProps) {
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* Quick Answer - AI Citation Optimized */}
+                <div className="mb-8">
+                  <QuickAnswer {...quickAnswerProps} />
+                </div>
 
                 {/* Quick Summary */}
                 <div className="prose prose-gray max-w-none mb-8">
@@ -388,6 +431,43 @@ export default async function ProductPage({ params }: PageProps) {
                     </CardContent>
                   </Card>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-8 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">
+                {product.name} FAQ
+              </h2>
+              <div className="space-y-4">
+                {faqs.slice(0, 6).map((faq, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-lg p-4 bg-card"
+                    itemScope
+                    itemType="https://schema.org/Question"
+                  >
+                    <h3
+                      className="font-semibold text-foreground mb-2"
+                      itemProp="name"
+                    >
+                      {faq.question}
+                    </h3>
+                    <div
+                      itemScope
+                      itemType="https://schema.org/Answer"
+                      itemProp="acceptedAnswer"
+                    >
+                      <p className="text-muted-foreground" itemProp="text">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

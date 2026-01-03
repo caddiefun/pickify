@@ -10,7 +10,7 @@ export type VerticalSlug =
   | "crm"
   | "website-builders"
   | "online-learning"
-  | "isp"
+  | "internet-providers"
   | "home-security"
   | "hr-payroll"
   | "accounting"

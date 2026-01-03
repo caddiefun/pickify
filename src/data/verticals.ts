@@ -129,6 +129,22 @@ export const verticals: Vertical[] = [
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   },
+  {
+    id: "9",
+    slug: "internet-providers",
+    name: "Internet Providers",
+    description:
+      "Find the best internet service providers in your area. Compare speeds, prices, and availability by zip code.",
+    meta_title: "Best Internet Providers 2025 - Compare ISPs by Zip Code",
+    meta_description:
+      "Find internet providers available at your address. Compare speeds, prices, and reviews for fiber, cable, DSL, and satellite ISPs.",
+    icon: "Wifi",
+    color: "#3B82F6",
+    is_active: true,
+    sort_order: 9,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
 ];
 
 export function getVerticalBySlug(slug: string): Vertical | undefined {

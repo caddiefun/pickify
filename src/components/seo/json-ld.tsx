@@ -313,3 +313,232 @@ function getCategoryForVertical(vertical: string): string {
 
   return categoryMap[vertical] || "SoftwareApplication";
 }
+
+// =============================================================================
+// New Schema Types for AI Optimization
+// =============================================================================
+
+// HowTo schema - for product setup/usage guides
+interface HowToSchemaProps {
+  name: string;
+  description: string;
+  steps: { name: string; text: string; url?: string }[];
+  totalTime?: string; // ISO 8601 duration, e.g., "PT15M" for 15 minutes
+}
+
+export function HowToSchema({ name, description, steps, totalTime }: HowToSchemaProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    ...(totalTime && { totalTime }),
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.url && { url: step.url }),
+    })),
+  };
+
+  return <JsonLd data={data} />;
+}
+
+// Dataset schema - for original research/testing data
+interface DatasetSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  temporalCoverage: string; // e.g., "2024-01/2025-01"
+  creator?: string;
+  distribution?: {
+    encodingFormat: string;
+    contentUrl: string;
+  };
+  variableMeasured?: string[];
+}
+
+export function DatasetSchema({
+  name,
+  description,
+  url,
+  temporalCoverage,
+  creator = "Pickify",
+  distribution,
+  variableMeasured,
+}: DatasetSchemaProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name,
+    description,
+    url,
+    temporalCoverage,
+    creator: {
+      "@type": "Organization",
+      name: creator,
+    },
+    ...(distribution && {
+      distribution: {
+        "@type": "DataDownload",
+        encodingFormat: distribution.encodingFormat,
+        contentUrl: distribution.contentUrl,
+      },
+    }),
+    ...(variableMeasured && {
+      variableMeasured: variableMeasured.map((v) => ({
+        "@type": "PropertyValue",
+        name: v,
+      })),
+    }),
+  };
+
+  return <JsonLd data={data} />;
+}
+
+// LocalBusiness schema - for ISP/geo-based services
+interface LocalBusinessSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  areaServed: {
+    postalCode?: string;
+    addressRegion?: string;
+    addressLocality?: string;
+  };
+  serviceType: string;
+  priceRange?: string;
+}
+
+export function LocalBusinessSchema({
+  name,
+  description,
+  url,
+  areaServed,
+  serviceType,
+  priceRange,
+}: LocalBusinessSchemaProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name,
+    description,
+    url,
+    areaServed: {
+      "@type": "GeoShape",
+      ...(areaServed.postalCode && { postalCode: areaServed.postalCode }),
+      ...(areaServed.addressRegion && { addressRegion: areaServed.addressRegion }),
+      ...(areaServed.addressLocality && { addressLocality: areaServed.addressLocality }),
+    },
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: serviceType,
+      },
+    },
+    ...(priceRange && { priceRange }),
+  };
+
+  return <JsonLd data={data} />;
+}
+
+// Article schema with enhanced AI-friendly fields
+interface ArticleSchemaProps {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  author?: string;
+  about?: string[];
+  speakable?: string[]; // Selectors for content suitable for TTS/voice search
+}
+
+export function ArticleSchema({
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  author = "Pickify",
+  about,
+  speakable,
+}: ArticleSchemaProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    url,
+    datePublished,
+    dateModified,
+    author: {
+      "@type": "Organization",
+      name: author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Pickify",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://pickify.io/logo.png",
+      },
+    },
+    ...(about && {
+      about: about.map((topic) => ({
+        "@type": "Thing",
+        name: topic,
+      })),
+    }),
+    ...(speakable && {
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: speakable,
+      },
+    }),
+  };
+
+  return <JsonLd data={data} />;
+}
+
+// WebPage schema with lastReviewed for freshness
+interface WebPageSchemaProps {
+  name: string;
+  description: string;
+  url: string;
+  lastReviewed: string; // ISO date
+  reviewedBy?: string;
+  mainContentOfPage?: string; // CSS selector
+}
+
+export function WebPageSchema({
+  name,
+  description,
+  url,
+  lastReviewed,
+  reviewedBy = "Pickify Editorial Team",
+  mainContentOfPage,
+}: WebPageSchemaProps) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url,
+    lastReviewed,
+    reviewedBy: {
+      "@type": "Organization",
+      name: reviewedBy,
+    },
+    ...(mainContentOfPage && {
+      mainContentOfPage: {
+        "@type": "WebPageElement",
+        cssSelector: mainContentOfPage,
+      },
+    }),
+  };
+
+  return <JsonLd data={data} />;
+}

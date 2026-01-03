@@ -13,7 +13,14 @@ import {
   bestForConfigs,
 } from "@/data";
 import { getEditorialContent } from "@/data/editorial";
-import { ItemListSchema, BreadcrumbSchema } from "@/components/seo";
+import {
+  ItemListSchema,
+  BreadcrumbSchema,
+  FAQSchema,
+  QuickAnswer,
+  generateHubQuickAnswer,
+} from "@/components/seo";
+import { generateHubFAQs } from "@/lib/faq-generator";
 
 interface PageProps {
   params: Promise<{ vertical: string }>;
@@ -58,6 +65,28 @@ export default async function VerticalPage({ params }: PageProps) {
     { name: vertical.name, url: `https://pickify.io/${verticalSlug}` },
   ];
 
+  // Generate QuickAnswer for AI citation
+  const runnerUp = products.find((p) => !p.is_editors_choice) || products[1];
+  const quickAnswerProps = editorsChoice
+    ? generateHubQuickAnswer(
+        vertical.name,
+        {
+          name: editorsChoice.name,
+          rating: editorsChoice.overall_rating,
+          price: editorsChoice.pricing?.[0]?.price || 0,
+          pros: editorsChoice.pros,
+        },
+        {
+          name: runnerUp?.name || "alternatives",
+          useCase: runnerUp?.pros[0]?.toLowerCase() || "specific needs",
+        },
+        products.length
+      )
+    : null;
+
+  // Generate FAQs for AI citation
+  const faqs = generateHubFAQs(vertical.name, products);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Schema Markup for SEO */}
@@ -69,6 +98,7 @@ export default async function VerticalPage({ params }: PageProps) {
         verticalSlug={verticalSlug}
       />
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
 
       <Header />
 
@@ -78,7 +108,7 @@ export default async function VerticalPage({ params }: PageProps) {
           <div className="container mx-auto px-4 py-12 md:py-16">
             <div className="max-w-3xl">
               <Badge variant="secondary" className="mb-4">
-                Updated December 2025
+                Updated January 2025
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
                 Best {vertical.name} of 2025
@@ -90,6 +120,17 @@ export default async function VerticalPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Quick Answer - AI Citation Optimized */}
+        {quickAnswerProps && (
+          <section className="py-8 border-b">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl mx-auto">
+                <QuickAnswer {...quickAnswerProps} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Editorial Intro */}
         {editorial?.hubIntro && (
@@ -269,8 +310,48 @@ export default async function VerticalPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* FAQ Section - AI Citation Optimized */}
+        <section id="faq" className="py-12">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-lg p-4"
+                    itemScope
+                    itemType="https://schema.org/Question"
+                  >
+                    <h3
+                      className="font-semibold text-foreground mb-2"
+                      itemProp="name"
+                    >
+                      {faq.question}
+                    </h3>
+                    <div
+                      itemScope
+                      itemType="https://schema.org/Answer"
+                      itemProp="acceptedAnswer"
+                    >
+                      <p
+                        className="text-muted-foreground"
+                        itemProp="text"
+                      >
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Methodology Section */}
-        <section className="py-12">
+        <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-4">How We Test</h2>

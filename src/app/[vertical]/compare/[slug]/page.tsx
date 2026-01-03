@@ -28,7 +28,14 @@ import {
 } from "@/data";
 import { getEditorialContent } from "@/data/editorial";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
-import { ComparisonSchema, BreadcrumbSchema } from "@/components/seo";
+import {
+  ComparisonSchema,
+  BreadcrumbSchema,
+  FAQSchema,
+  QuickAnswer,
+  generateComparisonQuickAnswer,
+} from "@/components/seo";
+import { generateComparisonFAQs } from "@/lib/faq-generator";
 
 interface PageProps {
   params: Promise<{ vertical: string; slug: string }>;
@@ -127,6 +134,20 @@ export default async function ComparisonPage({ params }: PageProps) {
     { name: `${productA.name} vs ${productB.name}`, url: `https://pickify.io/${verticalSlug}/compare/${slug}` },
   ];
 
+  // Generate QuickAnswer for AI citation
+  const winnerProduct = winner.id === productA.id ? "A" : "B";
+  const loser = winner.id === productA.id ? productB : productA;
+  const quickAnswerProps = generateComparisonQuickAnswer(
+    { name: productA.name, rating: productA.overall_rating, price: productA.pricing?.[0]?.price || 0 },
+    { name: productB.name, rating: productB.overall_rating, price: productB.pricing?.[0]?.price || 0 },
+    winnerProduct,
+    `It scores ${winner.overall_rating}/10 vs ${loser.overall_rating}/10 and ${winner.pros[0]?.toLowerCase() || "offers better overall value"}`,
+    loser.pros[0]?.toLowerCase() || "specific features"
+  );
+
+  // Generate FAQs for AI citation
+  const faqs = generateComparisonFAQs(productA, productB, vertical.name);
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Schema Markup for SEO */}
@@ -137,6 +158,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         winner={winner}
       />
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
 
       <Header />
 
@@ -189,6 +211,15 @@ export default async function ComparisonPage({ params }: PageProps) {
               >
                 See all {vertical.name.toLowerCase()} compared →
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Answer - AI Citation Optimized */}
+        <section className="py-6 border-b">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <QuickAnswer {...quickAnswerProps} />
             </div>
           </div>
         </section>
@@ -365,6 +396,43 @@ export default async function ComparisonPage({ params }: PageProps) {
                     Read Full {winner.name} Review
                   </Link>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-8">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="border rounded-lg p-4"
+                    itemScope
+                    itemType="https://schema.org/Question"
+                  >
+                    <h3
+                      className="font-semibold text-foreground mb-2"
+                      itemProp="name"
+                    >
+                      {faq.question}
+                    </h3>
+                    <div
+                      itemScope
+                      itemType="https://schema.org/Answer"
+                      itemProp="acceptedAnswer"
+                    >
+                      <p className="text-muted-foreground" itemProp="text">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

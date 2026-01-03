@@ -72,6 +72,35 @@ export {
   getEditorsChoiceOnlineLearning,
 } from "./products/online-learning";
 
+// ISP Products
+export {
+  ispProducts,
+  getIspProducts,
+  getIspProductBySlug,
+  getFeaturedIspProducts,
+  getEditorsChoiceIsp,
+  getIspByState,
+  getIspByTechnology,
+} from "./products/isp";
+export type { ISPProduct } from "./products/isp";
+
+// Geo Data
+export {
+  usStates,
+  usCities,
+  zipCodeAvailability,
+  getStateBySlug,
+  getStateByCode,
+  getCitiesByState,
+  getCityBySlug,
+  getZipCodeData,
+  getProvidersByZipCode,
+  isValidZipCode,
+  getAllZipCodes,
+  getStatesWithCities,
+} from "./geo";
+export type { USState, USCity, ZipCodeData } from "./geo";
+
 import type { Product } from "@/types";
 import { vpnProducts, getVpnProductBySlug } from "./products/vpn";
 import { hostingProducts, getHostingProductBySlug } from "./products/hosting";
@@ -81,6 +110,7 @@ import { projectManagementProducts, getProjectManagementProductBySlug } from "./
 import { crmProducts, getCrmProductBySlug } from "./products/crm";
 import { websiteBuilderProducts, getWebsiteBuilderProductBySlug } from "./products/website-builders";
 import { onlineLearningProducts, getOnlineLearningProductBySlug } from "./products/online-learning";
+import { ispProducts, getIspProductBySlug } from "./products/isp";
 
 // Unified product fetching by vertical
 export function getProductsByVertical(verticalSlug: string): Product[] {
@@ -101,6 +131,8 @@ export function getProductsByVertical(verticalSlug: string): Product[] {
       return websiteBuilderProducts.sort((a, b) => b.overall_rating - a.overall_rating);
     case "online-learning":
       return onlineLearningProducts.sort((a, b) => b.overall_rating - a.overall_rating);
+    case "internet-providers":
+      return ispProducts.sort((a, b) => b.overall_rating - a.overall_rating);
     default:
       return [];
   }
@@ -127,6 +159,8 @@ export function getProductBySlug(
       return getWebsiteBuilderProductBySlug(productSlug);
     case "online-learning":
       return getOnlineLearningProductBySlug(productSlug);
+    case "internet-providers":
+      return getIspProductBySlug(productSlug);
     default:
       return undefined;
   }
@@ -452,6 +486,43 @@ export const bestForConfigs = {
       title: "Best Online Learning with Certificates",
       description: "Boost your resume with credentials",
       criteria: ["certificates", "courses"],
+    },
+  ],
+  "internet-providers": [
+    {
+      slug: "streaming",
+      usecase: "Streaming",
+      title: "Best Internet for Streaming",
+      description: "Fast, reliable internet for Netflix, gaming, and 4K video",
+      criteria: ["max_download", "data_cap"],
+    },
+    {
+      slug: "gaming",
+      usecase: "Gaming",
+      title: "Best Internet for Gaming",
+      description: "Low latency and fast speeds for online gaming",
+      criteria: ["max_download", "max_upload"],
+    },
+    {
+      slug: "remote-work",
+      usecase: "Remote Work",
+      title: "Best Internet for Working from Home",
+      description: "Reliable upload speeds for video calls and file sharing",
+      criteria: ["max_upload", "data_cap"],
+    },
+    {
+      slug: "rural",
+      usecase: "Rural Areas",
+      title: "Best Internet for Rural Areas",
+      description: "Broadband options for areas with limited coverage",
+      criteria: ["coverage"],
+    },
+    {
+      slug: "budget",
+      usecase: "Budget",
+      title: "Best Cheap Internet Providers",
+      description: "Affordable broadband that doesn't break the bank",
+      criteria: ["price"],
     },
   ],
 };
