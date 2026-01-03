@@ -1,0 +1,80 @@
+{
+  "vpn": {
+    "nordvpn": "https://logo.clearbit.com/nordvpn.com?size=128",
+    "expressvpn": "https://logo.clearbit.com/expressvpn.com?size=128",
+    "surfshark": "https://logo.clearbit.com/surfshark.com?size=128",
+    "cyberghost": "https://logo.clearbit.com/cyberghostvpn.com?size=128",
+    "private-internet-access": "https://logo.clearbit.com/privateinternetaccess.com?size=128",
+    "proton-vpn": "https://logo.clearbit.com/protonvpn.com?size=128"
+  },
+  "hosting": {
+    "bluehost": "https://logo.clearbit.com/bluehost.com?size=128",
+    "siteground": "https://logo.clearbit.com/siteground.com?size=128",
+    "hostinger": "https://logo.clearbit.com/hostinger.com?size=128",
+    "dreamhost": "https://logo.clearbit.com/dreamhost.com?size=128",
+    "cloudways": "https://logo.clearbit.com/cloudways.com?size=128",
+    "a2-hosting": "https://logo.clearbit.com/a2hosting.com?size=128"
+  },
+  "email-marketing": {
+    "mailchimp": "https://logo.clearbit.com/mailchimp.com?size=128",
+    "convertkit": "https://logo.clearbit.com/convertkit.com?size=128",
+    "klaviyo": "https://logo.clearbit.com/klaviyo.com?size=128",
+    "activecampaign": "https://logo.clearbit.com/activecampaign.com?size=128",
+    "constant-contact": "https://logo.clearbit.com/constantcontact.com?size=128",
+    "brevo": "https://logo.clearbit.com/brevo.com?size=128"
+  },
+  "password-managers": {
+    "1password": "https://logo.clearbit.com/1password.com?size=128",
+    "bitwarden": "https://logo.clearbit.com/bitwarden.com?size=128",
+    "dashlane": "https://logo.clearbit.com/dashlane.com?size=128",
+    "lastpass": "https://logo.clearbit.com/lastpass.com?size=128",
+    "keeper": "https://logo.clearbit.com/keepersecurity.com?size=128",
+    "nordpass": "https://logo.clearbit.com/nordpass.com?size=128"
+  },
+  "project-management": {
+    "monday": "https://logo.clearbit.com/monday.com?size=128",
+    "asana": "https://logo.clearbit.com/asana.com?size=128",
+    "clickup": "https://logo.clearbit.com/clickup.com?size=128",
+    "notion": "https://logo.clearbit.com/notion.so?size=128",
+    "trello": "https://logo.clearbit.com/trello.com?size=128",
+    "basecamp": "https://logo.clearbit.com/basecamp.com?size=128"
+  },
+  "crm": {
+    "hubspot": "https://logo.clearbit.com/hubspot.com?size=128",
+    "salesforce": "https://logo.clearbit.com/salesforce.com?size=128",
+    "pipedrive": "https://logo.clearbit.com/pipedrive.com?size=128",
+    "zoho-crm": "https://logo.clearbit.com/zoho.com?size=128",
+    "freshsales": "https://logo.clearbit.com/freshworks.com?size=128",
+    "close": "https://logo.clearbit.com/close.com?size=128"
+  },
+  "website-builders": {
+    "wix": "https://logo.clearbit.com/wix.com?size=128",
+    "squarespace": "https://logo.clearbit.com/squarespace.com?size=128",
+    "shopify": "https://logo.clearbit.com/shopify.com?size=128",
+    "webflow": "https://logo.clearbit.com/webflow.com?size=128",
+    "wordpress": "https://logo.clearbit.com/wordpress.com?size=128",
+    "weebly": "https://logo.clearbit.com/weebly.com?size=128"
+  },
+  "online-learning": {
+    "coursera": "https://logo.clearbit.com/coursera.org?size=128",
+    "udemy": "https://logo.clearbit.com/udemy.com?size=128",
+    "linkedin-learning": "https://logo.clearbit.com/linkedin.com?size=128",
+    "skillshare": "https://logo.clearbit.com/skillshare.com?size=128",
+    "pluralsight": "https://logo.clearbit.com/pluralsight.com?size=128",
+    "masterclass": "https://logo.clearbit.com/masterclass.com?size=128"
+  },
+  "isp": {
+    "xfinity": "https://logo.clearbit.com/xfinity.com?size=128",
+    "att-fiber": "https://logo.clearbit.com/att.com?size=128",
+    "verizon-fios": "https://logo.clearbit.com/verizon.com?size=128",
+    "spectrum": "https://logo.clearbit.com/spectrum.com?size=128",
+    "cox": "https://logo.clearbit.com/cox.com?size=128",
+    "centurylink": "https://logo.clearbit.com/centurylink.com?size=128",
+    "frontier": "https://logo.clearbit.com/frontier.com?size=128",
+    "google-fiber": "https://logo.clearbit.com/fiber.google.com?size=128",
+    "t-mobile-home-internet": "https://logo.clearbit.com/t-mobile.com?size=128",
+    "starlink": "https://logo.clearbit.com/starlink.com?size=128",
+    "hughesnet": "https://logo.clearbit.com/hughesnet.com?size=128",
+    "optimum": "https://logo.clearbit.com/optimum.com?size=128"
+  }
+}
