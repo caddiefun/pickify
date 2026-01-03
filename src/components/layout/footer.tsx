@@ -24,6 +24,11 @@ const footerLinks = {
     { label: "Methodology", href: "/methodology" },
     { label: "Contact", href: "/contact" },
   ],
+  tools: [
+    { label: "IP Leak Test", href: "/vpn/ip-leak-test" },
+    { label: "VPN Speed Tests", href: "/vpn/speed-tests" },
+    { label: "ISP Speed Report", href: "/internet-providers/speed-report" },
+  ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
@@ -106,9 +111,23 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Free Tools */}
           <div>
-            <h3 className="font-semibold mb-4">Resources</h3>
+            <h3 className="font-semibold mb-4">Free Tools</h3>
+            <ul className="space-y-2">
+              {footerLinks.tools.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {/* Resources below tools */}
+            <h3 className="font-semibold mb-4 mt-6">Resources</h3>
             <ul className="space-y-2">
               {footerLinks.resources.map((link) => (
                 <li key={link.href}>

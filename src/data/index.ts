@@ -133,6 +133,7 @@ export {
 export type { USState, USCity, ZipCodeData } from "./geo";
 
 import type { Product } from "@/types";
+import { CURRENT_YEAR } from "@/lib/constants";
 import { vpnProducts, getVpnProductBySlug } from "./products/vpn";
 import { hostingProducts, getHostingProductBySlug } from "./products/hosting";
 import { emailMarketingProducts, getEmailMarketingProductBySlug } from "./products/email-marketing";
@@ -238,8 +239,8 @@ export function generateComparison(productA: Product, productB: Product) {
   return {
     slug: `${productA.slug}-vs-${productB.slug}`,
     title: `${productA.name} vs ${productB.name}`,
-    meta_title: `${productA.name} vs ${productB.name} - Which Is Better in 2025?`,
-    meta_description: `Compare ${productA.name} and ${productB.name} side by side. See features, pricing, pros & cons to find the best option for you.`,
+    meta_title: `${productA.name} vs ${productB.name}: Which Is Better? (${CURRENT_YEAR} Comparison)`,
+    meta_description: `Compare ${productA.name} and ${productB.name} side by side in ${CURRENT_YEAR}. See features, pricing, pros & cons to find the best option for you.`,
     products: [productA, productB],
     winner:
       productA.overall_rating > productB.overall_rating ? productA : productB,
