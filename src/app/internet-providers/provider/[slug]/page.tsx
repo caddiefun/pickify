@@ -113,33 +113,34 @@ export default async function ProviderReviewPage({ params }: PageProps) {
       <Header />
 
       <main className="flex-1">
-        {/* Breadcrumb */}
-        <div className="border-b bg-muted/30">
-          <div className="container mx-auto px-4 py-3">
-            <nav className="flex items-center gap-2 text-sm">
-              <Link href="/" className="text-muted-foreground hover:text-foreground">
-                Home
-              </Link>
-              <span className="text-muted-foreground">/</span>
-              <Link
-                href="/internet-providers"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Internet Providers
-              </Link>
-              <span className="text-muted-foreground">/</span>
-              <span className="font-medium">{provider.name}</span>
-            </nav>
+        {/* Hero Section with integrated Quick Answer */}
+        <section className="bg-gradient-to-b from-accent/50 to-background">
+          {/* Breadcrumb */}
+          <div className="border-b border-border/50">
+            <div className="container mx-auto px-4 py-3">
+              <nav className="flex items-center gap-2 text-sm">
+                <Link href="/" className="text-muted-foreground hover:text-foreground">
+                  Home
+                </Link>
+                <span className="text-muted-foreground">/</span>
+                <Link
+                  href="/internet-providers"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Internet Providers
+                </Link>
+                <span className="text-muted-foreground">/</span>
+                <span className="font-medium">{provider.name}</span>
+              </nav>
+            </div>
           </div>
-        </div>
 
-        {/* Hero Section */}
-        <section className="py-8 md:py-12 bg-gradient-to-b from-accent/50 to-background">
-          <div className="container mx-auto px-4">
+          {/* Hero Content */}
+          <div className="container mx-auto px-4 py-8 md:py-10">
             <div className="grid md:grid-cols-3 gap-8">
               <div className="md:col-span-2">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center">
+                  <div className="w-16 h-16 bg-background rounded-lg flex items-center justify-center border shadow-sm">
                     {provider.logo_url ? (
                       <Image
                         src={provider.logo_url}
@@ -170,18 +171,16 @@ export default async function ProviderReviewPage({ params }: PageProps) {
                   ))}
                   {provider.is_editors_choice && (
                     <Badge className="bg-warning text-warning-foreground">
-                      Editor's Choice
+                      Editor&apos;s Choice
                     </Badge>
                   )}
                 </div>
 
-                <p className="text-muted-foreground mb-6">{provider.description}</p>
-
-                <DisclosureBanner variant="inline" />
+                <p className="text-muted-foreground">{provider.description}</p>
               </div>
 
               {/* Quick Stats Card */}
-              <Card>
+              <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm text-muted-foreground">Our Rating</span>
@@ -236,20 +235,51 @@ export default async function ProviderReviewPage({ params }: PageProps) {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </section>
 
-        {/* AI-Optimized Quick Answer */}
-        <section className="py-8 border-b">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
+            {/* Quick Answer - integrated into hero */}
+            <div className="mt-8">
               <QuickAnswer {...quickAnswerProps} />
+            </div>
+
+            {/* Independent Speed Data (when available) - prominent in hero */}
+            {speedData && (
+              <Card className="mt-6 border-primary/20 bg-background">
+                <CardContent className="p-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
+                        <Zap className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-semibold">Real-World Speed:</span>
+                          <span className="text-xl font-bold text-primary">{speedData.avgDownloadMbps} Mbps</span>
+                          <span className="text-muted-foreground">avg download</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Ranked #{speedData.rank} nationwide • {speedData.avgUploadMbps} Mbps upload • Source: {DATA_SOURCES.reviewsOrg.name}
+                        </p>
+                      </div>
+                    </div>
+                    <Link
+                      href="/internet-providers/speed-report"
+                      className="text-sm text-primary hover:underline whitespace-nowrap"
+                    >
+                      View Speed Report →
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            <div className="mt-6">
+              <DisclosureBanner variant="inline" />
             </div>
           </div>
         </section>
 
         {/* Pros and Cons */}
-        <section className="py-8">
+        <section className="py-10 border-t">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">Pros & Cons</h2>
             <ProsConsList
@@ -261,7 +291,7 @@ export default async function ProviderReviewPage({ params }: PageProps) {
         </section>
 
         {/* Pricing Plans */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-10 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">{provider.name} Plans & Pricing</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -314,7 +344,7 @@ export default async function ProviderReviewPage({ params }: PageProps) {
         </section>
 
         {/* Features */}
-        <section className="py-8">
+        <section className="py-10">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">Features & Specs</h2>
             <Card>
@@ -353,7 +383,7 @@ export default async function ProviderReviewPage({ params }: PageProps) {
         </section>
 
         {/* Coverage */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-10 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">
               <Globe className="w-6 h-6 inline mr-2" />
@@ -382,12 +412,12 @@ export default async function ProviderReviewPage({ params }: PageProps) {
         </section>
 
         {/* Speed Comparison with Competitors */}
-        <section className="py-8">
+        <section className="py-10">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">
               How {provider.name} Compares
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
                   <CardTitle>Speed Comparison</CardTitle>
@@ -425,66 +455,6 @@ export default async function ProviderReviewPage({ params }: PageProps) {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Authoritative Speed Data */}
-            {speedData && (
-              <Card className="mt-6 bg-primary/5 border-primary/20">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <Badge variant="secondary" className="mb-2">
-                        <Zap className="w-3 h-3 mr-1" />
-                        Independent Speed Test Data
-                      </Badge>
-                      <h3 className="font-semibold text-lg mb-1">
-                        {provider.name} Real-World Speeds
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Based on independent testing by {DATA_SOURCES.reviewsOrg.name}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold text-primary">
-                        #{speedData.rank}
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        Nationwide
-                      </div>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-primary/10">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">{speedData.avgDownloadMbps}</div>
-                      <div className="text-xs text-muted-foreground">Avg Download Mbps</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">{speedData.avgUploadMbps}</div>
-                      <div className="text-xs text-muted-foreground">Avg Upload Mbps</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold capitalize">{speedData.type}</div>
-                      <div className="text-xs text-muted-foreground">Connection Type</div>
-                    </div>
-                  </div>
-                  <div className="mt-4 flex items-center justify-between">
-                    <a
-                      href={speedData.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-muted-foreground hover:text-foreground"
-                    >
-                      Source: {DATA_SOURCES.reviewsOrg.name} →
-                    </a>
-                    <Link
-                      href="/internet-providers/speed-report"
-                      className="text-sm text-primary hover:underline"
-                    >
-                      View Full Speed Report
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
           </div>
         </section>
 
