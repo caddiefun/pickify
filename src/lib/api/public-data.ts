@@ -468,6 +468,176 @@ export function getCombinedAVScores(slug: string): {
 }
 
 // =============================================================================
+// ISP Speed Data - Reviews.org Speed Test Results
+// Source: https://www.reviews.org/internet-service/fastest-internet-providers/
+// =============================================================================
+
+export interface ISPSpeedData {
+  slug: string;
+  name: string;
+  type: "fiber" | "cable" | "dsl" | "fixed-wireless" | "satellite";
+  avgDownloadMbps: number;
+  avgUploadMbps: number;
+  maxAdvertisedMbps: number;
+  rank: number;
+  lastUpdated: string;
+  sourceUrl: string;
+}
+
+/**
+ * ISP Speed Test data - curated from Reviews.org speed tests
+ * Updated: January 2025
+ * Source: https://www.reviews.org/internet-service/fastest-internet-providers/
+ *
+ * Data based on proprietary speed test results from Reviews.org
+ */
+export const ispSpeedData: ISPSpeedData[] = [
+  {
+    slug: "google-fiber",
+    name: "Google Fiber",
+    type: "fiber",
+    avgDownloadMbps: 266.38,
+    avgUploadMbps: 183.11,
+    maxAdvertisedMbps: 8000,
+    rank: 1,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "verizon-fios",
+    name: "Verizon Fios",
+    type: "fiber",
+    avgDownloadMbps: 250.84,
+    avgUploadMbps: 139.05,
+    maxAdvertisedMbps: 2300,
+    rank: 2,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "cox",
+    name: "Cox Internet",
+    type: "cable",
+    avgDownloadMbps: 242.63,
+    avgUploadMbps: 43.24,
+    maxAdvertisedMbps: 2000,
+    rank: 3,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "xfinity",
+    name: "Xfinity",
+    type: "cable",
+    avgDownloadMbps: 242.61,
+    avgUploadMbps: 33.16,
+    maxAdvertisedMbps: 2000,
+    rank: 4,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "spectrum",
+    name: "Spectrum",
+    type: "cable",
+    avgDownloadMbps: 216.73,
+    avgUploadMbps: 19.43,
+    maxAdvertisedMbps: 1000,
+    rank: 5,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "att-fiber",
+    name: "AT&T Fiber",
+    type: "fiber",
+    avgDownloadMbps: 213.61,
+    avgUploadMbps: 173.13,
+    maxAdvertisedMbps: 5000,
+    rank: 6,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "frontier",
+    name: "Frontier Fiber",
+    type: "fiber",
+    avgDownloadMbps: 213.20,
+    avgUploadMbps: 184.64,
+    maxAdvertisedMbps: 5000,
+    rank: 7,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "optimum",
+    name: "Optimum",
+    type: "fiber",
+    avgDownloadMbps: 205.88,
+    avgUploadMbps: 21.39,
+    maxAdvertisedMbps: 8000,
+    rank: 8,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "windstream",
+    name: "Kinetic by Windstream",
+    type: "fiber",
+    avgDownloadMbps: 123.91,
+    avgUploadMbps: 103.38,
+    maxAdvertisedMbps: 2000,
+    rank: 9,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "centurylink",
+    name: "CenturyLink",
+    type: "fiber",
+    avgDownloadMbps: 105.53,
+    avgUploadMbps: 97.36,
+    maxAdvertisedMbps: 940,
+    rank: 10,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+  {
+    slug: "starlink",
+    name: "Starlink",
+    type: "satellite",
+    avgDownloadMbps: 92.65,
+    avgUploadMbps: 8.48,
+    maxAdvertisedMbps: 220,
+    rank: 11,
+    lastUpdated: "2025-01-01",
+    sourceUrl: "https://www.reviews.org/internet-service/fastest-internet-providers/",
+  },
+];
+
+export function getISPSpeedData(slug: string): ISPSpeedData | null {
+  return ispSpeedData.find((isp) => isp.slug === slug) || null;
+}
+
+export function getTopISPsBySpeed(limit: number = 5): ISPSpeedData[] {
+  return [...ispSpeedData]
+    .sort((a, b) => b.avgDownloadMbps - a.avgDownloadMbps)
+    .slice(0, limit);
+}
+
+export function getFiberISPs(): ISPSpeedData[] {
+  return ispSpeedData.filter((isp) => isp.type === "fiber");
+}
+
+export function getCableISPs(): ISPSpeedData[] {
+  return ispSpeedData.filter((isp) => isp.type === "cable");
+}
+
+export function generateISPSpeedCitation(data: ISPSpeedData): string {
+  return `${data.name} averaged ${data.avgDownloadMbps} Mbps download and ${data.avgUploadMbps} Mbps upload speeds in independent testing, ranking #${data.rank} nationwide (Source: Reviews.org, ${data.lastUpdated}).`;
+}
+
+// =============================================================================
 // Data Refresh Script Helper
 // =============================================================================
 
@@ -492,6 +662,11 @@ export function getCombinedAVScores(slug: string): {
  * 3. Note protection rate, false positives, and award for each product
  * 4. Update the avComparativesResults array above
  *
+ * ISP Speed Data (Reviews.org):
+ * 1. Visit https://www.reviews.org/internet-service/fastest-internet-providers/
+ * 2. Note the average download/upload speeds and rankings for each ISP
+ * 3. Update the ispSpeedData array above
+ *
  * Recommended update frequency: Monthly (when new lab reports are published)
  */
 export const DATA_SOURCES = {
@@ -512,5 +687,11 @@ export const DATA_SOURCES = {
     url: "https://www.av-comparatives.org/",
     description: "Independent antivirus testing organization since 1999",
     updateFrequency: "Quarterly",
+  },
+  reviewsOrg: {
+    name: "Reviews.org",
+    url: "https://www.reviews.org/",
+    description: "Independent speed testing with proprietary methodology",
+    updateFrequency: "Annually",
   },
 };

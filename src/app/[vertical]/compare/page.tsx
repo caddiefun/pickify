@@ -111,8 +111,8 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-accent/50 to-background border-b">
           <div className="container mx-auto px-4 py-12 md:py-16">
-            <div className="max-w-4xl">
-              <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="flex flex-wrap items-center justify-center gap-4 mb-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <User className="w-4 h-4" />
                   <span>Written by Editorial Team</span>
@@ -143,7 +143,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         {/* AI-Optimized Quick Answer */}
         <section className="py-8 border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl">
+            <div className="max-w-4xl mx-auto">
               {editorsChoice && runnerUp && (
                 <QuickAnswer
                   question={`What is the best ${vertical.name.toLowerCase()} in 2025?`}
@@ -165,8 +165,8 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         {/* Quick Summary / TL;DR */}
         <section className="py-8 border-b bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl">
-              <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
                 <Trophy className="w-5 h-5 text-warning" />
                 Quick Take: Our Top 3 Picks
               </h2>

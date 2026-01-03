@@ -5,6 +5,7 @@
  * - HRANK.com: Web hosting uptime monitoring
  * - AV-TEST.org: Antivirus lab test results
  * - AV-Comparatives.org: Antivirus protection tests
+ * - Reviews.org: ISP speed test results
  *
  * All data is from public sources with proper attribution.
  * No accounts or API keys required.
@@ -29,7 +30,16 @@ export {
   getAVComparativesResult,
   generateAVComparativesCitation,
   type AVComparativesResult,
-  // Combined
+  // Combined AV Scores
   getCombinedAVScores,
+  // ISP Speed Data
+  ispSpeedData,
+  getISPSpeedData,
+  getTopISPsBySpeed,
+  getFiberISPs,
+  getCableISPs,
+  generateISPSpeedCitation,
+  type ISPSpeedData,
+  // Data Sources
   DATA_SOURCES,
 } from "./public-data";

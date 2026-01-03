@@ -44,6 +44,7 @@ export interface Product {
   cons: string[];
   features: ProductFeature[];
   pricing: ProductPricing[];
+  review_sources?: ReviewSource[];
   is_editors_choice: boolean;
   is_featured: boolean;
   affiliate_url: string | null;
@@ -59,6 +60,14 @@ export interface ProductFeature {
   name: string;
   value: string | boolean | number;
   category?: string;
+}
+
+export interface ReviewSource {
+  name: string;
+  rating: number;
+  maxRating: number;
+  reviewCount?: number;
+  url: string;
 }
 
 export interface ProductPricing {

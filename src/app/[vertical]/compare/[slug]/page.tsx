@@ -169,26 +169,28 @@ export default async function ComparisonPage({ params }: PageProps) {
         {/* Hero Section */}
         <section className="py-8 md:py-12 bg-gradient-to-b from-accent/50 to-background">
           <div className="container mx-auto px-4">
-            <Badge variant="secondary" className="mb-4">
-              <Scale className="w-3 h-3 mr-1" />
-              Head-to-Head Comparison
-            </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              {productA.name} vs {productB.name}
-            </h1>
-            {editorialIntro && (
-              <p className="text-lg text-muted-foreground max-w-3xl mb-6 leading-relaxed">
-                {editorialIntro}
-              </p>
-            )}
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <DisclosureBanner variant="inline" />
-              <Link
-                href={`/${verticalSlug}/compare`}
-                className="text-sm text-primary hover:underline"
-              >
-                See all {vertical.name.toLowerCase()} compared →
-              </Link>
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge variant="secondary" className="mb-4">
+                <Scale className="w-3 h-3 mr-1" />
+                Head-to-Head Comparison
+              </Badge>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                {productA.name} vs {productB.name}
+              </h1>
+              {editorialIntro && (
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  {editorialIntro}
+                </p>
+              )}
+              <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+                <DisclosureBanner variant="inline" />
+                <Link
+                  href={`/${verticalSlug}/compare`}
+                  className="text-sm text-primary hover:underline"
+                >
+                  See all {vertical.name.toLowerCase()} compared →
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -368,10 +370,11 @@ export default async function ComparisonPage({ params }: PageProps) {
         {/* FAQ Section - AI Citation Optimized */}
         <section className="py-8">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
-              Frequently Asked Questions
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
@@ -396,6 +399,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </section>

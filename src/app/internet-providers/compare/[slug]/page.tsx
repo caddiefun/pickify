@@ -151,26 +151,28 @@ export default async function ISPComparisonPage({ params }: PageProps) {
         {/* Hero Section */}
         <section className="py-8 md:py-12 bg-gradient-to-b from-accent/50 to-background">
           <div className="container mx-auto px-4">
-            <Badge variant="secondary" className="mb-4">
-              <Scale className="w-3 h-3 mr-1" />
-              Head-to-Head Comparison
-            </Badge>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              {providerA.name} vs {providerB.name}
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mb-6">
-              Comparing two of the most popular internet service providers.
-              See how {providerA.name} and {providerB.name} stack up on speed,
-              price, coverage, and overall value.
-            </p>
-            <div className="flex flex-wrap items-center gap-4 mb-6">
-              <DisclosureBanner variant="inline" />
-              <Link
-                href="/internet-providers/compare"
-                className="text-sm text-primary hover:underline"
-              >
-                See all ISP comparisons →
-              </Link>
+            <div className="max-w-4xl mx-auto text-center">
+              <Badge variant="secondary" className="mb-4">
+                <Scale className="w-3 h-3 mr-1" />
+                Head-to-Head Comparison
+              </Badge>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+                {providerA.name} vs {providerB.name}
+              </h1>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                Comparing two of the most popular internet service providers.
+                See how {providerA.name} and {providerB.name} stack up on speed,
+                price, coverage, and overall value.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+                <DisclosureBanner variant="inline" />
+                <Link
+                  href="/internet-providers/compare"
+                  className="text-sm text-primary hover:underline"
+                >
+                  See all ISP comparisons →
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -488,37 +490,39 @@ export default async function ISPComparisonPage({ params }: PageProps) {
         {/* FAQ Section - AI Citation Optimized */}
         <section className="py-12 border-t">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
-              Frequently Asked Questions
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className="border rounded-lg p-5 bg-card"
-                  itemScope
-                  itemType="https://schema.org/Question"
-                >
-                  <h3
-                    className="font-semibold text-foreground mb-2"
-                    itemProp="name"
-                  >
-                    {faq.question}
-                  </h3>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                {faqs.map((faq, index) => (
                   <div
+                    key={index}
+                    className="border rounded-lg p-5 bg-card"
                     itemScope
-                    itemType="https://schema.org/Answer"
-                    itemProp="acceptedAnswer"
+                    itemType="https://schema.org/Question"
                   >
-                    <p
-                      className="text-muted-foreground text-sm leading-relaxed"
-                      itemProp="text"
+                    <h3
+                      className="font-semibold text-foreground mb-2"
+                      itemProp="name"
                     >
-                      {faq.answer}
-                    </p>
+                      {faq.question}
+                    </h3>
+                    <div
+                      itemScope
+                      itemType="https://schema.org/Answer"
+                      itemProp="acceptedAnswer"
+                    >
+                      <p
+                        className="text-muted-foreground text-sm leading-relaxed"
+                        itemProp="text"
+                      >
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>

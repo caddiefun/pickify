@@ -238,7 +238,7 @@ export default async function VerticalPage({ params }: PageProps) {
               <div className="flex items-center gap-2 mb-6">
                 <h2 className="text-2xl font-bold">Our Top Pick</h2>
                 <Badge className="bg-success text-success-foreground">
-                  Editor's Choice
+                  Editor&apos;s Choice
                 </Badge>
               </div>
               <ProductCard
@@ -382,10 +382,11 @@ export default async function VerticalPage({ params }: PageProps) {
         {/* FAQ Section - AI Citation Optimized */}
         <section id="faq" className="py-12">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
-              Frequently Asked Questions
-            </h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="grid md:grid-cols-2 gap-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
@@ -413,6 +414,7 @@ export default async function VerticalPage({ params }: PageProps) {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         </section>
