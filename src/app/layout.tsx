@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 
@@ -82,10 +83,10 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans min-h-screen`}
       >
         <Providers>{children}</Providers>
-        {/* CJ Affiliate Deep Link Automation */}
-        <script
+        {/* CJ Affiliate Deep Link Automation - lazyOnload prevents scroll issues */}
+        <Script
           src="https://www.anrdoezrs.net/am/101624161/impressions/page/am.js"
-          async
+          strategy="lazyOnload"
         />
       </body>
     </html>
