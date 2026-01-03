@@ -370,6 +370,85 @@ export function generateCompareHubFAQs(providers: Product[], verticalName: strin
   ];
 }
 
+// =============================================================================
+// Home Security Geo-Specific FAQ Generators
+// =============================================================================
+
+export function generateStateHomeSecurityFAQs(
+  stateName: string,
+  providers: any[]
+): FAQ[] {
+  const topProvider = providers[0];
+  const diyProviders = providers.filter(
+    (p) => p.installation_type === "diy_only" || p.installation_type === "both"
+  );
+  const noContractProviders = providers.filter(
+    (p) => p.contract_length_months === 0
+  );
+  const cheapestProvider = providers.reduce((cheapest, current) => {
+    const cheapestPrice = cheapest.pricing?.[0]?.price || 999;
+    const currentPrice = current.pricing?.[0]?.price || 999;
+    return currentPrice < cheapestPrice ? current : cheapest;
+  }, providers[0]);
+
+  return [
+    {
+      question: `What is the best home security system in ${stateName}?`,
+      answer: `${topProvider?.name} is our top-rated home security system for ${stateName} residents with a ${topProvider?.overall_rating}/10 rating. They offer ${topProvider?.short_description.toLowerCase()}.`,
+    },
+    {
+      question: `How much does home security cost in ${stateName}?`,
+      answer: `Home security monitoring in ${stateName} ranges from $${cheapestProvider?.pricing?.[0]?.price?.toFixed(2)}/mo (${cheapestProvider?.name}) to $55/mo for premium systems. Equipment costs range from $0 (with contract) to $300+ for DIY systems.`,
+    },
+    {
+      question: `Do I need a permit for a home security system in ${stateName}?`,
+      answer: `Permit requirements vary by city in ${stateName}. Many municipalities require alarm permits to avoid false alarm fines. Check with your local police department for specific requirements.`,
+    },
+    {
+      question: `What is the best DIY home security in ${stateName}?`,
+      answer: `${diyProviders[0]?.name} is our top DIY pick for ${stateName} with a ${diyProviders[0]?.overall_rating}/10 rating. ${diyProviders.length} providers offer DIY installation in ${stateName}.`,
+    },
+    {
+      question: `Can I get home security with no contract in ${stateName}?`,
+      answer: `Yes, ${noContractProviders.length} home security providers offer no-contract options in ${stateName}: ${noContractProviders.slice(0, 3).map(p => p.name).join(", ")}.`,
+    },
+    {
+      question: `Which home security companies serve ${stateName}?`,
+      answer: `${providers.length} major home security companies serve ${stateName}: ${providers.map(p => p.name).join(", ")}. All offer professional monitoring and most provide nationwide coverage.`,
+    },
+  ];
+}
+
+export function generateCityHomeSecurityFAQs(
+  cityName: string,
+  stateName: string,
+  providers: any[]
+): FAQ[] {
+  const topProvider = providers[0];
+  const diyProviders = providers.filter(
+    (p) => p.installation_type === "diy_only" || p.installation_type === "both"
+  );
+
+  return [
+    {
+      question: `What is the best home security system in ${cityName}, ${stateName}?`,
+      answer: `${topProvider?.name} is our top pick for ${cityName} with a ${topProvider?.overall_rating}/10 rating. They offer ${topProvider?.short_description.toLowerCase()}.`,
+    },
+    {
+      question: `Do I need a security permit in ${cityName}?`,
+      answer: `${cityName} may require an alarm permit for monitored security systems. Contact the ${cityName} Police Department to verify requirements and avoid false alarm fines.`,
+    },
+    {
+      question: `What home security companies are in ${cityName}?`,
+      answer: `All major home security providers serve ${cityName}, ${stateName}: ${providers.slice(0, 4).map(p => p.name).join(", ")}, and more.`,
+    },
+    {
+      question: `Can I install my own security system in ${cityName}?`,
+      answer: `Yes, ${diyProviders.length} providers offer DIY installation in ${cityName}: ${diyProviders.slice(0, 3).map(p => p.name).join(", ")}. DIY systems require no professional installation fees.`,
+    },
+  ];
+}
+
 export function generateZipCodeFAQs(
   zipCode: string,
   providers: Product[],

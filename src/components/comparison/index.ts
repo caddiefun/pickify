@@ -5,3 +5,6 @@ export { ComparisonTable } from "./comparison-table";
 export { ProsConsList } from "./pros-cons-list";
 export { DisclosureBanner } from "./disclosure-banner";
 export { LastUpdatedBadge } from "./last-updated-badge";
+export { CredibilityWarning } from "./credibility-warning";
+export type { CredibilityWarningType } from "./credibility-warning";
+export { PromoInfoCard } from "./promo-info-card";

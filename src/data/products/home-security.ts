@@ -1,6 +1,16 @@
 import type { Product } from "@/types";
 
-export const homeSecurityProducts: Product[] = [
+// Extended Home Security-specific type
+export interface HomeSecurityProduct extends Product {
+  installation_type: "diy_only" | "professional_only" | "both";
+  equipment_cost: number | null; // One-time equipment cost (null if varies/financed)
+  installation_cost: number | null; // Professional installation fee (null if DIY or varies)
+  contract_length_months: number; // 0 = no contract
+  available_nationwide: boolean;
+  coverage_states: string[]; // Empty array = nationwide
+}
+
+export const homeSecurityProducts: HomeSecurityProduct[] = [
   {
     id: "hs-1",
     vertical_id: "11",
@@ -12,6 +22,13 @@ export const homeSecurityProducts: Product[] = [
       "SimpliSafe offers flexible, no-contract home security with professional monitoring options. Easy DIY installation, competitive pricing, and reliable equipment make it a top choice for renters and homeowners alike.",
     short_description: "No-contract DIY security with professional monitoring",
     overall_rating: 9.3,
+    // Home Security specific fields
+    installation_type: "both",
+    equipment_cost: 299, // Base kit starts around $299
+    installation_cost: 79, // Optional professional installation
+    contract_length_months: 0,
+    available_nationwide: true,
+    coverage_states: [], // Nationwide
     pros: [
       "No long-term contracts required",
       "Easy 30-minute DIY installation",
@@ -79,6 +96,16 @@ export const homeSecurityProducts: Product[] = [
       { name: "Google", rating: 4.5, maxRating: 5, reviewCount: 142000, url: "https://play.google.com/store/apps/details?id=com.simplisafe.mobile" },
       { name: "BBB", rating: 4.06, maxRating: 5, reviewCount: 3200, url: "https://www.bbb.org/us/ma/boston/profile/burglar-alarm-systems/simplisafe-inc-0021-141405" },
     ],
+    promo_info: {
+      typical_promos: ["Black Friday - up to 50% off + free camera", "Holiday deals", "Free equipment promotions"],
+      has_seasonal_deals: true,
+      money_back_days: 60,
+      free_trial_days: null,
+      best_time_to_buy: "Black Friday and holiday season",
+      has_student_discount: false,
+      has_military_discount: true,
+      annual_discount_percent: null,
+    },
     is_editors_choice: true,
     is_featured: true,
     affiliate_url: null,
@@ -101,6 +128,13 @@ export const homeSecurityProducts: Product[] = [
       "Ring Alarm combines affordable DIY security with deep Amazon and Alexa integration. Known for its video doorbells and cameras, Ring offers a complete ecosystem for home security and automation.",
     short_description: "Amazon-integrated security with excellent cameras",
     overall_rating: 9.1,
+    // Home Security specific fields
+    installation_type: "diy_only",
+    equipment_cost: 199, // 5-piece starter kit
+    installation_cost: null, // DIY only
+    contract_length_months: 0,
+    available_nationwide: true,
+    coverage_states: [], // Nationwide
     pros: [
       "Excellent video doorbell and cameras",
       "Deep Alexa and Amazon integration",
@@ -162,6 +196,16 @@ export const homeSecurityProducts: Product[] = [
       { name: "Google", rating: 4.2, maxRating: 5, reviewCount: 895000, url: "https://play.google.com/store/apps/details?id=com.ringapp" },
       { name: "BBB", rating: 1.09, maxRating: 5, reviewCount: 2100, url: "https://www.bbb.org/us/ca/santa-monica/profile/smart-home-security/ring-llc-1216-355279" },
     ],
+    promo_info: {
+      typical_promos: ["Prime Day deals", "Black Friday bundles", "Holiday equipment sales"],
+      has_seasonal_deals: true,
+      money_back_days: 30,
+      free_trial_days: 30,
+      best_time_to_buy: "Prime Day or Black Friday",
+      has_student_discount: false,
+      has_military_discount: false,
+      annual_discount_percent: 17,
+    },
     is_editors_choice: false,
     is_featured: true,
     affiliate_url: null,
@@ -184,6 +228,13 @@ export const homeSecurityProducts: Product[] = [
       "ADT is the most recognized name in home security with 150+ years of experience. Offering professional installation, 24/7 monitoring from 6 centers, and a comprehensive equipment lineup, ADT is ideal for those who want peace of mind.",
     short_description: "Most trusted name with professional installation",
     overall_rating: 8.8,
+    // Home Security specific fields
+    installation_type: "professional_only",
+    equipment_cost: null, // Varies, often included with contract
+    installation_cost: 99, // Installation fee (often waived with promotions)
+    contract_length_months: 36,
+    available_nationwide: true,
+    coverage_states: [], // Nationwide
     pros: [
       "Most trusted brand in security",
       "6 professional monitoring centers",
@@ -245,6 +296,16 @@ export const homeSecurityProducts: Product[] = [
       { name: "Google", rating: 4.3, maxRating: 5, reviewCount: 178000, url: "https://play.google.com/store/apps/details?id=com.adt.android.pulse" },
       { name: "BBB", rating: 1.07, maxRating: 5, reviewCount: 8900, url: "https://www.bbb.org/us/fl/boca-raton/profile/burglar-alarm-systems/adt-security-services-0633-5000392" },
     ],
+    promo_info: {
+      typical_promos: ["Free equipment with monitoring contract", "Seasonal installation deals", "Referral bonuses"],
+      has_seasonal_deals: true,
+      money_back_days: null,
+      free_trial_days: null,
+      best_time_to_buy: "End of month for best installation deals",
+      has_student_discount: false,
+      has_military_discount: true,
+      annual_discount_percent: null,
+    },
     is_editors_choice: false,
     is_featured: true,
     affiliate_url: null,
@@ -267,6 +328,13 @@ export const homeSecurityProducts: Product[] = [
       "Vivint offers premium smart home security with professional installation. Known for high-quality equipment, advanced AI features, and comprehensive home automation, Vivint is ideal for tech-savvy homeowners.",
     short_description: "Premium smart home security with AI features",
     overall_rating: 8.6,
+    // Home Security specific fields
+    installation_type: "professional_only",
+    equipment_cost: null, // Financed, typically $599-$1500+
+    installation_cost: 0, // Included with equipment financing
+    contract_length_months: 60,
+    available_nationwide: true,
+    coverage_states: [], // Nationwide (most major markets)
     pros: [
       "High-quality proprietary equipment",
       "Advanced AI camera detection",
@@ -329,6 +397,16 @@ export const homeSecurityProducts: Product[] = [
       { name: "Google", rating: 4.1, maxRating: 5, reviewCount: 92000, url: "https://play.google.com/store/apps/details?id=com.vivint.vivintsky" },
       { name: "BBB", rating: 1.42, maxRating: 5, reviewCount: 5800, url: "https://www.bbb.org/us/ut/provo/profile/burglar-alarm-systems/vivint-smart-home-inc-1166-4002633" },
     ],
+    promo_info: {
+      typical_promos: ["Free smart home equipment", "Holiday promotional packages", "Referral credits"],
+      has_seasonal_deals: true,
+      money_back_days: null,
+      free_trial_days: null,
+      best_time_to_buy: "End of month or quarter for best deals",
+      has_student_discount: false,
+      has_military_discount: true,
+      annual_discount_percent: null,
+    },
     is_editors_choice: false,
     is_featured: false,
     affiliate_url: null,
@@ -351,6 +429,13 @@ export const homeSecurityProducts: Product[] = [
       "Cove offers affordable, no-contract home security with straightforward pricing. With easy DIY installation and reliable professional monitoring, it's perfect for budget-conscious homeowners.",
     short_description: "Budget-friendly security with transparent pricing",
     overall_rating: 8.4,
+    // Home Security specific fields
+    installation_type: "diy_only",
+    equipment_cost: 199, // Starter equipment package
+    installation_cost: null, // DIY only
+    contract_length_months: 0,
+    available_nationwide: true,
+    coverage_states: [], // Nationwide
     pros: [
       "Very affordable monitoring",
       "No long-term contracts",
@@ -401,6 +486,16 @@ export const homeSecurityProducts: Product[] = [
       { name: "Google", rating: 4.4, maxRating: 5, reviewCount: 18500, url: "https://play.google.com/store/apps/details?id=com.cove.android" },
       { name: "BBB", rating: 4.69, maxRating: 5, reviewCount: 890, url: "https://www.bbb.org/us/ut/lehi/profile/security-systems-consultants/cove-smart-llc-1166-90025080" },
     ],
+    promo_info: {
+      typical_promos: ["Black Friday deals", "Bundle discounts", "Equipment promotions"],
+      has_seasonal_deals: true,
+      money_back_days: 60,
+      free_trial_days: null,
+      best_time_to_buy: "Black Friday",
+      has_student_discount: false,
+      has_military_discount: true,
+      annual_discount_percent: null,
+    },
     is_editors_choice: false,
     is_featured: false,
     affiliate_url: null,
@@ -423,6 +518,13 @@ export const homeSecurityProducts: Product[] = [
       "abode offers flexible DIY security with excellent smart home integration. Supporting HomeKit, Google, Alexa, and Z-Wave, it's ideal for users who want security that works with their existing smart home setup.",
     short_description: "Best smart home integration with flexible monitoring",
     overall_rating: 8.3,
+    // Home Security specific fields
+    installation_type: "both",
+    equipment_cost: 279, // Smart Security Kit
+    installation_cost: 149, // Optional professional installation
+    contract_length_months: 0,
+    available_nationwide: true,
+    coverage_states: [], // Nationwide
     pros: [
       "Excellent smart home integration",
       "Works with HomeKit, Google, Alexa",
@@ -478,6 +580,16 @@ export const homeSecurityProducts: Product[] = [
       { name: "Google", rating: 3.9, maxRating: 5, reviewCount: 12300, url: "https://play.google.com/store/apps/details?id=com.abode.android" },
       { name: "G2", rating: 4.0, maxRating: 5, reviewCount: 45, url: "https://www.g2.com/products/abode-home-security/reviews" },
     ],
+    promo_info: {
+      typical_promos: ["Black Friday - up to 35% off", "Holiday bundles", "Seasonal equipment deals"],
+      has_seasonal_deals: true,
+      money_back_days: null,
+      free_trial_days: null,
+      best_time_to_buy: "Black Friday",
+      has_student_discount: false,
+      has_military_discount: false,
+      annual_discount_percent: null,
+    },
     is_editors_choice: false,
     is_featured: false,
     affiliate_url: null,
@@ -491,20 +603,85 @@ export const homeSecurityProducts: Product[] = [
   },
 ];
 
-export function getHomeSecurityProducts(): Product[] {
+export function getHomeSecurityProducts(): HomeSecurityProduct[] {
   return homeSecurityProducts.sort((a, b) => b.overall_rating - a.overall_rating);
 }
 
-export function getHomeSecurityProductBySlug(slug: string): Product | undefined {
+export function getHomeSecurityProductBySlug(slug: string): HomeSecurityProduct | undefined {
   return homeSecurityProducts.find((p) => p.slug === slug);
 }
 
-export function getFeaturedHomeSecurityProducts(): Product[] {
+export function getFeaturedHomeSecurityProducts(): HomeSecurityProduct[] {
   return homeSecurityProducts
     .filter((p) => p.is_featured)
     .sort((a, b) => b.overall_rating - a.overall_rating);
 }
 
-export function getEditorsChoiceHomeSecurity(): Product | undefined {
+export function getEditorsChoiceHomeSecurity(): HomeSecurityProduct | undefined {
   return homeSecurityProducts.find((p) => p.is_editors_choice);
+}
+
+// Home Security specific helpers
+
+export function getHomeSecurityByInstallationType(
+  type: "diy" | "professional" | "both"
+): HomeSecurityProduct[] {
+  if (type === "diy") {
+    return homeSecurityProducts.filter(
+      (p) => p.installation_type === "diy_only" || p.installation_type === "both"
+    );
+  }
+  if (type === "professional") {
+    return homeSecurityProducts.filter(
+      (p) => p.installation_type === "professional_only" || p.installation_type === "both"
+    );
+  }
+  return homeSecurityProducts.filter((p) => p.installation_type === "both");
+}
+
+export function getNoContractHomeSecurityProducts(): HomeSecurityProduct[] {
+  return homeSecurityProducts
+    .filter((p) => p.contract_length_months === 0)
+    .sort((a, b) => b.overall_rating - a.overall_rating);
+}
+
+export function getDIYHomeSecurityProducts(): HomeSecurityProduct[] {
+  return homeSecurityProducts
+    .filter((p) => p.installation_type === "diy_only" || p.installation_type === "both")
+    .sort((a, b) => b.overall_rating - a.overall_rating);
+}
+
+export function getProfessionalHomeSecurityProducts(): HomeSecurityProduct[] {
+  return homeSecurityProducts
+    .filter((p) => p.installation_type === "professional_only" || p.installation_type === "both")
+    .sort((a, b) => b.overall_rating - a.overall_rating);
+}
+
+/**
+ * Calculate first year cost (equipment + 12 months of monitoring)
+ */
+export function getFirstYearCost(product: HomeSecurityProduct): number | null {
+  // Get the base monitoring price (use the popular plan or first plan)
+  const popularPlan = product.pricing.find((p) => p.is_popular);
+  const basePlan = popularPlan || product.pricing[0];
+
+  if (!basePlan) return null;
+
+  const monthlyMonitoring = basePlan.price;
+  const annualMonitoring = monthlyMonitoring * 12;
+  const equipment = product.equipment_cost || 0;
+  const installation = product.installation_cost || 0;
+
+  return equipment + installation + annualMonitoring;
+}
+
+/**
+ * Get products sorted by first year cost (budget-friendly first)
+ */
+export function getHomeSecurityByFirstYearCost(): HomeSecurityProduct[] {
+  return [...homeSecurityProducts].sort((a, b) => {
+    const costA = getFirstYearCost(a) || Infinity;
+    const costB = getFirstYearCost(b) || Infinity;
+    return costA - costB;
+  });
 }

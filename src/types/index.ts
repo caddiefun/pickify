@@ -30,6 +30,18 @@ export interface Vertical {
   updated_at: string;
 }
 
+export type CredibilityWarningType =
+  | "security-concern"
+  | "rating-discrepancy"
+  | "data-quality"
+  | "discontinued";
+
+export interface CredibilityWarning {
+  type: CredibilityWarningType;
+  message: string;
+  learnMoreUrl?: string;
+}
+
 export interface Product {
   id: string;
   vertical_id: string;
@@ -45,6 +57,8 @@ export interface Product {
   features: ProductFeature[];
   pricing: ProductPricing[];
   review_sources?: ReviewSource[];
+  promo_info?: PromoInfo;
+  credibility_warning?: CredibilityWarning;
   is_editors_choice: boolean;
   is_featured: boolean;
   affiliate_url: string | null;
@@ -77,6 +91,25 @@ export interface ProductPricing {
   features: string[];
   is_popular?: boolean;
   cta_text?: string;
+}
+
+export interface PromoInfo {
+  /** Typical promotions this product runs (e.g., "Black Friday - up to 70% off") */
+  typical_promos?: string[];
+  /** Whether the product runs seasonal/holiday deals */
+  has_seasonal_deals?: boolean;
+  /** Money-back guarantee period in days (null if no guarantee) */
+  money_back_days?: number | null;
+  /** Free trial period in days (null if no trial) */
+  free_trial_days?: number | null;
+  /** Best time to buy hint (e.g., "Best deals in November") */
+  best_time_to_buy?: string;
+  /** Student/education discount available */
+  has_student_discount?: boolean;
+  /** Military/veteran discount available */
+  has_military_discount?: boolean;
+  /** Annual billing savings percentage (e.g., "Save 50% with annual") */
+  annual_discount_percent?: number | null;
 }
 
 export interface ProductRating {

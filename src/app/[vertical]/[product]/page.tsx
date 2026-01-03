@@ -17,6 +17,8 @@ import {
   DisclosureBanner,
   ProductLogo,
   LastUpdatedBadge,
+  CredibilityWarning,
+  PromoInfoCard,
 } from "@/components/comparison";
 import { ReviewBadges } from "@/components/comparison/review-badges";
 import { Button } from "@/components/ui/button";
@@ -191,6 +193,18 @@ export default async function ProductPage({ params }: PageProps) {
                   </div>
                 </div>
 
+                {/* Credibility Warning (if applicable) */}
+                {product.credibility_warning && (
+                  <div className="mb-6">
+                    <CredibilityWarning
+                      type={product.credibility_warning.type}
+                      message={product.credibility_warning.message}
+                      learnMoreUrl={product.credibility_warning.learnMoreUrl}
+                      variant="banner"
+                    />
+                  </div>
+                )}
+
                 {/* Rating Overview */}
                 <Card className="mb-8">
                   <CardContent className="p-6">
@@ -244,6 +258,17 @@ export default async function ProductPage({ params }: PageProps) {
                     variant="side-by-side"
                   />
                 </div>
+
+                {/* Deals & Promotions */}
+                {product.promo_info && (
+                  <div className="mb-8">
+                    <PromoInfoCard
+                      promoInfo={product.promo_info}
+                      productName={product.name}
+                      variant="full"
+                    />
+                  </div>
+                )}
 
                 {/* Pricing */}
                 <div className="mb-8">
@@ -362,11 +387,29 @@ export default async function ProductPage({ params }: PageProps) {
                           <ExternalLink className="w-4 h-4 ml-2" />
                         </a>
                       </Button>
-                      <p className="text-xs text-center text-muted-foreground">
-                        30-day money-back guarantee
-                      </p>
+                      {product.promo_info ? (
+                        <PromoInfoCard
+                          promoInfo={product.promo_info}
+                          productName={product.name}
+                          variant="inline"
+                          className="justify-center"
+                        />
+                      ) : (
+                        <p className="text-xs text-center text-muted-foreground">
+                          30-day money-back guarantee
+                        </p>
+                      )}
                     </CardContent>
                   </Card>
+
+                  {/* Promo Info Card */}
+                  {product.promo_info && (
+                    <PromoInfoCard
+                      promoInfo={product.promo_info}
+                      productName={product.name}
+                      variant="compact"
+                    />
+                  )}
 
                   {/* Quick Stats */}
                   <Card>

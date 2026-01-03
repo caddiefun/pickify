@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { RatingCircle, RatingBar } from "./rating-bar";
 import { ProductLogo } from "./product-logo";
 import { ReviewBadges } from "./review-badges";
+import { CredibilityWarning } from "./credibility-warning";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
@@ -195,6 +196,13 @@ export function ProductCard({
                   <Badge variant="outline" className="text-warning border-warning/30 text-xs">
                     Sponsored
                   </Badge>
+                )}
+                {product.credibility_warning && (
+                  <CredibilityWarning
+                    type={product.credibility_warning.type}
+                    message={product.credibility_warning.message}
+                    variant="inline"
+                  />
                 )}
               </div>
               <p className="text-sm text-muted-foreground">{product.short_description}</p>
