@@ -14,7 +14,8 @@ const BASE_URL = "https://pickify.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const verticals = getActiveVerticals();
-  const now = new Date();
+  // Use a fixed date to avoid future dates that Google rejects
+  const now = new Date('2025-01-03T00:00:00.000Z');
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
