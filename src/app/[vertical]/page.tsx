@@ -127,28 +127,38 @@ export default async function VerticalPage({ params }: PageProps) {
               </div>
               {/* Quick Stats Summary */}
               <div className="lg:col-span-2">
-                <div className="bg-card border rounded-xl p-6 shadow-sm">
-                  <h2 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-4">
-                    At a Glance
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Products Tested</span>
-                      <span className="font-semibold">{products.length}</span>
+                <div className="bg-card border-2 border-primary/20 rounded-xl overflow-hidden shadow-lg">
+                  <div className="bg-primary/5 border-b border-primary/10 px-6 py-4">
+                    <h2 className="text-sm font-semibold text-primary uppercase tracking-wider flex items-center gap-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                      </svg>
+                      At a Glance
+                    </h2>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div className="flex justify-between items-center py-2">
+                      <span className="text-sm text-muted-foreground font-medium">Products Tested</span>
+                      <span className="text-lg font-bold bg-muted px-3 py-1 rounded-full">{products.length}</span>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Editor&apos;s Choice</span>
-                      <span className="font-semibold text-primary">{editorsChoice?.name || "TBD"}</span>
+                    <div className="flex justify-between items-center py-2 bg-success/5 -mx-6 px-6 border-y border-success/10">
+                      <span className="text-sm text-muted-foreground font-medium">Editor&apos;s Choice</span>
+                      <Link href={editorsChoice ? `/${verticalSlug}/${editorsChoice.slug}` : "#"} className="text-lg font-bold text-success hover:underline">{editorsChoice?.name || "TBD"}</Link>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Top Rating</span>
-                      <span className="font-semibold">{editorsChoice?.overall_rating.toFixed(1) || "-"}/10</span>
+                    <div className="flex justify-between items-center py-2">
+                      <span className="text-sm text-muted-foreground font-medium">Top Rating</span>
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground font-bold text-lg">
+                          {editorsChoice?.overall_rating.toFixed(1) || "-"}
+                        </div>
+                        <span className="text-xs text-muted-foreground">/10</span>
+                      </div>
                     </div>
-                    <Separator />
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Price Range</span>
-                      <span className="font-semibold">
-                        ${Math.min(...products.flatMap(p => p.pricing?.map(pr => pr.price) || [0])).toFixed(0)} - ${Math.max(...products.flatMap(p => p.pricing?.map(pr => pr.price) || [0])).toFixed(0)}/mo
+                    <Separator className="my-2" />
+                    <div className="flex justify-between items-center py-2">
+                      <span className="text-sm text-muted-foreground font-medium">Price Range</span>
+                      <span className="text-lg font-bold text-foreground">
+                        ${Math.min(...products.flatMap(p => p.pricing?.map(pr => pr.price) || [0])).toFixed(0)} - ${Math.max(...products.flatMap(p => p.pricing?.map(pr => pr.price) || [0])).toFixed(0)}<span className="text-sm font-normal text-muted-foreground">/mo</span>
                       </span>
                     </div>
                   </div>
