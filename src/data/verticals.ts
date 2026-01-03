@@ -132,7 +132,7 @@ export const verticals: Vertical[] = [
   {
     id: "9",
     slug: "internet-providers",
-    name: "High Speed Internet",
+    name: "Internet Providers",
     description:
       "Find the best high speed internet providers in your area. Compare fiber, cable, and 5G home internet plans with the fastest speeds and lowest prices.",
     meta_title: "Best High Speed Internet Providers 2025 - Compare Fiber, Cable & 5G Plans",

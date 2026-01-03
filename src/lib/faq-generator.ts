@@ -277,8 +277,98 @@ export function generateAllFAQs(
 }
 
 // =============================================================================
-// ISP-Specific FAQ Generator (for zip code pages)
+// ISP Geo-Specific FAQ Generators
 // =============================================================================
+
+export function generateStateFAQs(
+  stateName: string,
+  providers: any[],
+  fiberCount: number,
+  cableCount: number
+): FAQ[] {
+  const topProvider = providers[0];
+  const cheapestProvider = providers.reduce((cheapest, current) => {
+    const cheapestPrice = cheapest.pricing?.[0]?.price || 999;
+    const currentPrice = current.pricing?.[0]?.price || 999;
+    return currentPrice < cheapestPrice ? current : cheapest;
+  }, providers[0]);
+
+  return [
+    {
+      question: `What is the best internet provider in ${stateName}?`,
+      answer: `${topProvider?.name} is our top-rated internet provider in ${stateName} with a ${topProvider?.overall_rating}/10 rating. They offer ${topProvider?.short_description.toLowerCase()}.`,
+    },
+    {
+      question: `How many internet providers are available in ${stateName}?`,
+      answer: `${providers.length} internet providers serve ${stateName}, including ${providers.slice(0, 3).map(p => p.name).join(", ")}${providers.length > 3 ? " and more" : ""}.`,
+    },
+    {
+      question: `Is fiber internet available in ${stateName}?`,
+      answer: `${fiberCount > 0 ? `Yes, ${fiberCount} fiber providers serve ${stateName}.` : `Fiber availability in ${stateName} is limited.`} ${cableCount > 0 ? `${cableCount} cable providers also offer service.` : ""}`,
+    },
+    {
+      question: `What is the cheapest internet in ${stateName}?`,
+      answer: `${cheapestProvider?.name} offers the most affordable internet in ${stateName}, starting at $${cheapestProvider?.pricing?.[0]?.price?.toFixed(2) || "competitive rates"}/mo.`,
+    },
+  ];
+}
+
+export function generateCityFAQs(
+  cityName: string,
+  stateName: string,
+  providers: any[],
+  zipCount: number
+): FAQ[] {
+  const topProvider = providers[0];
+  const fiberProviders = providers.filter(p => p.technologies?.includes("fiber"));
+
+  return [
+    {
+      question: `What internet providers are in ${cityName}, ${stateName}?`,
+      answer: `${providers.length} internet providers serve ${cityName}, including ${providers.slice(0, 3).map(p => p.name).join(", ")}.`,
+    },
+    {
+      question: `What is the best internet provider in ${cityName}?`,
+      answer: `${topProvider?.name} is our top recommendation for ${cityName} with a ${topProvider?.overall_rating}/10 rating.`,
+    },
+    {
+      question: `Is fiber internet available in ${cityName}?`,
+      answer: `${fiberProviders.length > 0 ? `Yes, fiber internet is available in ${cityName} from ${fiberProviders.map(p => p.name).join(", ")}.` : `Fiber availability in ${cityName} is limited. Cable and DSL options are available.`}`,
+    },
+    {
+      question: `How do I check internet availability in ${cityName}?`,
+      answer: `Enter your zip code above to check exact availability. ${cityName} has ${zipCount} zip codes, and service varies by location.`,
+    },
+  ];
+}
+
+export function generateCompareHubFAQs(providers: Product[], verticalName: string): FAQ[] {
+  const topProvider = providers[0];
+  const cheapestProvider = providers.reduce((cheapest, current) => {
+    const cheapestPrice = cheapest.pricing?.[0]?.price || 999;
+    const currentPrice = current.pricing?.[0]?.price || 999;
+    return currentPrice < cheapestPrice ? current : cheapest;
+  }, providers[0]);
+
+  return [
+    {
+      question: `How do I compare ${verticalName.toLowerCase()}?`,
+      answer: `Compare ${verticalName.toLowerCase()} based on price, features, performance, and ratings. We've tested ${providers.length} providers to help you find the best match for your needs.`,
+    },
+    {
+      question: `Which is the best ${verticalName.toLowerCase()} overall?`,
+      answer: `${topProvider?.name} is our top-rated ${verticalName.toLowerCase()} with a ${topProvider?.overall_rating}/10 rating. ${topProvider?.short_description}`,
+    },
+    {
+      question: `What's the cheapest ${verticalName.toLowerCase()}?`,
+      answer: `${cheapestProvider?.name} offers the lowest starting price at $${cheapestProvider?.pricing?.[0]?.price?.toFixed(2)}/mo with a ${cheapestProvider?.overall_rating}/10 rating.`,
+    },
+    {
+      question: `How many ${verticalName.toLowerCase()} did you test?`,
+      answer: `We tested and compared ${providers.length} ${verticalName.toLowerCase()} across multiple factors including speed, price, reliability, and customer experience.`,
+    },
+  ];
+}
 
 export function generateZipCodeFAQs(
   zipCode: string,

@@ -7,7 +7,8 @@ import { RatingCircle, DisclosureBanner } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, FAQSchema, QuickAnswer } from "@/components/seo";
+import { generateCompareHubFAQs } from "@/lib/faq-generator";
 import { getIspProducts, getComparisonPairs } from "@/data";
 
 export const metadata: Metadata = {
@@ -34,9 +35,27 @@ export default function ISPComparisonPage() {
     p.technologies.includes("satellite")
   );
 
+  // Generate FAQs for AI citation
+  const faqs = generateCompareHubFAQs(providers, "internet providers");
+
+  // Generate QuickAnswer for AI citation
+  const quickAnswerProps = {
+    question: "How do I compare internet providers?",
+    answer: `We've tested and ranked ${providers.length} internet providers across speed, price, reliability, and features. ${topProvider.name} is our top pick with a ${topProvider.overall_rating}/10 rating. Compare fiber, cable, and satellite options to find the best ISP for your needs.`,
+    supportingFacts: [
+      { label: "Top Rated", value: topProvider.name },
+      { label: "Providers Tested", value: `${providers.length}` },
+      { label: "Fiber Options", value: `${fiberProviders.length}` },
+      { label: "Cable Options", value: `${cableProviders.length}` },
+    ],
+    updatedDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+    variant: "default" as const,
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
       <Header />
 
       <main className="flex-1">
@@ -76,6 +95,15 @@ export default function ISPComparisonPage() {
               stack up on speed, price, reliability, and features.
             </p>
             <DisclosureBanner variant="inline" />
+          </div>
+        </section>
+
+        {/* AI-Optimized Quick Answer */}
+        <section className="py-8 border-b">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl">
+              <QuickAnswer {...quickAnswerProps} />
+            </div>
           </div>
         </section>
 
@@ -325,6 +353,44 @@ export default function ISPComparisonPage() {
                 and billing transparency all contribute to the overall customer
                 experience and our ratings.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions About Comparing ISPs
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
+                  >
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="text"
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

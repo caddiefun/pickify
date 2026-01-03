@@ -188,3 +188,50 @@ export function generateBestForQuickAnswer(
     variant: "best-for",
   };
 }
+
+/**
+ * Generate QuickAnswer props for ISP state page
+ */
+export function generateStateQuickAnswer(
+  stateName: string,
+  topProvider: { name: string; rating: number; description: string },
+  providerCount: number,
+  fiberCount: number
+): QuickAnswerProps {
+  return {
+    question: `What is the best internet provider in ${stateName}?`,
+    answer: `${topProvider.name} is the best internet provider in ${stateName} with a ${topProvider.rating}/10 rating. ${topProvider.description}. ${providerCount} total providers serve ${stateName}${fiberCount > 0 ? `, including ${fiberCount} fiber options` : ""}.`,
+    supportingFacts: [
+      { label: "Top Provider", value: topProvider.name },
+      { label: "Rating", value: `${topProvider.rating}/10` },
+      { label: "Total ISPs", value: `${providerCount}` },
+      { label: "Fiber ISPs", value: `${fiberCount}` },
+    ],
+    updatedDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+    variant: "default",
+  };
+}
+
+/**
+ * Generate QuickAnswer props for ISP city page
+ */
+export function generateCityQuickAnswer(
+  cityName: string,
+  stateName: string,
+  topProvider: { name: string; rating: number },
+  providerCount: number,
+  fiberAvailable: boolean
+): QuickAnswerProps {
+  return {
+    question: `What is the best internet provider in ${cityName}, ${stateName}?`,
+    answer: `${topProvider.name} is our top recommendation for ${cityName} with a ${topProvider.rating}/10 rating. ${providerCount} internet providers serve ${cityName}${fiberAvailable ? ", including fiber options" : ""}. Enter your zip code above for exact availability at your address.`,
+    supportingFacts: [
+      { label: "Top Pick", value: topProvider.name },
+      { label: "Rating", value: `${topProvider.rating}/10` },
+      { label: "Providers", value: `${providerCount}` },
+      { label: "Fiber", value: fiberAvailable ? "Available" : "Limited" },
+    ],
+    updatedDate: new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" }),
+    variant: "default",
+  };
+}

@@ -8,7 +8,8 @@ import { DisclosureBanner } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, FAQSchema, QuickAnswer, generateStateQuickAnswer } from "@/components/seo";
+import { generateStateFAQs } from "@/lib/faq-generator";
 import {
   getStateBySlug,
   getCitiesByState,
@@ -60,9 +61,26 @@ export default async function StatePage({ params }: PageProps) {
     p.technologies.includes("satellite")
   ).length;
 
+  // Generate FAQs for AI citation
+  const faqs = generateStateFAQs(state.name, providers, fiberCount, cableCount);
+
+  // Generate QuickAnswer for AI citation
+  const topProvider = providers[0];
+  const quickAnswerProps = topProvider ? generateStateQuickAnswer(
+    state.name,
+    {
+      name: topProvider.name,
+      rating: topProvider.overall_rating,
+      description: topProvider.short_description,
+    },
+    providers.length,
+    fiberCount
+  ) : null;
+
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
       <Header />
 
       <main className="flex-1">
@@ -112,6 +130,17 @@ export default async function StatePage({ params }: PageProps) {
             <DisclosureBanner variant="inline" />
           </div>
         </section>
+
+        {/* AI-Optimized Quick Answer */}
+        {quickAnswerProps && (
+          <section className="py-8 border-b">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl">
+                <QuickAnswer {...quickAnswerProps} />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Quick Stats */}
         <section className="py-6 border-b">
@@ -223,6 +252,44 @@ export default async function StatePage({ params }: PageProps) {
                 enter your zip code in the search box above. Availability can
                 vary significantly even within the same city.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-12 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions About Internet in {state.name}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
+                  >
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="text"
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

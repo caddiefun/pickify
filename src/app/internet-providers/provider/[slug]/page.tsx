@@ -27,9 +27,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { BreadcrumbSchema, ProductSchema } from "@/components/seo";
+import { BreadcrumbSchema, ProductSchema, FAQSchema, QuickAnswer, generateReviewQuickAnswer } from "@/components/seo";
 import { getIspProducts, getIspProductBySlug, usStates } from "@/data";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
+import { generateAllFAQs } from "@/lib/faq-generator";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -85,10 +86,26 @@ export default async function ProviderReviewPage({ params }: PageProps) {
     { name: provider.name, url: `https://pickify.io/internet-providers/provider/${slug}` },
   ];
 
+  // Generate FAQs for AI citation
+  const faqs = generateAllFAQs(provider, "internet-providers", "Internet Providers");
+
+  // Generate QuickAnswer for AI citation
+  const quickAnswerProps = generateReviewQuickAnswer(
+    {
+      name: provider.name,
+      rating: provider.overall_rating,
+      price: Number(getStartingPrice(provider).replace(/[^0-9.]/g, "")),
+      pros: provider.pros,
+      cons: provider.cons,
+    },
+    ["high-speed internet", "reliable service"]
+  );
+
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
       <ProductSchema product={provider} verticalSlug="internet-providers" />
+      <FAQSchema faqs={faqs} />
       <Header />
 
       <main className="flex-1">
@@ -214,6 +231,15 @@ export default async function ProviderReviewPage({ params }: PageProps) {
                   </Button>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* AI-Optimized Quick Answer */}
+        <section className="py-8 border-b">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl">
+              <QuickAnswer {...quickAnswerProps} />
             </div>
           </div>
         </section>
@@ -417,6 +443,44 @@ export default async function ProviderReviewPage({ params }: PageProps) {
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>
             </Button>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-12 border-t">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions About {provider.name}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
+                  >
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="text"
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

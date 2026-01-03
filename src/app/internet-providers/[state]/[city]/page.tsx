@@ -8,7 +8,8 @@ import { DisclosureBanner } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, FAQSchema, QuickAnswer, generateCityQuickAnswer } from "@/components/seo";
+import { generateCityFAQs } from "@/lib/faq-generator";
 import {
   getStateBySlug,
   getCityBySlug,
@@ -68,9 +69,27 @@ export default async function CityPage({ params }: PageProps) {
     },
   ];
 
+  // Generate FAQs for AI citation
+  const faqs = generateCityFAQs(city.name, state.name, providers, city.zipCodes.length);
+
+  // Generate QuickAnswer for AI citation
+  const topProvider = providers[0];
+  const fiberAvailable = providers.some(p => p.technologies.includes("fiber"));
+  const quickAnswerProps = topProvider ? generateCityQuickAnswer(
+    city.name,
+    state.name,
+    {
+      name: topProvider.name,
+      rating: topProvider.overall_rating,
+    },
+    providers.length,
+    fiberAvailable
+  ) : null;
+
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
       <Header />
 
       <main className="flex-1">
@@ -127,6 +146,17 @@ export default async function CityPage({ params }: PageProps) {
             <DisclosureBanner variant="inline" />
           </div>
         </section>
+
+        {/* AI-Optimized Quick Answer */}
+        {quickAnswerProps && (
+          <section className="py-8 border-b">
+            <div className="container mx-auto px-4">
+              <div className="max-w-3xl">
+                <QuickAnswer {...quickAnswerProps} />
+              </div>
+            </div>
+          </section>
+        )}
 
         <div className="container mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-3 gap-8">
@@ -284,6 +314,44 @@ export default async function CityPage({ params }: PageProps) {
                 availability can vary by street address even within{" "}
                 {city.name}.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-12">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions About Internet in {city.name}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
+                  >
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="text"
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

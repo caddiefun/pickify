@@ -30,4 +30,6 @@ export {
   generateComparisonQuickAnswer,
   generateReviewQuickAnswer,
   generateBestForQuickAnswer,
+  generateStateQuickAnswer,
+  generateCityQuickAnswer,
 } from "./QuickAnswer";

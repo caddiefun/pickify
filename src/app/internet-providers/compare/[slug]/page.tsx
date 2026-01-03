@@ -14,7 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { BreadcrumbSchema, ComparisonSchema } from "@/components/seo";
+import { BreadcrumbSchema, ComparisonSchema, FAQSchema, QuickAnswer, generateComparisonQuickAnswer } from "@/components/seo";
+import { generateComparisonFAQs } from "@/lib/faq-generator";
 import { getIspProducts, getIspProductBySlug, generateComparison, getComparisonPairs } from "@/data";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
 import type { ISPProduct } from "@/data/products/isp";
@@ -83,6 +84,28 @@ export default async function ISPComparisonPage({ params }: PageProps) {
     satellite: "Satellite",
   };
 
+  // Generate FAQs for AI citation
+  const faqs = generateComparisonFAQs(providerA, providerB, "internet providers");
+
+  // Generate QuickAnswer for AI citation
+  const winnerId = winner.id === providerA.id ? "A" : "B";
+  const loser = winnerId === "A" ? providerB : providerA;
+  const quickAnswerProps = generateComparisonQuickAnswer(
+    {
+      name: providerA.name,
+      rating: providerA.overall_rating,
+      price: Number(getStartingPrice(providerA).replace(/[^0-9.]/g, "")),
+    },
+    {
+      name: providerB.name,
+      rating: providerB.overall_rating,
+      price: Number(getStartingPrice(providerB).replace(/[^0-9.]/g, "")),
+    },
+    winnerId,
+    winner.pros[0],
+    loser.pros[0]
+  );
+
   return (
     <div className="min-h-screen flex flex-col">
       <ComparisonSchema
@@ -92,6 +115,7 @@ export default async function ISPComparisonPage({ params }: PageProps) {
         winner={winner}
       />
       <BreadcrumbSchema items={breadcrumbs} />
+      <FAQSchema faqs={faqs} />
       <Header />
 
       <main className="flex-1">
@@ -147,6 +171,15 @@ export default async function ISPComparisonPage({ params }: PageProps) {
               >
                 See all ISP comparisons →
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* AI-Optimized Quick Answer */}
+        <section className="py-8 border-b">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <QuickAnswer {...quickAnswerProps} />
             </div>
           </div>
         </section>
@@ -448,6 +481,44 @@ export default async function ISPComparisonPage({ params }: PageProps) {
                   </Link>
                 </Button>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - AI Citation Optimized */}
+        <section className="py-12 border-t">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-6">
+              Frequently Asked Questions
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="border rounded-lg p-5 bg-card"
+                  itemScope
+                  itemType="https://schema.org/Question"
+                >
+                  <h3
+                    className="font-semibold text-foreground mb-2"
+                    itemProp="name"
+                  >
+                    {faq.question}
+                  </h3>
+                  <div
+                    itemScope
+                    itemType="https://schema.org/Answer"
+                    itemProp="acceptedAnswer"
+                  >
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="text"
+                    >
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
