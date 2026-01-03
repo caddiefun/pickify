@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RatingCircle, RatingBar } from "./rating-bar";
 import { ProductLogo } from "./product-logo";
+import { ReviewBadges } from "./review-badges";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
@@ -204,6 +205,9 @@ export function ProductCard({
       </CardHeader>
       <CardContent className="space-y-3">
         <RatingBar score={product.overall_rating} showLabel />
+        {product.review_sources && product.review_sources.length > 0 && (
+          <ReviewBadges sources={product.review_sources} variant="compact" />
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <div>
             <ul className="space-y-1">
