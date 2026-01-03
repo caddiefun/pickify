@@ -51,7 +51,7 @@ const features = [
     icon: Award,
     title: "Expert Analysis",
     description:
-      "Our experts have years of experience in evaluating software products.",
+      "Our experts have years of experience in evaluating products and services.",
   },
   {
     icon: TrendingUp,
@@ -83,7 +83,7 @@ export default function HomePage() {
                 <span className="text-primary">Save Time.</span>
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
-                Compare the best software products with honest reviews, detailed
+                Compare the best products and services with honest reviews, detailed
                 comparisons, and expert recommendations. Find the perfect
                 solution for your needs in minutes.
               </p>

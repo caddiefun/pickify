@@ -24,13 +24,13 @@ import { getActiveVerticals, getProductsByVertical } from "@/data";
 import { BreadcrumbSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
-  title: "All Categories - Browse Software Reviews & Comparisons",
+  title: "All Categories - Browse Reviews & Comparisons",
   description:
-    "Explore all software categories on Pickify. Find honest reviews, detailed comparisons, and expert recommendations for VPNs, web hosting, antivirus, and more.",
+    "Explore all categories on Pickify. Find honest reviews, detailed comparisons, and expert recommendations for VPNs, web hosting, internet providers, and more.",
   openGraph: {
-    title: "All Categories - Browse Software Reviews & Comparisons",
+    title: "All Categories - Browse Reviews & Comparisons",
     description:
-      "Explore all software categories on Pickify. Find honest reviews and expert recommendations.",
+      "Explore all categories on Pickify. Find honest reviews and expert recommendations.",
   },
 };
 
@@ -119,7 +119,7 @@ export default function CategoriesPage() {
                 Browse All Categories
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Explore our comprehensive software reviews organized by category.
+                Explore our comprehensive reviews organized by category.
                 Each category features in-depth comparisons, expert recommendations,
                 and honest ratings based on real-world testing.
               </p>
