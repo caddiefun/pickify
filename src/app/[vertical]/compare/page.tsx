@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import {
   Trophy,
   ArrowRight,
@@ -16,6 +15,7 @@ import { Header, Footer } from "@/components/layout";
 import {
   RatingCircle,
   DisclosureBanner,
+  ProductLogo,
 } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -244,21 +244,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
                 <section key={product.id} id={product.slug} className="mb-16">
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 bg-muted rounded-xl flex items-center justify-center flex-shrink-0">
-                        {product.logo_url ? (
-                          <Image
-                            src={product.logo_url}
-                            alt={product.name}
-                            width={48}
-                            height={48}
-                            className="rounded-lg"
-                          />
-                        ) : (
-                          <span className="text-2xl font-bold text-muted-foreground">
-                            {product.name.charAt(0)}
-                          </span>
-                        )}
-                      </div>
+                      <ProductLogo name={product.name} logoUrl={product.logo_url} size="lg" className="w-16 h-16 rounded-xl" />
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-sm font-medium text-muted-foreground">

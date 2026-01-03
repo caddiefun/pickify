@@ -16,6 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pickify.io"),
   title: {
     default: "Pickify - Pick Smart. Save Time.",
     template: "%s | Pickify",
@@ -32,6 +33,15 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Pickify" }],
   creator: "Pickify",
+  manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-icon", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -46,10 +56,18 @@ export const metadata: Metadata = {
     title: "Pickify - Pick Smart. Save Time.",
     description:
       "Compare and find the best software for your needs. Honest reviews, detailed comparisons, and expert recommendations.",
+    creator: "@pickify",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

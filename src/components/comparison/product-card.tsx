@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ExternalLink, Check, X, Award, Sparkles } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { RatingCircle, RatingBar } from "./rating-bar";
+import { ProductLogo } from "./product-logo";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/types";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
@@ -44,21 +44,7 @@ export function ProductCard({
                   <span className="text-sm font-bold text-primary">#{rank}</span>
                 </div>
               )}
-              <div className="flex-shrink-0 w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
-                {product.logo_url ? (
-                  <Image
-                    src={product.logo_url}
-                    alt={product.name}
-                    width={32}
-                    height={32}
-                    className="rounded"
-                  />
-                ) : (
-                  <span className="text-lg font-bold text-muted-foreground">
-                    {product.name.charAt(0)}
-                  </span>
-                )}
-              </div>
+              <ProductLogo name={product.name} logoUrl={product.logo_url} size="sm" />
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
                   <Link
@@ -111,21 +97,7 @@ export function ProductCard({
                   <span className="text-lg font-bold text-white">#{rank}</span>
                 </div>
               )}
-              <div className="w-14 h-14 bg-muted rounded-xl flex items-center justify-center">
-                {product.logo_url ? (
-                  <Image
-                    src={product.logo_url}
-                    alt={product.name}
-                    width={48}
-                    height={48}
-                    className="rounded-lg"
-                  />
-                ) : (
-                  <span className="text-2xl font-bold text-muted-foreground">
-                    {product.name.charAt(0)}
-                  </span>
-                )}
-              </div>
+              <ProductLogo name={product.name} logoUrl={product.logo_url} size="lg" className="rounded-xl" />
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="text-xl font-bold">{product.name}</h3>
@@ -203,21 +175,7 @@ export function ProductCard({
                 <span className="text-sm font-bold text-primary">#{rank}</span>
               </div>
             )}
-            <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-              {product.logo_url ? (
-                <Image
-                  src={product.logo_url}
-                  alt={product.name}
-                  width={40}
-                  height={40}
-                  className="rounded"
-                />
-              ) : (
-                <span className="text-xl font-bold text-muted-foreground">
-                  {product.name.charAt(0)}
-                </span>
-              )}
-            </div>
+            <ProductLogo name={product.name} logoUrl={product.logo_url} size="md" />
             <div>
               <div className="flex items-center gap-2">
                 <Link

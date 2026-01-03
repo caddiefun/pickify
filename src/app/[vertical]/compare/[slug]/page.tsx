@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ExternalLink,
   Trophy,
@@ -16,6 +15,7 @@ import {
   ComparisonTable,
   ProsConsList,
   DisclosureBanner,
+  ProductLogo,
 } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -243,21 +243,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-                          {product.logo_url ? (
-                            <Image
-                              src={product.logo_url}
-                              alt={product.name}
-                              width={40}
-                              height={40}
-                              className="rounded"
-                            />
-                          ) : (
-                            <span className="text-xl font-bold text-muted-foreground">
-                              {product.name.charAt(0)}
-                            </span>
-                          )}
-                        </div>
+                        <ProductLogo name={product.name} logoUrl={product.logo_url} size="md" />
                         <div>
                           <h3 className="font-semibold text-lg">
                             {product.name}

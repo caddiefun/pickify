@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Check, X, Minus, ExternalLink, Trophy } from "lucide-react";
 import {
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ProductLogo } from "./product-logo";
 import { cn } from "@/lib/utils";
 import type { Product, ProductFeature } from "@/types";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
@@ -82,21 +82,7 @@ export function ComparisonTable({
                         <Trophy className="w-5 h-5 text-warning fill-warning" />
                       </div>
                     )}
-                    <div className="w-12 h-12 bg-muted rounded-lg flex items-center justify-center">
-                      {product.logo_url ? (
-                        <Image
-                          src={product.logo_url}
-                          alt={product.name}
-                          width={40}
-                          height={40}
-                          className="rounded"
-                        />
-                      ) : (
-                        <span className="text-xl font-bold text-muted-foreground">
-                          {product.name.charAt(0)}
-                        </span>
-                      )}
-                    </div>
+                    <ProductLogo name={product.name} logoUrl={product.logo_url} size="md" />
                   </div>
                   <Link
                     href={`/${verticalSlug}/${product.slug}`}

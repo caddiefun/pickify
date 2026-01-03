@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ExternalLink,
   Award,
@@ -17,6 +16,7 @@ import {
   RatingBar,
   ProsConsList,
   DisclosureBanner,
+  ProductLogo,
 } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -165,21 +165,7 @@ export default async function ProductPage({ params }: PageProps) {
               {/* Main Content */}
               <div className="lg:col-span-2">
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-muted rounded-xl flex items-center justify-center flex-shrink-0">
-                    {product.logo_url ? (
-                      <Image
-                        src={product.logo_url}
-                        alt={product.name}
-                        width={64}
-                        height={64}
-                        className="rounded-lg"
-                      />
-                    ) : (
-                      <span className="text-3xl font-bold text-muted-foreground">
-                        {product.name.charAt(0)}
-                      </span>
-                    )}
-                  </div>
+                  <ProductLogo name={product.name} logoUrl={product.logo_url} size="lg" className="w-16 h-16 md:w-20 md:h-20 rounded-xl" />
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <h1 className="text-3xl md:text-4xl font-bold">
