@@ -141,7 +141,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         </section>
 
         {/* AI-Optimized Quick Answer */}
-        <section className="py-8 border-b">
+        <section className="py-12 border-b">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               {editorsChoice && runnerUp && (
@@ -163,7 +163,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Quick Summary / TL;DR */}
-        <section className="py-8 border-b bg-muted/30">
+        <section className="py-12 border-b bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">

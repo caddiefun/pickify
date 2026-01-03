@@ -172,7 +172,7 @@ export default async function VerticalPage({ params }: PageProps) {
         </section>
 
         {/* Quick Answer + Editorial Intro - Combined for better flow */}
-        <section className="py-10 border-b">
+        <section className="py-12 border-b">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Quick Answer */}

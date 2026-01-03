@@ -168,7 +168,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </div>
 
         {/* Hero Section */}
-        <section className="py-8 md:py-12 bg-gradient-to-b from-accent/50 to-background">
+        <section className="py-12 md:py-16 bg-gradient-to-b from-accent/50 to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Badge variant="secondary" className="mb-4">
@@ -197,7 +197,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Quick Answer - AI Citation Optimized */}
-        <section className="py-6 border-b">
+        <section className="py-12 border-b">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <QuickAnswer {...quickAnswerProps} />
@@ -206,7 +206,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Quick Comparison Cards */}
-        <section className="py-8 -mt-4">
+        <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {[productA, productB].map((product) => (
@@ -287,7 +287,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Detailed Comparison Table */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6 text-center">
               Feature Comparison
@@ -306,7 +306,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Pros & Cons Side by Side */}
-        <section className="py-8">
+        <section className="py-12">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6 text-center">
               Pros & Cons Breakdown
@@ -332,7 +332,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Verdict */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold mb-4">Our Verdict</h2>
@@ -374,7 +374,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* FAQ Section - AI Citation Optimized */}
-        <section className="py-8">
+        <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-2xl font-bold mb-6 text-center">
@@ -411,7 +411,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Back Link */}
-        <section className="py-8 border-t">
+        <section className="py-12 border-t">
           <div className="container mx-auto px-4">
             <Button variant="ghost" asChild>
               <Link href={`/${verticalSlug}`}>

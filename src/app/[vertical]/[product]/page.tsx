@@ -163,7 +163,7 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
 
         {/* Hero Section */}
-        <section className="py-8 md:py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Main Content */}
@@ -430,7 +430,7 @@ export default async function ProductPage({ params }: PageProps) {
         </section>
 
         {/* FAQ Section - AI Citation Optimized */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">
               {product.name} FAQ
@@ -465,7 +465,7 @@ export default async function ProductPage({ params }: PageProps) {
         </section>
 
         {/* Back Link */}
-        <section className="py-8 border-t">
+        <section className="py-12 border-t">
           <div className="container mx-auto px-4">
             <Button variant="ghost" asChild>
               <Link href={`/${verticalSlug}`}>
