@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Wifi, MapPin, Zap, Shield, ArrowRight } from "lucide-react";
+import { Wifi, MapPin, Zap, Shield, ArrowRight, BarChart3 } from "lucide-react";
 import { Header, Footer } from "@/components/layout";
 import { LocationSearch, ProviderCard } from "@/components/isp";
 import { DisclosureBanner } from "@/components/comparison";
@@ -14,6 +14,7 @@ import {
   usStates,
   getStatesWithCities,
 } from "@/data";
+import { getTopISPsBySpeed, DATA_SOURCES } from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Best Internet Providers 2025 - Compare ISPs by Zip Code | Pickify",
@@ -33,6 +34,7 @@ export default function InternetProvidersPage() {
   const allProviders = getIspProducts();
   const featuredProviders = getFeaturedIspProducts();
   const statesWithCities = getStatesWithCities();
+  const topISPs = getTopISPsBySpeed(5);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -159,8 +161,61 @@ export default function InternetProvidersPage() {
           </div>
         </section>
 
-        {/* Browse by State */}
+        {/* Speed Report CTA */}
         <section className="py-12">
+          <div className="container mx-auto px-4">
+            <Card className="bg-primary/5 border-primary/20">
+              <CardContent className="p-6 md:p-8">
+                <div className="grid md:grid-cols-2 gap-6 items-center">
+                  <div>
+                    <Badge variant="secondary" className="mb-3">
+                      <BarChart3 className="w-3 h-3 mr-1" />
+                      Speed Report
+                    </Badge>
+                    <h2 className="text-2xl font-bold mb-2">
+                      ISP Speed Rankings 2025
+                    </h2>
+                    <p className="text-muted-foreground mb-4">
+                      See real-world speed test data for all major ISPs. Independent testing
+                      from {DATA_SOURCES.reviewsOrg.name} shows which providers actually
+                      deliver on their speed promises.
+                    </p>
+                    <Button asChild>
+                      <Link href="/internet-providers/speed-report">
+                        View Speed Report
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </div>
+                  <div className="space-y-2">
+                    {topISPs.slice(0, 4).map((isp, index) => (
+                      <div key={isp.slug} className="flex items-center justify-between p-3 bg-background rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg font-bold text-muted-foreground w-6">
+                            {index + 1}
+                          </span>
+                          <span className="font-medium">{isp.name}</span>
+                        </div>
+                        <span className="font-semibold text-primary">
+                          {isp.avgDownloadMbps} Mbps
+                        </span>
+                      </div>
+                    ))}
+                    <Link
+                      href="/internet-providers/speed-report"
+                      className="block text-center text-sm text-primary hover:underline pt-2"
+                    >
+                      See all rankings →
+                    </Link>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Browse by State */}
+        <section className="py-12 bg-muted/30">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">
               Browse Internet Providers by State
@@ -180,7 +235,7 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Popular Cities */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">Popular Cities</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

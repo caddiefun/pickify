@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ProductLogo } from "./product-logo";
+import { ReviewBadges } from "./review-badges";
 import { cn } from "@/lib/utils";
 import type { Product, ProductFeature } from "@/types";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
@@ -132,6 +133,28 @@ export function ComparisonTable({
                 )}
               >
                 <span className="font-semibold">{getStartingPrice(product)}</span>
+              </TableCell>
+            ))}
+          </TableRow>
+
+          {/* User Reviews Row */}
+          <TableRow className="bg-muted/50">
+            <TableCell className="font-medium">User Reviews</TableCell>
+            {products.map((product) => (
+              <TableCell
+                key={product.id}
+                className={cn(
+                  "text-center",
+                  winnerId === product.id && "bg-success/5"
+                )}
+              >
+                {product.review_sources && product.review_sources.length > 0 ? (
+                  <div className="flex justify-center">
+                    <ReviewBadges sources={product.review_sources} variant="compact" />
+                  </div>
+                ) : (
+                  <Minus className="w-5 h-5 text-muted-foreground mx-auto" />
+                )}
               </TableCell>
             ))}
           </TableRow>

@@ -35,7 +35,7 @@ export function QuickAnswer({
 }: QuickAnswerProps) {
   return (
     <div
-      className="bg-primary/5 border border-primary/20 rounded-xl p-6 mb-8"
+      className="bg-primary/5 border border-primary/20 rounded-xl p-6"
       // Semantic markup for AI extraction
       itemScope
       itemType="https://schema.org/Answer"

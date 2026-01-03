@@ -31,6 +31,7 @@ import { BreadcrumbSchema, ProductSchema, FAQSchema, QuickAnswer, generateReview
 import { getIspProducts, getIspProductBySlug, usStates } from "@/data";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
 import { generateAllFAQs } from "@/lib/faq-generator";
+import { getISPSpeedData, DATA_SOURCES } from "@/lib/api";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -79,6 +80,9 @@ export default async function ProviderReviewPage({ params }: PageProps) {
   const coverageStateNames = provider.coverage_states
     .map((code) => usStates.find((s) => s.code === code)?.name)
     .filter(Boolean);
+
+  // Get authoritative speed data from Reviews.org if available
+  const speedData = getISPSpeedData(slug);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -421,6 +425,66 @@ export default async function ProviderReviewPage({ params }: PageProps) {
                 </CardContent>
               </Card>
             </div>
+
+            {/* Authoritative Speed Data */}
+            {speedData && (
+              <Card className="mt-6 bg-primary/5 border-primary/20">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <Badge variant="secondary" className="mb-2">
+                        <Zap className="w-3 h-3 mr-1" />
+                        Independent Speed Test Data
+                      </Badge>
+                      <h3 className="font-semibold text-lg mb-1">
+                        {provider.name} Real-World Speeds
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        Based on independent testing by {DATA_SOURCES.reviewsOrg.name}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-3xl font-bold text-primary">
+                        #{speedData.rank}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Nationwide
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-primary/10">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{speedData.avgDownloadMbps}</div>
+                      <div className="text-xs text-muted-foreground">Avg Download Mbps</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{speedData.avgUploadMbps}</div>
+                      <div className="text-xs text-muted-foreground">Avg Upload Mbps</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold capitalize">{speedData.type}</div>
+                      <div className="text-xs text-muted-foreground">Connection Type</div>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center justify-between">
+                    <a
+                      href={speedData.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-muted-foreground hover:text-foreground"
+                    >
+                      Source: {DATA_SOURCES.reviewsOrg.name} →
+                    </a>
+                    <Link
+                      href="/internet-providers/speed-report"
+                      className="text-sm text-primary hover:underline"
+                    >
+                      View Full Speed Report
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
         </section>
 

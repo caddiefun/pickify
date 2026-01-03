@@ -17,6 +17,7 @@ import {
   DisclosureBanner,
   ProductLogo,
 } from "@/components/comparison";
+import { ReviewBadges } from "@/components/comparison/review-badges";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -251,6 +252,11 @@ export default async function ComparisonPage({ params }: PageProps) {
                         </p>
                       </div>
                     </div>
+                    {product.review_sources && product.review_sources.length > 0 && (
+                      <div className="mb-4">
+                        <ReviewBadges sources={product.review_sources} variant="compact" />
+                      </div>
+                    )}
                     <div className="flex gap-2">
                       <Button
                         className={`flex-1 ${winner.id === product.id ? "gradient-primary" : ""}`}
