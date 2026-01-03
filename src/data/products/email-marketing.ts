@@ -6,7 +6,7 @@ export const emailMarketingProducts: Product[] = [
     vertical_id: "3",
     slug: "mailchimp",
     name: "Mailchimp",
-    logo_url: "https://www.google.com/s2/favicons?domain=mailchimp.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://mailchimp.com&size=128",
     website_url: "https://mailchimp.com",
     description:
       "Mailchimp is the most popular email marketing platform, known for its user-friendly interface, powerful automation features, and comprehensive marketing tools. Great for businesses of all sizes.",
@@ -74,7 +74,7 @@ export const emailMarketingProducts: Product[] = [
     vertical_id: "3",
     slug: "convertkit",
     name: "ConvertKit",
-    logo_url: "https://www.google.com/s2/favicons?domain=convertkit.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://convertkit.com&size=128",
     website_url: "https://convertkit.com",
     description:
       "ConvertKit is designed specifically for creators - bloggers, podcasters, YouTubers, and course creators. It excels at subscriber tagging, visual automation, and landing pages.",
@@ -142,7 +142,7 @@ export const emailMarketingProducts: Product[] = [
     vertical_id: "3",
     slug: "klaviyo",
     name: "Klaviyo",
-    logo_url: "https://www.google.com/s2/favicons?domain=klaviyo.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://klaviyo.com&size=128",
     website_url: "https://klaviyo.com",
     description:
       "Klaviyo is the leading email marketing platform for e-commerce. With deep Shopify integration, powerful segmentation, and predictive analytics, it helps online stores maximize revenue.",
@@ -210,7 +210,7 @@ export const emailMarketingProducts: Product[] = [
     vertical_id: "3",
     slug: "activecampaign",
     name: "ActiveCampaign",
-    logo_url: "https://www.google.com/s2/favicons?domain=activecampaign.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://activecampaign.com&size=128",
     website_url: "https://activecampaign.com",
     description:
       "ActiveCampaign combines email marketing with CRM and sales automation. It's known for having the most powerful automation builder and is great for businesses needing advanced workflows.",
@@ -278,7 +278,7 @@ export const emailMarketingProducts: Product[] = [
     vertical_id: "3",
     slug: "brevo",
     name: "Brevo (Sendinblue)",
-    logo_url: "https://www.google.com/s2/favicons?domain=brevo.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://brevo.com&size=128",
     website_url: "https://brevo.com",
     description:
       "Brevo (formerly Sendinblue) offers email marketing, SMS, and CRM in one affordable platform. With generous free tier and pay-by-email pricing, it's great for budget-conscious marketers.",
@@ -346,7 +346,7 @@ export const emailMarketingProducts: Product[] = [
     vertical_id: "3",
     slug: "constant-contact",
     name: "Constant Contact",
-    logo_url: "https://www.google.com/s2/favicons?domain=constantcontact.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://constantcontact.com&size=128",
     website_url: "https://constantcontact.com",
     description:
       "Constant Contact is one of the oldest email marketing platforms, known for excellent customer support and ease of use. Great for small businesses and nonprofits.",

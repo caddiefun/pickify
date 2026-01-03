@@ -6,7 +6,7 @@ export const projectManagementProducts: Product[] = [
     vertical_id: "5",
     slug: "monday",
     name: "Monday.com",
-    logo_url: "https://www.google.com/s2/favicons?domain=monday.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://monday.com&size=128",
     website_url: "https://monday.com",
     description:
       "Monday.com is a highly visual and flexible work operating system that helps teams plan, track, and manage projects. Known for its colorful interface and powerful automation capabilities.",
@@ -74,7 +74,7 @@ export const projectManagementProducts: Product[] = [
     vertical_id: "5",
     slug: "asana",
     name: "Asana",
-    logo_url: "https://www.google.com/s2/favicons?domain=asana.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://asana.com&size=128",
     website_url: "https://asana.com",
     description:
       "Asana is a comprehensive project management platform designed to help teams organize, track, and manage work. Known for its powerful task management and workflow features.",
@@ -142,7 +142,7 @@ export const projectManagementProducts: Product[] = [
     vertical_id: "5",
     slug: "clickup",
     name: "ClickUp",
-    logo_url: "https://www.google.com/s2/favicons?domain=clickup.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://clickup.com&size=128",
     website_url: "https://clickup.com",
     description:
       "ClickUp is an all-in-one productivity platform that combines project management, docs, chat, goals, and more. Known for its feature density and excellent free plan.",
@@ -210,7 +210,7 @@ export const projectManagementProducts: Product[] = [
     vertical_id: "5",
     slug: "notion",
     name: "Notion",
-    logo_url: "https://www.google.com/s2/favicons?domain=notion.so&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://notion.so&size=128",
     website_url: "https://notion.so",
     description:
       "Notion is a flexible workspace that combines notes, docs, wikis, and project management. Perfect for teams who want to customize their workspace exactly how they want it.",
@@ -278,7 +278,7 @@ export const projectManagementProducts: Product[] = [
     vertical_id: "5",
     slug: "trello",
     name: "Trello",
-    logo_url: "https://www.google.com/s2/favicons?domain=trello.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://trello.com&size=128",
     website_url: "https://trello.com",
     description:
       "Trello is a simple, visual Kanban-based project management tool. Perfect for small teams who want straightforward task management without complexity.",
@@ -346,7 +346,7 @@ export const projectManagementProducts: Product[] = [
     vertical_id: "5",
     slug: "basecamp",
     name: "Basecamp",
-    logo_url: "https://www.google.com/s2/favicons?domain=basecamp.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://basecamp.com&size=128",
     website_url: "https://basecamp.com",
     description:
       "Basecamp is an all-in-one project management and team communication tool with simple, flat pricing. Known for its opinionated design and focus on reducing work chaos.",

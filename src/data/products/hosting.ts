@@ -6,7 +6,7 @@ export const hostingProducts: Product[] = [
     vertical_id: "2",
     slug: "bluehost",
     name: "Bluehost",
-    logo_url: "https://www.google.com/s2/favicons?domain=bluehost.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://bluehost.com&size=128",
     website_url: "https://bluehost.com",
     description:
       "Bluehost is one of the most popular web hosting providers, officially recommended by WordPress.org. Known for its beginner-friendly interface and excellent WordPress integration, it's a top choice for new website owners.",
@@ -74,7 +74,7 @@ export const hostingProducts: Product[] = [
     vertical_id: "2",
     slug: "siteground",
     name: "SiteGround",
-    logo_url: "https://www.google.com/s2/favicons?domain=siteground.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://siteground.com&size=128",
     website_url: "https://siteground.com",
     description:
       "SiteGround is known for exceptional customer support and performance. With managed WordPress hosting, daily backups, and a custom caching system, it's ideal for users who want reliable, fast hosting.",
@@ -142,7 +142,7 @@ export const hostingProducts: Product[] = [
     vertical_id: "2",
     slug: "hostinger",
     name: "Hostinger",
-    logo_url: "https://www.google.com/s2/favicons?domain=hostinger.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hostinger.com&size=128",
     website_url: "https://hostinger.com",
     description:
       "Hostinger offers some of the most affordable web hosting on the market without sacrificing performance. With their hPanel control panel and AI website builder, it's great for budget-conscious users.",
@@ -210,7 +210,7 @@ export const hostingProducts: Product[] = [
     vertical_id: "2",
     slug: "cloudways",
     name: "Cloudways",
-    logo_url: "https://www.google.com/s2/favicons?domain=cloudways.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://cloudways.com&size=128",
     website_url: "https://cloudways.com",
     description:
       "Cloudways is a managed cloud hosting platform that lets you choose from 5 cloud providers (AWS, Google Cloud, DigitalOcean, Linode, Vultr). Perfect for developers and growing businesses.",
@@ -278,7 +278,7 @@ export const hostingProducts: Product[] = [
     vertical_id: "2",
     slug: "wp-engine",
     name: "WP Engine",
-    logo_url: "https://www.google.com/s2/favicons?domain=wpengine.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wpengine.com&size=128",
     website_url: "https://wpengine.com",
     description:
       "WP Engine is a premium managed WordPress hosting provider focused on performance, security, and developer tools. Ideal for businesses and high-traffic sites that need enterprise-grade hosting.",
@@ -346,7 +346,7 @@ export const hostingProducts: Product[] = [
     vertical_id: "2",
     slug: "a2-hosting",
     name: "A2 Hosting",
-    logo_url: "https://www.google.com/s2/favicons?domain=a2hosting.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://a2hosting.com&size=128",
     website_url: "https://a2hosting.com",
     description:
       "A2 Hosting is known for its turbo servers that offer up to 20x faster speeds. With a focus on performance and developer-friendly features, it's a solid choice for speed-focused sites.",

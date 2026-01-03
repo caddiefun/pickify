@@ -6,7 +6,7 @@ export const websiteBuilderProducts: Product[] = [
     vertical_id: "7",
     slug: "wix",
     name: "Wix",
-    logo_url: "https://www.google.com/s2/favicons?domain=wix.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wix.com&size=128",
     website_url: "https://wix.com",
     description:
       "Wix is one of the most popular website builders, known for its drag-and-drop editor and extensive template library. With AI-powered design tools and a comprehensive app market, it's great for beginners and pros alike.",
@@ -74,7 +74,7 @@ export const websiteBuilderProducts: Product[] = [
     vertical_id: "7",
     slug: "squarespace",
     name: "Squarespace",
-    logo_url: "https://www.google.com/s2/favicons?domain=squarespace.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://squarespace.com&size=128",
     website_url: "https://squarespace.com",
     description:
       "Squarespace is known for its stunning, award-winning templates and design-focused approach. Perfect for creatives, artists, and businesses wanting a beautiful, professional website.",
@@ -142,7 +142,7 @@ export const websiteBuilderProducts: Product[] = [
     vertical_id: "7",
     slug: "shopify",
     name: "Shopify",
-    logo_url: "https://www.google.com/s2/favicons?domain=shopify.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://shopify.com&size=128",
     website_url: "https://shopify.com",
     description:
       "Shopify is the leading e-commerce platform, powering millions of online stores. With comprehensive selling tools, extensive app ecosystem, and excellent support, it's the go-to choice for serious e-commerce.",
@@ -210,7 +210,7 @@ export const websiteBuilderProducts: Product[] = [
     vertical_id: "7",
     slug: "webflow",
     name: "Webflow",
-    logo_url: "https://www.google.com/s2/favicons?domain=webflow.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://webflow.com&size=128",
     website_url: "https://webflow.com",
     description:
       "Webflow is a professional website builder that gives designers the power of code without writing it. Perfect for agencies, designers, and developers who want pixel-perfect control.",
@@ -278,7 +278,7 @@ export const websiteBuilderProducts: Product[] = [
     vertical_id: "7",
     slug: "wordpress-com",
     name: "WordPress.com",
-    logo_url: "https://www.google.com/s2/favicons?domain=wordpress.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wordpress.com&size=128",
     website_url: "https://wordpress.com",
     description:
       "WordPress.com is the hosted version of WordPress, offering the power of WordPress without the technical setup. Good for bloggers and those wanting WordPress without server management.",
@@ -346,7 +346,7 @@ export const websiteBuilderProducts: Product[] = [
     vertical_id: "7",
     slug: "weebly",
     name: "Weebly",
-    logo_url: "https://www.google.com/s2/favicons?domain=weebly.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://weebly.com&size=128",
     website_url: "https://weebly.com",
     description:
       "Weebly (now owned by Square) is a beginner-friendly website builder with integrated e-commerce. Great for small businesses wanting a simple website with online selling capabilities.",

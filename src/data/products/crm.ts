@@ -6,7 +6,7 @@ export const crmProducts: Product[] = [
     vertical_id: "6",
     slug: "hubspot",
     name: "HubSpot CRM",
-    logo_url: "https://www.google.com/s2/favicons?domain=hubspot.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://hubspot.com&size=128",
     website_url: "https://hubspot.com",
     description:
       "HubSpot CRM is a powerful, free customer relationship management platform. Known for its comprehensive free tier and seamless integration with HubSpot's marketing, sales, and service hubs.",
@@ -74,7 +74,7 @@ export const crmProducts: Product[] = [
     vertical_id: "6",
     slug: "salesforce",
     name: "Salesforce",
-    logo_url: "https://www.google.com/s2/favicons?domain=salesforce.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://salesforce.com&size=128",
     website_url: "https://salesforce.com",
     description:
       "Salesforce is the world's leading CRM platform, used by enterprises of all sizes. Known for its extensive customization, powerful features, and robust ecosystem.",
@@ -142,7 +142,7 @@ export const crmProducts: Product[] = [
     vertical_id: "6",
     slug: "pipedrive",
     name: "Pipedrive",
-    logo_url: "https://www.google.com/s2/favicons?domain=pipedrive.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pipedrive.com&size=128",
     website_url: "https://pipedrive.com",
     description:
       "Pipedrive is a sales-focused CRM designed by salespeople for salespeople. Known for its visual pipeline management and ease of use.",
@@ -210,7 +210,7 @@ export const crmProducts: Product[] = [
     vertical_id: "6",
     slug: "zoho-crm",
     name: "Zoho CRM",
-    logo_url: "https://www.google.com/s2/favicons?domain=zoho.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://zoho.com&size=128",
     website_url: "https://zoho.com/crm",
     description:
       "Zoho CRM is part of the comprehensive Zoho suite, offering powerful features at competitive prices. Great for businesses already using other Zoho products.",
@@ -278,7 +278,7 @@ export const crmProducts: Product[] = [
     vertical_id: "6",
     slug: "freshsales",
     name: "Freshsales",
-    logo_url: "https://www.google.com/s2/favicons?domain=freshworks.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://freshworks.com&size=128",
     website_url: "https://freshworks.com/crm/sales",
     description:
       "Freshsales (by Freshworks) is a modern CRM with built-in phone, email, and AI-powered lead scoring. Great for SMBs wanting an easy-to-use, all-in-one solution.",
@@ -346,7 +346,7 @@ export const crmProducts: Product[] = [
     vertical_id: "6",
     slug: "close",
     name: "Close",
-    logo_url: "https://www.google.com/s2/favicons?domain=close.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://close.com&size=128",
     website_url: "https://close.com",
     description:
       "Close is a CRM built specifically for inside sales teams with built-in calling, SMS, and email. Perfect for high-velocity sales operations.",

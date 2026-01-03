@@ -6,7 +6,7 @@ export const vpnProducts: Product[] = [
     vertical_id: "1",
     slug: "nordvpn",
     name: "NordVPN",
-    logo_url: "https://www.google.com/s2/favicons?domain=nordvpn.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://nordvpn.com&size=128",
     website_url: "https://nordvpn.com",
     description:
       "NordVPN is one of the most popular VPN services, known for its robust security features, vast server network, and excellent streaming capabilities. With over 8,900 servers across 178+ locations, NordVPN offers reliable connections, impressive speeds up to 1,000 Mbps, and post-quantum encryption support.",
@@ -81,7 +81,7 @@ export const vpnProducts: Product[] = [
     vertical_id: "1",
     slug: "expressvpn",
     name: "ExpressVPN",
-    logo_url: "https://www.google.com/s2/favicons?domain=expressvpn.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://expressvpn.com&size=128",
     website_url: "https://expressvpn.com",
     description:
       "ExpressVPN is a premium VPN service known for its blazing-fast speeds, strong security, and exceptional ease of use. With servers in 105 countries and up to 14 simultaneous connections on the Pro plan, it's one of the most reliable VPNs for streaming and general privacy.",
@@ -156,7 +156,7 @@ export const vpnProducts: Product[] = [
     vertical_id: "1",
     slug: "surfshark",
     name: "Surfshark",
-    logo_url: "https://www.google.com/s2/favicons?domain=surfshark.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://surfshark.com&size=128",
     website_url: "https://surfshark.com",
     description:
       "Surfshark is a budget-friendly VPN that doesn't compromise on features. With unlimited device connections, 4,500+ RAM-only servers upgraded to 10Gbps, and unique features like GPS spoofing on Android, it's perfect for families or users with many devices.",
@@ -231,7 +231,7 @@ export const vpnProducts: Product[] = [
     vertical_id: "1",
     slug: "cyberghost",
     name: "CyberGhost",
-    logo_url: "https://www.google.com/s2/favicons?domain=cyberghostvpn.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://cyberghostvpn.com&size=128",
     website_url: "https://cyberghostvpn.com",
     description:
       "CyberGhost offers a massive server network with 11,500+ servers across 100 countries, including dedicated streaming and gaming servers. Based in privacy-friendly Romania, it's user-friendly and provides great value with longer subscription plans.",
@@ -305,7 +305,7 @@ export const vpnProducts: Product[] = [
     vertical_id: "1",
     slug: "protonvpn",
     name: "ProtonVPN",
-    logo_url: "https://www.google.com/s2/favicons?domain=protonvpn.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://protonvpn.com&size=128",
     website_url: "https://protonvpn.com",
     description:
       "ProtonVPN is built by the team behind ProtonMail, focusing on privacy and security. Based in Switzerland with 15,000+ servers in 120+ countries, it offers a free tier with no data limits and unique features like VPN Accelerator and Stealth protocol for bypassing VPN blocks.",
@@ -387,7 +387,7 @@ export const vpnProducts: Product[] = [
     vertical_id: "1",
     slug: "private-internet-access",
     name: "Private Internet Access",
-    logo_url: "https://www.google.com/s2/favicons?domain=privateinternetaccess.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://privateinternetaccess.com&size=128",
     website_url: "https://privateinternetaccess.com",
     description:
       "Private Internet Access (PIA) is a veteran VPN provider known for its customizable security settings, unlimited connections, and proven no-logs policy verified in court. With 35,000+ servers in 91 countries including all 50 US states, it offers excellent coverage.",

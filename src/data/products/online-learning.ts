@@ -6,7 +6,7 @@ export const onlineLearningProducts: Product[] = [
     vertical_id: "8",
     slug: "coursera",
     name: "Coursera",
-    logo_url: "https://www.google.com/s2/favicons?domain=coursera.org&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://coursera.org&size=128",
     website_url: "https://coursera.org",
     description:
       "Coursera partners with top universities and companies to offer courses, certificates, and degrees. Known for high-quality, accredited content from institutions like Stanford, Yale, and Google.",
@@ -74,7 +74,7 @@ export const onlineLearningProducts: Product[] = [
     vertical_id: "8",
     slug: "udemy",
     name: "Udemy",
-    logo_url: "https://www.google.com/s2/favicons?domain=udemy.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://udemy.com&size=128",
     website_url: "https://udemy.com",
     description:
       "Udemy is the largest online course marketplace with over 200,000 courses. Known for frequent sales, diverse topics, and affordable one-time purchase pricing.",
@@ -142,7 +142,7 @@ export const onlineLearningProducts: Product[] = [
     vertical_id: "8",
     slug: "linkedin-learning",
     name: "LinkedIn Learning",
-    logo_url: "https://www.google.com/s2/favicons?domain=linkedin.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://linkedin.com&size=128",
     website_url: "https://linkedin.com/learning",
     description:
       "LinkedIn Learning (formerly Lynda.com) offers professional courses that integrate with your LinkedIn profile. Great for career development and professional skills.",
@@ -210,7 +210,7 @@ export const onlineLearningProducts: Product[] = [
     vertical_id: "8",
     slug: "skillshare",
     name: "Skillshare",
-    logo_url: "https://www.google.com/s2/favicons?domain=skillshare.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://skillshare.com&size=128",
     website_url: "https://skillshare.com",
     description:
       "Skillshare focuses on creative skills like design, illustration, photography, and video. Known for its project-based learning approach and creative community.",
@@ -278,7 +278,7 @@ export const onlineLearningProducts: Product[] = [
     vertical_id: "8",
     slug: "pluralsight",
     name: "Pluralsight",
-    logo_url: "https://www.google.com/s2/favicons?domain=pluralsight.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pluralsight.com&size=128",
     website_url: "https://pluralsight.com",
     description:
       "Pluralsight is focused on technology skills for developers, IT pros, and data professionals. Known for high-quality tech courses, skill assessments, and learning paths.",
@@ -346,7 +346,7 @@ export const onlineLearningProducts: Product[] = [
     vertical_id: "8",
     slug: "masterclass",
     name: "MasterClass",
-    logo_url: "https://www.google.com/s2/favicons?domain=masterclass.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://masterclass.com&size=128",
     website_url: "https://masterclass.com",
     description:
       "MasterClass offers celebrity-taught courses in various fields. Learn cooking from Gordon Ramsay, filmmaking from Martin Scorsese, or writing from Margaret Atwood.",

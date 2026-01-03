@@ -6,7 +6,7 @@ export const cloudStorageProducts: Product[] = [
     vertical_id: "12",
     slug: "google-drive",
     name: "Google Drive",
-    logo_url: "https://www.google.com/s2/favicons?domain=google.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://google.com&size=128",
     website_url: "https://drive.google.com",
     description:
       "Google Drive offers seamless integration with Google Workspace, making it ideal for collaboration. With 15GB free storage, real-time editing in Docs/Sheets/Slides, and excellent search, it's the most popular cloud storage solution.",
@@ -80,7 +80,7 @@ export const cloudStorageProducts: Product[] = [
     vertical_id: "12",
     slug: "dropbox",
     name: "Dropbox",
-    logo_url: "https://www.google.com/s2/favicons?domain=dropbox.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://dropbox.com&size=128",
     website_url: "https://dropbox.com",
     description:
       "Dropbox pioneered consumer cloud storage and remains excellent for file syncing and sharing. With smart sync, Paper for collaboration, and robust third-party integrations, it's great for productivity-focused users.",
@@ -154,7 +154,7 @@ export const cloudStorageProducts: Product[] = [
     vertical_id: "12",
     slug: "icloud",
     name: "iCloud",
-    logo_url: "https://www.google.com/s2/favicons?domain=apple.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://apple.com&size=128",
     website_url: "https://icloud.com",
     description:
       "iCloud is the native cloud solution for Apple users, offering seamless integration with all Apple devices. From photo backup to device sync and Find My, it's essential for anyone in the Apple ecosystem.",
@@ -232,7 +232,7 @@ export const cloudStorageProducts: Product[] = [
     vertical_id: "12",
     slug: "idrive",
     name: "IDrive",
-    logo_url: "https://www.google.com/s2/favicons?domain=idrive.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://idrive.com&size=128",
     website_url: "https://idrive.com",
     description:
       "IDrive specializes in backup with features like continuous backup, versioning, and physical drive shipping. It's ideal for users who prioritize data protection and want to backup multiple devices affordably.",
@@ -304,7 +304,7 @@ export const cloudStorageProducts: Product[] = [
     vertical_id: "12",
     slug: "pcloud",
     name: "pCloud",
-    logo_url: "https://www.google.com/s2/favicons?domain=pcloud.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://pcloud.com&size=128",
     website_url: "https://pcloud.com",
     description:
       "pCloud offers unique lifetime payment options and optional client-side encryption. Based in Switzerland, it's ideal for privacy-conscious users who want to pay once and own their storage forever.",
@@ -386,7 +386,7 @@ export const cloudStorageProducts: Product[] = [
     vertical_id: "12",
     slug: "sync",
     name: "Sync.com",
-    logo_url: "https://www.google.com/s2/favicons?domain=sync.com&sz=128",
+    logo_url: "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://sync.com&size=128",
     website_url: "https://sync.com",
     description:
       "Sync.com offers zero-knowledge encryption by default, ensuring only you can access your files. Based in Canada with strong privacy laws, it's the top choice for security-conscious users.",
