@@ -2,24 +2,32 @@ import Link from "next/link";
 import { AFFILIATE_DISCLOSURE } from "@/lib/affiliate";
 
 const footerLinks = {
-  categories: [
+  categoriesLeft: [
     { label: "All Categories", href: "/categories" },
     { label: "VPNs", href: "/vpn" },
-    { label: "Web Hosting", href: "/hosting" },
     { label: "Antivirus", href: "/antivirus" },
     { label: "Password Managers", href: "/password-managers" },
+    { label: "Home Security", href: "/home-security" },
     { label: "Internet Providers", href: "/internet-providers" },
+  ],
+  categoriesRight: [
+    { label: "Web Hosting", href: "/hosting" },
+    { label: "Website Builders", href: "/website-builders" },
+    { label: "Cloud Storage", href: "/cloud-storage" },
+    { label: "Email Marketing", href: "/email-marketing" },
+    { label: "CRM Software", href: "/crm" },
+    { label: "Project Management", href: "/project-management" },
+    { label: "Online Learning", href: "/online-learning" },
   ],
   resources: [
     { label: "About Us", href: "/about" },
+    { label: "Methodology", href: "/methodology" },
     { label: "Contact", href: "/contact" },
-    { label: "Advertise", href: "/advertise" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
     { label: "Affiliate Disclosure", href: "/disclosure" },
-    { label: "Cookie Policy", href: "/cookies" },
   ],
 };
 
@@ -44,9 +52,9 @@ export function Footer() {
       </div>
 
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Column */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
                 <span className="text-lg font-bold text-primary-foreground">
@@ -64,11 +72,28 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Categories */}
+          {/* Categories - Left Column */}
           <div>
             <h3 className="font-semibold mb-4">Categories</h3>
             <ul className="space-y-2">
-              {footerLinks.categories.map((link) => (
+              {footerLinks.categoriesLeft.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Categories - Right Column */}
+          <div>
+            <h3 className="font-semibold mb-4 invisible">Categories</h3>
+            <ul className="space-y-2">
+              {footerLinks.categoriesRight.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
