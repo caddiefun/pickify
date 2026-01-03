@@ -8,6 +8,7 @@ import {
   Users,
   Globe,
   GraduationCap,
+  Wifi,
   ArrowRight,
   CheckCircle,
   Zap,
@@ -30,6 +31,7 @@ const iconMap: Record<string, React.ElementType> = {
   Users,
   Globe,
   GraduationCap,
+  Wifi,
 };
 
 const features = [
