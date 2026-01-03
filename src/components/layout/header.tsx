@@ -11,6 +11,7 @@ import {
   Users,
   Globe,
   GraduationCap,
+  Wifi,
   Menu,
   X,
   ChevronDown,
@@ -75,6 +76,12 @@ const verticals = [
     href: "/online-learning",
     description: "Learn new skills online",
     icon: GraduationCap,
+  },
+  {
+    title: "Internet Providers",
+    href: "/internet-providers",
+    description: "Find ISPs in your area",
+    icon: Wifi,
   },
 ];
 
