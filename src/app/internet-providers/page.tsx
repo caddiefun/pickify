@@ -48,9 +48,9 @@ export default function InternetProvidersPage() {
 
       <main className="flex-1">
         {/* Hero Section with Search */}
-        <section className="py-12 md:py-20 bg-gradient-to-b from-accent/50 to-background">
+        <section className="py-16 md:py-24 bg-gradient-to-b from-accent/50 to-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center">
               <Badge variant="secondary" className="mb-4">
                 <Wifi className="w-3 h-3 mr-1" />
                 Find Internet in Your Area
@@ -75,9 +75,9 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Featured Providers */}
-        <section className="py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold">Top-Rated Internet Providers</h2>
               <Link
                 href="/internet-providers/compare"
@@ -109,9 +109,9 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Why Compare Section */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold text-center mb-8">
+            <h2 className="text-2xl font-bold text-center mb-12">
               Why Compare Internet Providers?
             </h2>
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -162,7 +162,7 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Speed Report CTA */}
-        <section className="py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <Card className="bg-primary/5 border-primary/20">
               <CardContent className="p-6 md:p-8">
@@ -215,9 +215,9 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Browse by State */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-8">
               Browse Internet Providers by State
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
@@ -235,9 +235,9 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Popular Cities */}
-        <section className="py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">Popular Cities</h2>
+            <h2 className="text-2xl font-bold mb-8">Popular Cities</h2>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {statesWithCities.slice(0, 8).flatMap(({ state, cities }) =>
                 cities.slice(0, 2).map((city) => (
@@ -256,9 +256,9 @@ export default function InternetProvidersPage() {
         </section>
 
         {/* Editorial Introduction */}
-        <section className="py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto prose dark:prose-invert">
+            <div className="max-w-4xl mx-auto prose dark:prose-invert">
               <h2>How We Review Internet Providers</h2>
               <p>
                 Choosing the right internet provider is one of the most important

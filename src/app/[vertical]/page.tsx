@@ -116,7 +116,7 @@ export default async function VerticalPage({ params }: PageProps) {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-accent/50 to-background border-b">
-          <div className="container mx-auto px-4 py-12 md:py-16">
+          <div className="container mx-auto px-4 py-16 md:py-24">
             <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
               <div className="lg:col-span-3">
                 <LastUpdatedBadge date={lastUpdated} className="mb-4" />
@@ -172,9 +172,9 @@ export default async function VerticalPage({ params }: PageProps) {
         </section>
 
         {/* Quick Answer + Editorial Intro - Combined for better flow */}
-        <section className="py-12 border-b">
+        <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-8">
               {/* Quick Answer */}
               {quickAnswerProps && (
                 <div>
@@ -233,9 +233,9 @@ export default async function VerticalPage({ params }: PageProps) {
 
         {/* Editor's Choice / Top Pick */}
         {editorsChoice && (
-          <section id="top-picks" className="py-12">
+          <section id="top-picks" className="py-12 md:py-16">
             <div className="container mx-auto px-4">
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-8">
                 <h2 className="text-2xl font-bold">Our Top Pick</h2>
                 <Badge className="bg-success text-success-foreground">
                   Editor&apos;s Choice
@@ -252,9 +252,9 @@ export default async function VerticalPage({ params }: PageProps) {
         )}
 
         {/* All Products */}
-        <section id="all-products" className="py-12 bg-muted/30">
+        <section id="all-products" className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold">
                 All {vertical.name} Ranked
               </h2>
@@ -302,10 +302,10 @@ export default async function VerticalPage({ params }: PageProps) {
 
         {/* Best For Section */}
         {bestForPages.length > 0 && (
-          <section id="best-for" className="py-12">
+          <section id="best-for" className="py-12 md:py-16">
             <div className="container mx-auto px-4">
-              <h2 className="text-2xl font-bold mb-2">Best For Your Needs</h2>
-              <p className="text-muted-foreground mb-6">
+              <h2 className="text-2xl font-bold mb-3">Best For Your Needs</h2>
+              <p className="text-muted-foreground mb-8">
                 Find the perfect {vertical.name.toLowerCase()} for your specific use case
               </p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -333,10 +333,10 @@ export default async function VerticalPage({ params }: PageProps) {
         )}
 
         {/* Comparisons Section */}
-        <section id="comparisons" className="py-12 bg-muted/30">
+        <section id="comparisons" className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-2">Popular Comparisons</h2>
-            <p className="text-muted-foreground mb-6">
+            <h2 className="text-2xl font-bold mb-3">Popular Comparisons</h2>
+            <p className="text-muted-foreground mb-8">
               See how the top {vertical.name.toLowerCase()} stack up against each other
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -380,17 +380,17 @@ export default async function VerticalPage({ params }: PageProps) {
         </section>
 
         {/* FAQ Section - AI Citation Optimized */}
-        <section id="faq" className="py-12">
+        <section id="faq" className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">
+              <h2 className="text-2xl font-bold mb-8 text-center">
                 Frequently Asked Questions
               </h2>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border rounded-lg p-5 bg-card"
+                  className="border rounded-lg p-6 bg-card"
                   itemScope
                   itemType="https://schema.org/Question"
                 >
@@ -420,7 +420,7 @@ export default async function VerticalPage({ params }: PageProps) {
         </section>
 
         {/* Methodology Section */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-3 gap-8 items-center">
               <div className="lg:col-span-2">

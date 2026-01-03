@@ -165,7 +165,7 @@ export default async function ProductPage({ params }: PageProps) {
         </div>
 
         {/* Hero Section */}
-        <section className="py-12 md:py-16">
+        <section className="py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-3 gap-8">
               {/* Main Content */}
@@ -473,16 +473,16 @@ export default async function ProductPage({ params }: PageProps) {
         </section>
 
         {/* FAQ Section - AI Citation Optimized */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-8">
               {product.name} FAQ
             </h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-6">
               {faqs.slice(0, 6).map((faq, index) => (
                 <div
                   key={index}
-                  className="border rounded-lg p-5 bg-card"
+                  className="border rounded-lg p-6 bg-card"
                   itemScope
                   itemType="https://schema.org/Question"
                 >
@@ -508,7 +508,7 @@ export default async function ProductPage({ params }: PageProps) {
         </section>
 
         {/* Back Link */}
-        <section className="py-12 border-t">
+        <section className="py-8 md:py-12 border-t">
           <div className="container mx-auto px-4">
             <Button variant="ghost" asChild>
               <Link href={`/${verticalSlug}`}>

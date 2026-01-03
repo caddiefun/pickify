@@ -105,7 +105,7 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </div>
 
         {/* Hero Section */}
-        <section className="py-8 md:py-12 bg-gradient-to-b from-accent/50 to-background">
+        <section className="py-16 md:py-24 bg-gradient-to-b from-accent/50 to-background">
           <div className="container mx-auto px-4">
             <Badge variant="secondary" className="mb-4">
               <MapPin className="w-3 h-3 mr-1" />
@@ -124,18 +124,18 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* AI-Optimized Quick Answer */}
-        <section className="py-8 border-b">
+        <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl mx-auto">
               <QuickAnswer {...quickAnswerProps} />
             </div>
           </div>
         </section>
 
         {/* Quick Stats */}
-        <section className="py-6 border-b">
+        <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Card className="flex-1 min-w-[140px] max-w-[200px]">
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl font-bold text-primary">
@@ -173,9 +173,9 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* Provider Comparison Table */}
-        <section className="py-8">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-8">
               Home Security Providers in {state.name}
             </h2>
             <div className="overflow-x-auto">
@@ -288,9 +288,9 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* DIY vs Professional Section */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-8">
               DIY vs Professional Installation in {state.name}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -370,7 +370,7 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* Editorial Content */}
-        <section className="py-8">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto prose dark:prose-invert">
               <h2>Home Security in {state.name}</h2>
@@ -409,16 +409,16 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* FAQ Section - AI Citation Optimized */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-8">
               Home Security FAQs for {state.name} Residents
             </h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-6">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className="border rounded-lg p-5 bg-card"
+                  className="border rounded-lg p-6 bg-card"
                   itemScope
                   itemType="https://schema.org/Question"
                 >
@@ -447,7 +447,7 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* Other States */}
-        <section className="py-8">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-xl font-bold mb-4">
               Home Security in Other States
@@ -475,7 +475,7 @@ export default async function HomeSecurityStatePage({ params }: PageProps) {
         </section>
 
         {/* Back Link */}
-        <section className="py-8 border-t">
+        <section className="py-8 md:py-12 border-t">
           <div className="container mx-auto px-4">
             <Button variant="ghost" asChild>
               <Link href="/home-security">

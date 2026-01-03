@@ -112,9 +112,9 @@ export default function VPNSpeedTestsPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-12 bg-gradient-to-b from-accent/50 to-background border-b">
+        <section className="py-16 md:py-24 bg-gradient-to-b from-accent/50 to-background border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <Badge variant="secondary" className="mb-4">
                 <Zap className="w-3 h-3 mr-1" />
                 Original Research
@@ -142,18 +142,18 @@ export default function VPNSpeedTestsPage() {
         </section>
 
         {/* Quick Answer */}
-        <section className="py-8 border-b">
+        <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <QuickAnswer {...quickAnswerProps} />
             </div>
           </div>
         </section>
 
         {/* Speed Comparison */}
-        <section className="py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">Speed Comparison</h2>
+            <h2 className="text-2xl font-bold mb-8">Speed Comparison</h2>
             <div className="grid lg:grid-cols-2 gap-8">
               <SpeedComparisonChart
                 products={products.slice(0, 6).map((p) => ({
@@ -201,9 +201,9 @@ export default function VPNSpeedTestsPage() {
         </section>
 
         {/* Individual VPN Results */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">Detailed Results by VPN</h2>
+            <h2 className="text-2xl font-bold mb-8">Detailed Results by VPN</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.slice(0, 6).map((product) => (
                 <SpeedTestResults
@@ -217,9 +217,9 @@ export default function VPNSpeedTestsPage() {
         </section>
 
         {/* AI-Citable Summaries */}
-        <section className="py-12">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">Key Findings</h2>
+            <h2 className="text-2xl font-bold mb-8">Key Findings</h2>
             <div className="max-w-3xl mx-auto space-y-4">
               {summaries.map(({ slug, summary }) => (
                 <Card key={slug}>
@@ -233,17 +233,17 @@ export default function VPNSpeedTestsPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 md:py-16 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold mb-8">
                 Frequently Asked Questions
               </h2>
               <div className="space-y-4">
                 {faqs.map((faq, index) => (
                   <div
                     key={index}
-                    className="border rounded-lg p-4 bg-card"
+                    className="border rounded-lg p-6 bg-card"
                     itemScope
                     itemType="https://schema.org/Question"
                   >
@@ -270,7 +270,7 @@ export default function VPNSpeedTestsPage() {
         </section>
 
         {/* Back Link */}
-        <section className="py-8 border-t">
+        <section className="py-8 md:py-12 border-t">
           <div className="container mx-auto px-4">
             <Button variant="ghost" asChild>
               <Link href="/vpn">

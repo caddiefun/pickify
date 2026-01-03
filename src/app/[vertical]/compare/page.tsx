@@ -110,7 +110,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-accent/50 to-background border-b">
-          <div className="container mx-auto px-4 py-12 md:py-16">
+          <div className="container mx-auto px-4 py-16 md:py-24">
             <div className="max-w-4xl mx-auto text-center">
               <div className="flex flex-wrap items-center justify-center gap-4 mb-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
@@ -141,7 +141,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         </section>
 
         {/* AI-Optimized Quick Answer */}
-        <section className="py-12 border-b">
+        <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               {editorsChoice && runnerUp && (
@@ -163,7 +163,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Quick Summary / TL;DR */}
-        <section className="py-12 border-b bg-muted/30">
+        <section className="py-12 md:py-16 border-b bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-lg font-semibold mb-4 flex items-center justify-center gap-2">
@@ -208,7 +208,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         </section>
 
         {/* Main Editorial Content */}
-        <article className="py-12">
+        <article className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
 
@@ -471,7 +471,7 @@ export default async function MasterComparisonPage({ params }: PageProps) {
         </article>
 
         {/* Other Comparisons */}
-        <section className="py-12 bg-muted/30 border-t">
+        <section className="py-12 md:py-16 bg-muted/30 border-t">
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6 text-center">Head-to-Head Comparisons</h2>
             <p className="text-center text-muted-foreground mb-8">

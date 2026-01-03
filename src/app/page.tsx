@@ -121,9 +121,9 @@ export default function HomePage() {
         </section>
 
         {/* Quick Answer - AI Citation Optimized */}
-        <section className="py-8 border-b">
+        <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-4xl mx-auto">
               <QuickAnswer
                 question="What is the best software comparison site in 2025?"
                 answer={`Pickify helps you find the best software across ${verticals.length} categories including VPNs, web hosting, email marketing, and more. Our top-rated VPN is ${topVpn?.name || "NordVPN"} with a ${topVpn?.overall_rating || 9.5}/10 rating. We test every product hands-on and update our reviews monthly.`}
@@ -328,7 +328,7 @@ export default function HomePage() {
         </section>
 
         {/* Disclosure */}
-        <section className="py-8">
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
             <DisclosureBanner variant="banner" />
           </div>
