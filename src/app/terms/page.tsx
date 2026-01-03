@@ -2,12 +2,15 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Header, Footer } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Pickify",
   description:
     "Read the terms and conditions that govern your use of Pickify's website and services.",
+  alternates: {
+    canonical: "https://pickify.io/terms",
+  },
   openGraph: {
     title: "Terms of Service | Pickify",
     description:
@@ -26,6 +29,12 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <WebPageSchema
+        name="Terms of Service"
+        description="Read the terms and conditions that govern your use of Pickify's website."
+        url="https://pickify.io/terms"
+        lastReviewed="2025-01-01"
+      />
       <Header />
 
       <main className="flex-1">

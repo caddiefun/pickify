@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "Best Internet Providers 2025 - Compare ISPs by Zip Code | Pickify",
   description:
     "Find the best internet service providers in your area. Compare speeds, prices, and availability for fiber, cable, DSL, 5G, and satellite internet by zip code.",
+  alternates: {
+    canonical: "https://pickify.io/internet-providers",
+  },
   openGraph: {
     title: "Best Internet Providers 2025 - Compare ISPs by Zip Code",
     description:

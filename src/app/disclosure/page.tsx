@@ -5,12 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AlertCircle, CheckCircle, DollarSign, Shield, ArrowRight } from "lucide-react";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
   title: "Advertising Disclosure | Pickify",
   description:
     "Learn how Pickify makes money and maintains editorial independence. Full transparency about our affiliate relationships and advertising policies.",
+  alternates: {
+    canonical: "https://pickify.io/disclosure",
+  },
   openGraph: {
     title: "Advertising Disclosure | Pickify",
     description:
@@ -29,6 +32,12 @@ export default function DisclosurePage() {
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <WebPageSchema
+        name="Advertising Disclosure"
+        description="Learn how Pickify makes money and maintains editorial independence."
+        url="https://pickify.io/disclosure"
+        lastReviewed="2025-01-01"
+      />
       <Header />
 
       <main className="flex-1">

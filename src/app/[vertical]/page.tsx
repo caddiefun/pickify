@@ -46,6 +46,9 @@ export async function generateMetadata({
   return {
     title: vertical.meta_title,
     description: vertical.meta_description,
+    alternates: {
+      canonical: `https://pickify.io/${verticalSlug}`,
+    },
     openGraph: {
       title: vertical.meta_title,
       description: vertical.meta_description,

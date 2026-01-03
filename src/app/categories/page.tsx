@@ -27,6 +27,9 @@ export const metadata: Metadata = {
   title: "All Categories - Browse Reviews & Comparisons",
   description:
     "Explore all categories on Pickify. Find honest reviews, detailed comparisons, and expert recommendations for VPNs, web hosting, internet providers, and more.",
+  alternates: {
+    canonical: "https://pickify.io/categories",
+  },
   openGraph: {
     title: "All Categories - Browse Reviews & Comparisons",
     description:

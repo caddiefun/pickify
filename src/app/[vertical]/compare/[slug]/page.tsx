@@ -26,6 +26,7 @@ import {
   getProductsByVertical,
   generateComparison,
 } from "@/data";
+import { getComparisonFeatures } from "@/data/comparison-features";
 import { getEditorialContent } from "@/data/editorial";
 import { generateAffiliateLink, getStartingPrice } from "@/lib/affiliate";
 import {
@@ -70,6 +71,9 @@ export async function generateMetadata({
   return {
     title: comparison.meta_title,
     description: comparison.meta_description,
+    alternates: {
+      canonical: `https://pickify.io/${verticalSlug}/compare/${slug}`,
+    },
     openGraph: {
       title: comparison.meta_title,
       description: comparison.meta_description,
@@ -99,34 +103,8 @@ export default async function ComparisonPage({ params }: PageProps) {
   const editorial = getEditorialContent(verticalSlug);
   const editorialIntro = editorial?.comparisonIntro(productA.name, productB.name);
 
-  // Define comparison features based on vertical
-  const comparisonFeatures = [
-    {
-      category: "Performance",
-      items: [
-        { name: "Servers", key: "servers" },
-        { name: "Countries", key: "countries" },
-        { name: "Simultaneous Connections", key: "simultaneous_connections" },
-      ],
-    },
-    {
-      category: "Security",
-      items: [
-        { name: "Kill Switch", key: "kill_switch" },
-        { name: "No Logs Policy", key: "no_logs" },
-        { name: "Double VPN", key: "double_vpn" },
-      ],
-    },
-    {
-      category: "Features",
-      items: [
-        { name: "Split Tunneling", key: "split_tunneling" },
-        { name: "Streaming Support", key: "streaming_support" },
-        { name: "Torrenting", key: "torrenting" },
-        { name: "Dedicated IP", key: "dedicated_ip" },
-      ],
-    },
-  ];
+  // Get comparison features for this vertical
+  const comparisonFeatures = getComparisonFeatures(verticalSlug);
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },

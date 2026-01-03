@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "VPN Speed Tests 2025 - Real Performance Data | Pickify",
   description:
     "Independent VPN speed test results from January 2025. We tested download speeds, upload speeds, and latency across multiple server locations.",
+  alternates: {
+    canonical: "https://pickify.io/vpn/speed-tests",
+  },
   openGraph: {
     title: "VPN Speed Tests 2025 - Real Performance Data | Pickify",
     description:

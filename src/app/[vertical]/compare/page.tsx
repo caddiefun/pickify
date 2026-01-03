@@ -55,6 +55,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `https://pickify.io/${verticalSlug}/compare`,
+    },
     openGraph: {
       title,
       description,

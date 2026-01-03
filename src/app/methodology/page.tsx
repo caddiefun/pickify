@@ -13,12 +13,15 @@ import {
   RefreshCw,
   ArrowRight,
 } from "lucide-react";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, ArticleSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
   title: "Our Testing Methodology - How We Review Products | Pickify",
   description:
     "Learn about our testing process and methodology for reviewing software products. We use consistent criteria to evaluate features, performance, pricing, and user experience.",
+  alternates: {
+    canonical: "https://pickify.io/methodology",
+  },
   openGraph: {
     title: "Our Testing Methodology - How We Review Products | Pickify",
     description:
@@ -107,6 +110,14 @@ export default function MethodologyPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <ArticleSchema
+        headline="Our Testing Methodology - How We Review Products"
+        description="Learn about our testing process and methodology for reviewing software products."
+        url="https://pickify.io/methodology"
+        datePublished="2024-01-01"
+        dateModified="2025-01-01"
+        about={["Testing Methodology", "Product Reviews", "Software Evaluation"]}
+      />
       <Header />
 
       <main className="flex-1">

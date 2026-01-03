@@ -63,6 +63,9 @@ export async function generateMetadata({
   return {
     title: `${config.title} in 2025 - Top ${vertical.name} Compared | Pickify`,
     description: `${config.description}. Compare the top ${vertical.name.toLowerCase()} for ${config.usecase.toLowerCase()} with expert reviews and ratings.`,
+    alternates: {
+      canonical: `https://pickify.io/${verticalSlug}/best-for/${bestForSlug}`,
+    },
     openGraph: {
       title: `${config.title} in 2025`,
       description: config.description,

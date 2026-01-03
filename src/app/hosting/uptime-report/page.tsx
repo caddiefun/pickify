@@ -1,28 +1,32 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Activity, Calendar, AlertTriangle, CheckCircle } from "lucide-react";
+import { ArrowLeft, Activity, Calendar, CheckCircle, ExternalLink, Clock, Server } from "lucide-react";
 import { Header, Footer } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   BreadcrumbSchema,
   FAQSchema,
   DatasetSchema,
   QuickAnswer,
 } from "@/components/seo";
-import { UptimeDisplay } from "@/components/data";
-import { getProductsByVertical } from "@/data";
 import {
-  hostingUptimeRecords,
-  compareHostingUptime,
-  generateUptimeSummary,
-} from "@/data/tracking/speed-tests";
+  hrankHostingData,
+  getTopHostsByUptime,
+  generateHRankCitation,
+  getHRankData,
+  DATA_SOURCES,
+  type HRankHostingData,
+} from "@/lib/api";
 
 export const metadata: Metadata = {
   title: "Web Hosting Uptime Report 2024 - Real Monitoring Data | Pickify",
   description:
     "Independent web hosting uptime monitoring results for 2024. See real uptime percentages, downtime incidents, and reliability data.",
+  alternates: {
+    canonical: "https://pickify.io/hosting/uptime-report",
+  },
   openGraph: {
     title: "Web Hosting Uptime Report 2024 - Real Monitoring Data | Pickify",
     description:
@@ -31,21 +35,16 @@ export const metadata: Metadata = {
 };
 
 export default function HostingUptimeReportPage() {
-  const products = getProductsByVertical("hosting");
-  const productSlugs = products.map((p) => p.slug);
-  const uptimeComparison = compareHostingUptime(productSlugs, 2024);
+  // Use HRANK.com authoritative data
+  const topHosts = getTopHostsByUptime(10);
+  const mostReliable = topHosts[0];
 
-  // Find most reliable host
-  const mostReliable = uptimeComparison[0];
-
-  // Generate summaries
-  const summaries = productSlugs
-    .map((slug) => ({
-      slug,
-      name: products.find((p) => p.slug === slug)?.name || slug,
-      summary: generateUptimeSummary(slug),
-    }))
-    .filter((s) => s.summary);
+  // Generate summaries from HRANK data
+  const summaries = hrankHostingData.map((host) => ({
+    slug: host.slug,
+    name: host.name,
+    summary: generateHRankCitation(host),
+  }));
 
   const breadcrumbs = [
     { name: "Home", url: "https://pickify.io" },
@@ -56,17 +55,17 @@ export default function HostingUptimeReportPage() {
   const faqs = [
     {
       question: "Which web host has the best uptime?",
-      answer: `${mostReliable?.product_name} had the best uptime in 2024 at ${mostReliable?.uptime_percentage}% with only ${mostReliable?.downtime_minutes} minutes of total downtime (Pickify monitoring).`,
+      answer: `${mostReliable?.name} has the best uptime at ${mostReliable?.uptimePercent}% with ${mostReliable?.responseTimeMs}ms average response time, earning an HRank score of ${mostReliable?.hrank}/10 (Source: HRANK.com).`,
     },
     {
       question: "What is good uptime for web hosting?",
       answer:
-        "Good uptime is 99.9% or higher, which equals about 8.7 hours of downtime per year. Excellent uptime is 99.99% (under 1 hour/year). Our monitoring shows most major hosts achieve 99.9%+.",
+        "Good uptime is 99.9% or higher, which equals about 8.7 hours of downtime per year. Excellent uptime is 99.99% (under 1 hour/year). According to HRANK.com monitoring, most major hosts achieve 99.9%+.",
     },
     {
-      question: "How do you monitor uptime?",
+      question: "Where does this uptime data come from?",
       answer:
-        "We use UptimeRobot to monitor test sites on each hosting provider every 5 minutes, 24/7. We track both full outages and degraded performance periods.",
+        "Uptime data is sourced from HRANK.com, an independent hosting monitoring service that has tracked 150+ million websites since 2018. They send 288 pings per day to each shared hosting IP.",
     },
     {
       question: "Is 99.9% uptime good enough?",
@@ -77,14 +76,14 @@ export default function HostingUptimeReportPage() {
 
   const quickAnswerProps = {
     question: "Which web host has the best uptime?",
-    answer: `${mostReliable?.product_name} had the best uptime in 2024 at ${mostReliable?.uptime_percentage}% with only ${mostReliable?.downtime_minutes} minutes of total downtime. Based on 12 months of continuous monitoring via UptimeRobot.`,
+    answer: `${mostReliable?.name} has the best uptime at ${mostReliable?.uptimePercent}% with ${mostReliable?.responseTimeMs}ms average response time. Data sourced from HRANK.com, an independent hosting monitoring service tracking 150+ million websites.`,
     supportingFacts: [
-      { label: "Most Reliable", value: mostReliable?.product_name || "N/A" },
-      { label: "Uptime", value: `${mostReliable?.uptime_percentage}%` },
-      { label: "Downtime", value: `${mostReliable?.downtime_minutes} min` },
-      { label: "Monitored", value: `${products.length} hosts` },
+      { label: "Most Reliable", value: mostReliable?.name || "N/A" },
+      { label: "Uptime", value: `${mostReliable?.uptimePercent}%` },
+      { label: "Response", value: `${mostReliable?.responseTimeMs}ms` },
+      { label: "HRank Score", value: `${mostReliable?.hrank}/10` },
     ],
-    updatedDate: "December 2024",
+    updatedDate: "January 2025",
     variant: "default" as const,
   };
 
@@ -125,15 +124,24 @@ export default function HostingUptimeReportPage() {
                 hosting providers. Real data, real incidents, real reliability
                 scores.
               </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  Monitoring period: Jan-Dec 2024
+                  Data source: HRANK.com
                 </span>
                 <span className="flex items-center gap-1">
                   <Activity className="w-4 h-4" />
-                  {products.length} hosts monitored
+                  {hrankHostingData.length} hosts tracked
                 </span>
+                <a
+                  href={DATA_SOURCES.hrank.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-foreground transition-colors"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  View source
+                </a>
               </div>
             </div>
           </div>
@@ -151,14 +159,14 @@ export default function HostingUptimeReportPage() {
         {/* Uptime Ranking */}
         <section className="py-12">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6">2024 Uptime Ranking</h2>
+            <h2 className="text-2xl font-bold mb-6">Uptime Ranking by HRANK</h2>
             <div className="max-w-3xl mx-auto">
               <Card>
                 <CardContent className="p-0">
                   <div className="divide-y">
-                    {uptimeComparison.map((host, index) => (
+                    {topHosts.map((host, index) => (
                       <div
-                        key={host.product_slug}
+                        key={host.slug}
                         className="flex items-center justify-between p-4"
                       >
                         <div className="flex items-center gap-4">
@@ -166,36 +174,53 @@ export default function HostingUptimeReportPage() {
                             {index + 1}
                           </span>
                           <div>
-                            <p className="font-semibold">{host.product_name}</p>
+                            <p className="font-semibold">{host.name}</p>
                             <p className="text-sm text-muted-foreground">
-                              {host.downtime_minutes} min downtime
+                              {host.responseTimeMs}ms response time
                             </p>
                           </div>
                         </div>
                         <div className="text-right">
                           <p
                             className={`text-xl font-bold ${
-                              host.uptime_percentage >= 99.99
+                              host.uptimePercent >= 99.99
                                 ? "text-success"
-                                : host.uptime_percentage >= 99.9
+                                : host.uptimePercent >= 99.9
                                   ? "text-primary"
                                   : "text-warning"
                             }`}
                           >
-                            {host.uptime_percentage}%
+                            {host.uptimePercent}%
                           </p>
-                          {host.uptime_percentage >= 99.99 && (
-                            <Badge className="bg-success/10 text-success text-xs">
-                              <CheckCircle className="w-3 h-3 mr-1" />
-                              Excellent
+                          <div className="flex items-center gap-2 justify-end mt-1">
+                            <Badge variant="outline" className="text-xs">
+                              HRank: {host.hrank}/10
                             </Badge>
-                          )}
+                            {host.uptimePercent >= 99.97 && (
+                              <Badge className="bg-success/10 text-success text-xs">
+                                <CheckCircle className="w-3 h-3 mr-1" />
+                                Excellent
+                              </Badge>
+                            )}
+                          </div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
+              <p className="text-sm text-muted-foreground mt-4 text-center">
+                Data sourced from{" "}
+                <a
+                  href={DATA_SOURCES.hrank.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground"
+                >
+                  HRANK.com
+                </a>
+                , {DATA_SOURCES.hrank.description}
+              </p>
             </div>
           </div>
         </section>
@@ -205,12 +230,8 @@ export default function HostingUptimeReportPage() {
           <div className="container mx-auto px-4">
             <h2 className="text-2xl font-bold mb-6">Detailed Reports by Host</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.slice(0, 6).map((product) => (
-                <UptimeDisplay
-                  key={product.slug}
-                  productSlug={product.slug}
-                  year={2024}
-                />
+              {hrankHostingData.map((host) => (
+                <HRankHostCard key={host.slug} host={host} />
               ))}
             </div>
           </div>
@@ -285,5 +306,70 @@ export default function HostingUptimeReportPage() {
 
       <Footer />
     </div>
+  );
+}
+
+// HRANK Host Card Component
+function HRankHostCard({ host }: { host: HRankHostingData }) {
+  return (
+    <Card>
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="font-semibold text-foreground flex items-center gap-2">
+            <Server className="w-5 h-5 text-primary" />
+            {host.name}
+          </h3>
+          <a
+            href={host.sourceUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1"
+          >
+            <ExternalLink className="w-3 h-3" />
+            HRANK
+          </a>
+        </div>
+
+        {/* Main stat */}
+        <div className="text-center p-6 bg-success/5 rounded-lg mb-4">
+          <div className="text-4xl font-bold text-success">
+            {host.uptimePercent}%
+          </div>
+          <div className="text-sm text-muted-foreground mt-1">Uptime</div>
+        </div>
+
+        {/* Details */}
+        <div className="grid grid-cols-2 gap-4 text-center">
+          <div>
+            <div className="text-lg font-semibold text-foreground">
+              {host.responseTimeMs}ms
+            </div>
+            <div className="text-xs text-muted-foreground">Response Time</div>
+          </div>
+          <div>
+            <div className="text-lg font-semibold text-foreground">
+              {host.hrank}/10
+            </div>
+            <div className="text-xs text-muted-foreground">HRank Score</div>
+          </div>
+        </div>
+
+        {/* Additional stats */}
+        <div className="mt-4 pt-4 border-t grid grid-cols-2 gap-2 text-sm">
+          <div className="text-muted-foreground">
+            <span className="font-medium text-foreground">{host.sharedIps.toLocaleString()}</span> shared IPs
+          </div>
+          <div className="text-muted-foreground">
+            <span className="font-medium text-foreground">{host.hostedSites.toLocaleString()}</span> sites
+          </div>
+        </div>
+
+        {/* Last updated */}
+        <div className="mt-3 flex items-center gap-1.5 text-xs text-muted-foreground">
+          <Clock className="w-3 h-3" />
+          <span>Updated: {host.lastUpdated}</span>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

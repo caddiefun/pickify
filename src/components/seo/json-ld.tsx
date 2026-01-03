@@ -83,13 +83,8 @@ export function ProductSchema({ product, verticalSlug }: ProductSchemaProps) {
       priceCurrency: "USD",
       offerCount: product.pricing?.length || 1,
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: product.overall_rating,
-      bestRating: 10,
-      worstRating: 0,
-      ratingCount: 1, // Would come from real review count
-    },
+    // Note: aggregateRating removed as we don't have real user reviews
+    // Using Review schema on product pages instead for editorial reviews
   };
 
   return <JsonLd data={data} />;
@@ -235,6 +230,7 @@ export function ComparisonSchema({
           "@type": "AggregateRating",
           ratingValue: productA.overall_rating,
           bestRating: 10,
+          worstRating: 0,
         },
       },
       {
@@ -244,6 +240,7 @@ export function ComparisonSchema({
           "@type": "AggregateRating",
           ratingValue: productB.overall_rating,
           bestRating: 10,
+          worstRating: 0,
         },
       },
     ],

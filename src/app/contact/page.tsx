@@ -7,12 +7,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Mail, MessageSquare, Building, Clock } from "lucide-react";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us | Pickify",
   description:
     "Get in touch with the Pickify team. We'd love to hear from you - whether it's feedback, partnership inquiries, or just saying hello.",
+  alternates: {
+    canonical: "https://pickify.io/contact",
+  },
   openGraph: {
     title: "Contact Us | Pickify",
     description:
@@ -50,6 +53,12 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <WebPageSchema
+        name="Contact Us"
+        description="Get in touch with the Pickify team."
+        url="https://pickify.io/contact"
+        lastReviewed="2025-01-01"
+      />
       <Header />
 
       <main className="flex-1">

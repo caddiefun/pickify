@@ -12,12 +12,15 @@ import {
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
-import { BreadcrumbSchema, OrganizationSchema } from "@/components/seo";
+import { BreadcrumbSchema, OrganizationSchema, ArticleSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
   title: "About Pickify - Software Comparison & Reviews",
   description:
     "Learn about Pickify and how we help you compare software products. We research options and provide helpful information to guide your decisions.",
+  alternates: {
+    canonical: "https://pickify.io/about",
+  },
   openGraph: {
     title: "About Pickify - Software Comparison & Reviews",
     description:
@@ -61,6 +64,14 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col">
       <OrganizationSchema />
       <BreadcrumbSchema items={breadcrumbs} />
+      <ArticleSchema
+        headline="About Pickify - Software Comparison & Reviews"
+        description="Learn about Pickify and how we help you compare software products."
+        url="https://pickify.io/about"
+        datePublished="2024-01-01"
+        dateModified="2025-01-01"
+        about={["Software Comparison", "Product Reviews", "Technology"]}
+      />
       <Header />
 
       <main className="flex-1">

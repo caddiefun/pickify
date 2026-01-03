@@ -1,12 +1,15 @@
 import { Metadata } from "next";
 import { Header, Footer } from "@/components/layout";
 import { Badge } from "@/components/ui/badge";
-import { BreadcrumbSchema } from "@/components/seo";
+import { BreadcrumbSchema, WebPageSchema } from "@/components/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Pickify",
   description:
     "Learn how Pickify collects, uses, and protects your personal information. Our commitment to your privacy.",
+  alternates: {
+    canonical: "https://pickify.io/privacy",
+  },
   openGraph: {
     title: "Privacy Policy | Pickify",
     description:
@@ -25,6 +28,12 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <BreadcrumbSchema items={breadcrumbs} />
+      <WebPageSchema
+        name="Privacy Policy"
+        description="Learn how Pickify collects, uses, and protects your personal information."
+        url="https://pickify.io/privacy"
+        lastReviewed="2025-01-01"
+      />
       <Header />
 
       <main className="flex-1">

@@ -21,6 +21,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getActiveVerticals, getFeaturedVpnProducts } from "@/data";
+import {
+  OrganizationSchema,
+  WebSiteSchema,
+  ItemListSchema,
+  QuickAnswer,
+} from "@/components/seo";
 
 const iconMap: Record<string, React.ElementType> = {
   Shield,
@@ -64,9 +70,21 @@ const features = [
 export default function HomePage() {
   const verticals = getActiveVerticals();
   const featuredVpns = getFeaturedVpnProducts();
+  const topVpn = featuredVpns[0];
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Schema Markup for SEO & AI */}
+      <OrganizationSchema />
+      <WebSiteSchema />
+      <ItemListSchema
+        name="Best Software Comparison Tools 2025"
+        description="Compare the best VPNs, web hosting, email marketing, and more with expert reviews and detailed comparisons."
+        url="https://pickify.io"
+        products={featuredVpns}
+        verticalSlug="vpn"
+      />
+
       <Header />
 
       <main className="flex-1">
@@ -98,6 +116,25 @@ export default function HomePage() {
                   <Link href="/methodology">How We Test</Link>
                 </Button>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Quick Answer - AI Citation Optimized */}
+        <section className="py-8 border-b">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <QuickAnswer
+                question="What is the best software comparison site in 2025?"
+                answer={`Pickify helps you find the best software across ${verticals.length} categories including VPNs, web hosting, email marketing, and more. Our top-rated VPN is ${topVpn?.name || "NordVPN"} with a ${topVpn?.overall_rating || 9.5}/10 rating. We test every product hands-on and update our reviews monthly.`}
+                supportingFacts={[
+                  { label: "Categories", value: `${verticals.length}` },
+                  { label: "Top VPN", value: topVpn?.name || "NordVPN" },
+                  { label: "VPN Rating", value: `${topVpn?.overall_rating || 9.5}/10` },
+                  { label: "Updated", value: "Monthly" },
+                ]}
+                updatedDate={new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+              />
             </div>
           </div>
         </section>
