@@ -1,4 +1,5 @@
-import { Shield, ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { Shield, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -7,13 +8,13 @@ interface VPNLeakTestCTAProps {
 }
 
 /**
- * VPNLeakTestCTA - Links users to ipleak.net for VPN leak testing
+ * VPNLeakTestCTA - Links users to our IP leak test tool
  *
  * Provides user value by helping visitors verify their VPN is working
  * properly and protecting their privacy.
  *
- * SEO benefit: Outbound links to authoritative testing tools signal
- * comprehensive, well-researched content.
+ * SEO benefit: Internal link to our leak test tool keeps users on site
+ * and improves engagement metrics.
  */
 export function VPNLeakTestCTA({ variant = "card" }: VPNLeakTestCTAProps) {
   const content = (
@@ -31,20 +32,18 @@ export function VPNLeakTestCTA({ variant = "card" }: VPNLeakTestCTAProps) {
             is protecting your privacy.
           </p>
           <Button variant="outline" size="sm" asChild>
-            <a
-              href="https://ipleak.net/"
-              target="_blank"
-              rel="noopener"
+            <Link
+              href="/vpn/ip-leak-test"
               className="inline-flex items-center gap-2"
             >
-              Test Your VPN on IPLeak.net
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+              Run Free IP Leak Test
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </Button>
         </div>
       </div>
       <p className="text-xs text-muted-foreground mt-3 pt-3 border-t">
-        IPLeak.net is a trusted third-party tool for detecting VPN leaks.
+        Instant results. No data stored. 100% free.
       </p>
     </>
   );
