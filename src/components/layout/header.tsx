@@ -55,7 +55,7 @@ const verticals = [
     icon: Home,
   },
   {
-    title: "High Speed Internet",
+    title: "Internet Providers",
     href: "/internet-providers",
     description: "Find fast internet in your area",
     icon: Wifi,
