@@ -3,12 +3,12 @@ import { AFFILIATE_DISCLOSURE } from "@/lib/affiliate";
 
 const footerLinks = {
   categories: [
+    { label: "All Categories", href: "/categories" },
     { label: "VPNs", href: "/vpn" },
     { label: "Web Hosting", href: "/hosting" },
-    { label: "Email Marketing", href: "/email-marketing" },
+    { label: "Antivirus", href: "/antivirus" },
     { label: "Password Managers", href: "/password-managers" },
-    { label: "Project Management", href: "/project-management" },
-    { label: "CRM Software", href: "/crm" },
+    { label: "Internet Providers", href: "/internet-providers" },
   ],
   resources: [
     { label: "About Us", href: "/about" },

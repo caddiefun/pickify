@@ -308,8 +308,8 @@ export default function HomePage() {
               comprehensive reviews and comparisons.
             </p>
             <Button size="lg" variant="secondary" asChild>
-              <Link href="/vpn">
-                Get Started
+              <Link href="/categories">
+                Browse All Categories
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>

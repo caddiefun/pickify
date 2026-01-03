@@ -170,7 +170,7 @@ export function Header() {
         {/* CTA Button */}
         <div className="hidden md:flex items-center space-x-4">
           <Button asChild>
-            <Link href="/vpn">Get Started</Link>
+            <Link href="/categories">Browse All</Link>
           </Button>
         </div>
 
@@ -211,8 +211,8 @@ export function Header() {
               </div>
               <div className="border-t pt-4">
                 <Button asChild className="w-full">
-                  <Link href="/vpn" onClick={() => setMobileMenuOpen(false)}>
-                    Get Started
+                  <Link href="/categories" onClick={() => setMobileMenuOpen(false)}>
+                    Browse All
                   </Link>
                 </Button>
               </div>
