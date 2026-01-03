@@ -6,7 +6,7 @@ export const antivirusProducts: Product[] = [
     vertical_id: "10",
     slug: "bitdefender",
     name: "Bitdefender",
-    logo_url: "https://logo.clearbit.com/bitdefender.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=bitdefender.com&sz=128",
     website_url: "https://bitdefender.com",
     description:
       "Bitdefender consistently tops independent lab tests for malware detection and system performance. Its Total Security suite offers comprehensive protection across all devices with minimal impact on system resources.",
@@ -79,7 +79,7 @@ export const antivirusProducts: Product[] = [
     vertical_id: "10",
     slug: "norton",
     name: "Norton 360",
-    logo_url: "https://logo.clearbit.com/norton.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=norton.com&sz=128",
     website_url: "https://norton.com",
     description:
       "Norton 360 is a comprehensive security suite that combines excellent malware protection with identity theft monitoring, VPN, password manager, and cloud backup. It's a complete digital security solution.",
@@ -152,7 +152,7 @@ export const antivirusProducts: Product[] = [
     vertical_id: "10",
     slug: "mcafee",
     name: "McAfee Total Protection",
-    logo_url: "https://logo.clearbit.com/mcafee.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=mcafee.com&sz=128",
     website_url: "https://mcafee.com",
     description:
       "McAfee Total Protection offers solid antivirus protection with unlimited device coverage on family plans. It includes identity monitoring, VPN, and a password manager for comprehensive security.",
@@ -225,7 +225,7 @@ export const antivirusProducts: Product[] = [
     vertical_id: "10",
     slug: "kaspersky",
     name: "Kaspersky",
-    logo_url: "https://logo.clearbit.com/kaspersky.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=kaspersky.com&sz=128",
     website_url: "https://kaspersky.com",
     description:
       "Kaspersky offers excellent malware detection with a user-friendly interface. NOTE: As of September 2024, Kaspersky is banned in the United States and cannot receive updates. Existing US users were migrated to UltraAV. International users still have access.",
@@ -300,7 +300,7 @@ export const antivirusProducts: Product[] = [
     vertical_id: "10",
     slug: "avast",
     name: "Avast One",
-    logo_url: "https://logo.clearbit.com/avast.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=avast.com&sz=128",
     website_url: "https://avast.com",
     description:
       "Avast One combines solid antivirus protection with a VPN, performance tools, and privacy features. Its free tier is one of the best available, and paid plans offer comprehensive protection.",
@@ -375,7 +375,7 @@ export const antivirusProducts: Product[] = [
     vertical_id: "10",
     slug: "malwarebytes",
     name: "Malwarebytes",
-    logo_url: "https://logo.clearbit.com/malwarebytes.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=malwarebytes.com&sz=128",
     website_url: "https://malwarebytes.com",
     description:
       "Malwarebytes specializes in removing existing malware and preventing new infections. Known for its cleanup capabilities, it works well alongside other antivirus solutions or as standalone protection.",

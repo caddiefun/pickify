@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "logo.clearbit.com",
+        hostname: "www.google.com",
       },
     ],
     formats: ["image/avif", "image/webp"],

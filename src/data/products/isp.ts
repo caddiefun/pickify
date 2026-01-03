@@ -14,7 +14,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "xfinity",
     name: "Xfinity",
-    logo_url: "https://logo.clearbit.com/xfinity.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=xfinity.com&sz=128",
     website_url: "https://xfinity.com",
     description:
       "Xfinity by Comcast is the largest cable internet provider in the US, offering speeds up to 2 Gbps in select areas. Known for widespread availability, bundling options with TV and phone, and a robust network of WiFi hotspots.",
@@ -90,7 +90,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "att-fiber",
     name: "AT&T Fiber",
-    logo_url: "https://logo.clearbit.com/att.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=att.com&sz=128",
     website_url: "https://att.com/internet",
     description:
       "AT&T Fiber offers symmetrical upload and download speeds up to 5 Gbps with no data caps. A premium fiber option with excellent reliability and straightforward pricing.",
@@ -166,7 +166,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "verizon-fios",
     name: "Verizon Fios",
-    logo_url: "https://logo.clearbit.com/verizon.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=verizon.com&sz=128",
     website_url: "https://verizon.com/home/fios",
     description:
       "Verizon Fios is a 100% fiber-optic network offering symmetrical speeds up to 2.3 Gbps. Available primarily in the Northeast, Fios consistently ranks among the top ISPs for speed and reliability.",
@@ -242,7 +242,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "spectrum",
     name: "Spectrum",
-    logo_url: "https://logo.clearbit.com/spectrum.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=spectrum.com&sz=128",
     website_url: "https://spectrum.com",
     description:
       "Spectrum (Charter Communications) offers cable internet in 41 states with no data caps and no contracts. Known for straightforward pricing and wide availability in suburban and rural areas.",
@@ -318,7 +318,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "cox",
     name: "Cox",
-    logo_url: "https://logo.clearbit.com/cox.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=cox.com&sz=128",
     website_url: "https://cox.com",
     description:
       "Cox Communications offers cable and fiber internet in 18 states with speeds up to 2 Gbps. Known for reliable service and comprehensive bundle options with TV and phone.",
@@ -394,7 +394,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "quantum-fiber",
     name: "Quantum Fiber",
-    logo_url: "https://logo.clearbit.com/quantumfiber.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=quantumfiber.com&sz=128",
     website_url: "https://quantumfiber.com",
     description:
       "Quantum Fiber (formerly CenturyLink) offers fiber internet across 36 states with speeds up to 8 Gbps. Known for price-lock guarantees, no data caps, and straightforward pricing.",
@@ -470,7 +470,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "frontier",
     name: "Frontier Fiber",
-    logo_url: "https://logo.clearbit.com/frontier.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=frontier.com&sz=128",
     website_url: "https://frontier.com",
     description:
       "Frontier Communications offers fiber internet in 25 states with symmetrical speeds up to 7 Gbps. After restructuring, Frontier has invested heavily in fiber expansion and improved customer service. Verizon acquisition expected to close in 2026.",
@@ -552,7 +552,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "google-fiber",
     name: "Google Fiber",
-    logo_url: "https://logo.clearbit.com/fiber.google.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=fiber.google.com&sz=128",
     website_url: "https://fiber.google.com",
     description:
       "Google Fiber pioneered gigabit internet in the US and now offers speeds up to 8 Gbps in select cities. Known for transparent pricing, no data caps, and excellent customer satisfaction.",
@@ -622,7 +622,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "t-mobile-home-internet",
     name: "T-Mobile 5G Home Internet",
-    logo_url: "https://logo.clearbit.com/t-mobile.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=t-mobile.com&sz=128",
     website_url: "https://t-mobile.com/home-internet",
     description:
       "T-Mobile 5G Home Internet offers fixed wireless broadband using their 5G network. No data caps, no contracts, 5-year price guarantee, and available in many areas underserved by traditional ISPs.",
@@ -692,7 +692,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "starlink",
     name: "Starlink",
-    logo_url: "https://logo.clearbit.com/starlink.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=starlink.com&sz=128",
     website_url: "https://starlink.com",
     description:
       "Starlink by SpaceX is a satellite internet service using a constellation of low-Earth orbit satellites with 8 million+ global users. Offers broadband speeds anywhere in the US with significantly reduced equipment costs, making it ideal for rural and remote areas.",
@@ -774,7 +774,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "hughesnet",
     name: "HughesNet",
-    logo_url: "https://logo.clearbit.com/hughesnet.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=hughesnet.com&sz=128",
     website_url: "https://hughesnet.com",
     description:
       "HughesNet is a traditional geostationary satellite internet provider available across all 50 states. A reliable option for rural areas where no other broadband is available.",
@@ -844,7 +844,7 @@ export const ispProducts: ISPProduct[] = [
     vertical_id: "9",
     slug: "optimum",
     name: "Optimum",
-    logo_url: "https://logo.clearbit.com/optimum.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=optimum.com&sz=128",
     website_url: "https://optimum.com",
     description:
       "Optimum (Altice USA) offers cable and fiber internet in the Northeast US with speeds up to 8 Gbps. Known for competitive pricing and strong fiber expansion in the New York metro area.",

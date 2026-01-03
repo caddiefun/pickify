@@ -6,7 +6,7 @@ export const homeSecurityProducts: Product[] = [
     vertical_id: "11",
     slug: "simplisafe",
     name: "SimpliSafe",
-    logo_url: "https://logo.clearbit.com/simplisafe.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=simplisafe.com&sz=128",
     website_url: "https://simplisafe.com",
     description:
       "SimpliSafe offers flexible, no-contract home security with professional monitoring options. Easy DIY installation, competitive pricing, and reliable equipment make it a top choice for renters and homeowners alike.",
@@ -90,7 +90,7 @@ export const homeSecurityProducts: Product[] = [
     vertical_id: "11",
     slug: "ring-alarm",
     name: "Ring Alarm",
-    logo_url: "https://logo.clearbit.com/ring.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=ring.com&sz=128",
     website_url: "https://ring.com",
     description:
       "Ring Alarm combines affordable DIY security with deep Amazon and Alexa integration. Known for its video doorbells and cameras, Ring offers a complete ecosystem for home security and automation.",
@@ -168,7 +168,7 @@ export const homeSecurityProducts: Product[] = [
     vertical_id: "11",
     slug: "adt",
     name: "ADT",
-    logo_url: "https://logo.clearbit.com/adt.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=adt.com&sz=128",
     website_url: "https://adt.com",
     description:
       "ADT is the most recognized name in home security with 150+ years of experience. Offering professional installation, 24/7 monitoring from 6 centers, and a comprehensive equipment lineup, ADT is ideal for those who want peace of mind.",
@@ -246,7 +246,7 @@ export const homeSecurityProducts: Product[] = [
     vertical_id: "11",
     slug: "vivint",
     name: "Vivint",
-    logo_url: "https://logo.clearbit.com/vivint.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=vivint.com&sz=128",
     website_url: "https://vivint.com",
     description:
       "Vivint offers premium smart home security with professional installation. Known for high-quality equipment, advanced AI features, and comprehensive home automation, Vivint is ideal for tech-savvy homeowners.",
@@ -325,7 +325,7 @@ export const homeSecurityProducts: Product[] = [
     vertical_id: "11",
     slug: "cove",
     name: "Cove",
-    logo_url: "https://logo.clearbit.com/covesmart.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=covesmart.com&sz=128",
     website_url: "https://covesmart.com",
     description:
       "Cove offers affordable, no-contract home security with straightforward pricing. With easy DIY installation and reliable professional monitoring, it's perfect for budget-conscious homeowners.",
@@ -392,7 +392,7 @@ export const homeSecurityProducts: Product[] = [
     vertical_id: "11",
     slug: "abode",
     name: "abode",
-    logo_url: "https://logo.clearbit.com/goabode.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=goabode.com&sz=128",
     website_url: "https://goabode.com",
     description:
       "abode offers flexible DIY security with excellent smart home integration. Supporting HomeKit, Google, Alexa, and Z-Wave, it's ideal for users who want security that works with their existing smart home setup.",

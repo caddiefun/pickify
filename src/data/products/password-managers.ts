@@ -6,7 +6,7 @@ export const passwordManagerProducts: Product[] = [
     vertical_id: "4",
     slug: "1password",
     name: "1Password",
-    logo_url: "https://logo.clearbit.com/1password.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=1password.com&sz=128",
     website_url: "https://1password.com",
     description:
       "1Password is a premium password manager known for its polished interface, family sharing features, and excellent security. Trusted by millions of users and major enterprises worldwide.",
@@ -74,7 +74,7 @@ export const passwordManagerProducts: Product[] = [
     vertical_id: "4",
     slug: "bitwarden",
     name: "Bitwarden",
-    logo_url: "https://logo.clearbit.com/bitwarden.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=bitwarden.com&sz=128",
     website_url: "https://bitwarden.com",
     description:
       "Bitwarden is an open-source password manager offering exceptional value. With a generous free tier and affordable premium options, it's the best choice for budget-conscious users.",
@@ -142,7 +142,7 @@ export const passwordManagerProducts: Product[] = [
     vertical_id: "4",
     slug: "dashlane",
     name: "Dashlane",
-    logo_url: "https://logo.clearbit.com/dashlane.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=dashlane.com&sz=128",
     website_url: "https://dashlane.com",
     description:
       "Dashlane is a feature-rich password manager with built-in VPN and dark web monitoring. Known for its excellent security features and user-friendly interface.",
@@ -210,7 +210,7 @@ export const passwordManagerProducts: Product[] = [
     vertical_id: "4",
     slug: "nordpass",
     name: "NordPass",
-    logo_url: "https://logo.clearbit.com/nordpass.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=nordpass.com&sz=128",
     website_url: "https://nordpass.com",
     description:
       "NordPass is from the makers of NordVPN, offering a clean, modern password manager with XChaCha20 encryption and a focus on simplicity and security.",
@@ -278,7 +278,7 @@ export const passwordManagerProducts: Product[] = [
     vertical_id: "4",
     slug: "keeper",
     name: "Keeper",
-    logo_url: "https://logo.clearbit.com/keepersecurity.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=keepersecurity.com&sz=128",
     website_url: "https://keepersecurity.com",
     description:
       "Keeper is an enterprise-grade password manager with advanced security features. Great for businesses and users who want comprehensive breach protection.",
@@ -346,7 +346,7 @@ export const passwordManagerProducts: Product[] = [
     vertical_id: "4",
     slug: "lastpass",
     name: "LastPass",
-    logo_url: "https://logo.clearbit.com/lastpass.com?size=128",
+    logo_url: "https://www.google.com/s2/favicons?domain=lastpass.com&sz=128",
     website_url: "https://lastpass.com",
     description:
       "LastPass is one of the most well-known password managers with a large user base. Despite recent security incidents, it continues to offer a comprehensive feature set.",
