@@ -59,15 +59,14 @@ interface ProductSchemaProps {
 }
 
 export function ProductSchema({ product, verticalSlug }: ProductSchemaProps) {
-  const lowestPrice = product.pricing?.reduce(
-    (min, p) => (p.price < min ? p.price : min),
-    product.pricing[0]?.price || 0
-  );
+  const firstPrice = product.pricing?.[0]?.price ?? 0;
+  const lowestPrice = product.pricing?.length
+    ? product.pricing.reduce((min, p) => (p.price < min ? p.price : min), firstPrice)
+    : 0;
 
-  const highestPrice = product.pricing?.reduce(
-    (max, p) => (p.price > max ? p.price : max),
-    product.pricing[0]?.price || 0
-  );
+  const highestPrice = product.pricing?.length
+    ? product.pricing.reduce((max, p) => (p.price > max ? p.price : max), firstPrice)
+    : 0;
 
   const data = {
     "@context": "https://schema.org",

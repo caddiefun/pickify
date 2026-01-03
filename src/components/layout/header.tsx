@@ -13,8 +13,6 @@ import {
   GraduationCap,
   Wifi,
   Menu,
-  X,
-  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -165,13 +163,9 @@ export function Header() {
         {/* Mobile Menu */}
         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-              <span className="sr-only">Toggle menu</span>
+            <Button variant="ghost" size="icon" aria-label="Open navigation menu">
+              <Menu className="h-5 w-5" aria-hidden="true" />
+              <span className="sr-only">Open navigation menu</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">

@@ -166,6 +166,24 @@ export function getProductBySlug(
   }
 }
 
+// Find a product by slug across all verticals
+export function findProductBySlug(productSlug: string): Product | undefined {
+  // Search each vertical's products for the matching slug
+  const allProducts = [
+    ...vpnProducts,
+    ...hostingProducts,
+    ...emailMarketingProducts,
+    ...passwordManagerProducts,
+    ...projectManagementProducts,
+    ...crmProducts,
+    ...websiteBuilderProducts,
+    ...onlineLearningProducts,
+    ...ispProducts,
+  ];
+
+  return allProducts.find((p) => p.slug === productSlug);
+}
+
 // Generate comparison data between two products
 export function generateComparison(productA: Product, productB: Product) {
   return {

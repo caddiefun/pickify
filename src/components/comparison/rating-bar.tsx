@@ -41,7 +41,14 @@ export function RatingBar({
   };
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div
+      className={cn("flex items-center gap-2", className)}
+      role="meter"
+      aria-valuenow={score}
+      aria-valuemin={0}
+      aria-valuemax={maxScore}
+      aria-label={`Rating: ${score.toFixed(1)} out of ${maxScore}`}
+    >
       {showLabel && (
         <span
           className={cn("text-muted-foreground min-w-[60px]", textSizeClasses[size])}
@@ -54,6 +61,7 @@ export function RatingBar({
           "flex-1 bg-muted rounded-full overflow-hidden",
           sizeClasses[size]
         )}
+        aria-hidden="true"
       >
         <div
           className={cn(
@@ -64,7 +72,10 @@ export function RatingBar({
         />
       </div>
       {showValue && (
-        <span className={cn("font-semibold min-w-[40px] text-right", textSizeClasses[size])}>
+        <span
+          className={cn("font-semibold min-w-[40px] text-right", textSizeClasses[size])}
+          aria-hidden="true"
+        >
           {score.toFixed(1)}
         </span>
       )}
@@ -108,8 +119,13 @@ export function RatingCircle({
         getColorClass(),
         className
       )}
+      role="meter"
+      aria-valuenow={score}
+      aria-valuemin={0}
+      aria-valuemax={maxScore}
+      aria-label={`Rating: ${score.toFixed(1)} out of ${maxScore}`}
     >
-      {score.toFixed(1)}
+      <span aria-hidden="true">{score.toFixed(1)}</span>
     </div>
   );
 }

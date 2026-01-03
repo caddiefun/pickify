@@ -25,10 +25,10 @@ export interface FAQ {
 // =============================================================================
 
 export function generateProductFAQs(product: Product, verticalName: string): FAQ[] {
-  const lowestPrice = product.pricing?.reduce(
-    (min, p) => (p.price < min ? p.price : min),
-    product.pricing[0]?.price || 0
-  );
+  const firstPrice = product.pricing?.[0]?.price ?? 0;
+  const lowestPrice = product.pricing?.length
+    ? product.pricing.reduce((min, p) => (p.price < min ? p.price : min), firstPrice)
+    : 0;
 
   const faqs: FAQ[] = [
     {

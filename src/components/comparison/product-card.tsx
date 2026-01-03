@@ -37,47 +37,49 @@ export function ProductCard({
     return (
       <Card className={cn("hover:shadow-md transition-shadow", className)}>
         <CardContent className="p-4">
-          <div className="flex items-center gap-4">
-            {rank && (
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-sm font-bold text-primary">#{rank}</span>
-              </div>
-            )}
-            <div className="flex-shrink-0 w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
-              {product.logo_url ? (
-                <Image
-                  src={product.logo_url}
-                  alt={product.name}
-                  width={32}
-                  height={32}
-                  className="rounded"
-                />
-              ) : (
-                <span className="text-lg font-bold text-muted-foreground">
-                  {product.name.charAt(0)}
-                </span>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="flex items-center gap-4 flex-1 min-w-0">
+              {rank && (
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <span className="text-sm font-bold text-primary">#{rank}</span>
+                </div>
               )}
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`/${verticalSlug}/${product.slug}`}
-                  className="font-semibold hover:text-primary truncate"
-                >
-                  {product.name}
-                </Link>
-                {product.is_editors_choice && (
-                  <Badge variant="secondary" className="bg-success/10 text-success text-xs">
-                    <Award className="w-3 h-3 mr-1" />
-                    Top Pick
-                  </Badge>
+              <div className="flex-shrink-0 w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+                {product.logo_url ? (
+                  <Image
+                    src={product.logo_url}
+                    alt={product.name}
+                    width={32}
+                    height={32}
+                    className="rounded"
+                  />
+                ) : (
+                  <span className="text-lg font-bold text-muted-foreground">
+                    {product.name.charAt(0)}
+                  </span>
                 )}
               </div>
-              <p className="text-sm text-muted-foreground truncate">
-                {product.short_description}
-              </p>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link
+                    href={`/${verticalSlug}/${product.slug}`}
+                    className="font-semibold hover:text-primary truncate"
+                  >
+                    {product.name}
+                  </Link>
+                  {product.is_editors_choice && (
+                    <Badge variant="secondary" className="bg-success/10 text-success text-xs">
+                      <Award className="w-3 h-3 mr-1" />
+                      Top Pick
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground truncate">
+                  {product.short_description}
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0">
               <RatingCircle score={product.overall_rating} size="sm" />
               <Button asChild size="sm">
                 <a href={affiliateLink} target="_blank" rel="noopener noreferrer">
@@ -144,7 +146,7 @@ export function ProductCard({
               Sponsored
             </Badge>
           )}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <h4 className="text-sm font-medium text-muted-foreground mb-2">Pros</h4>
               <ul className="space-y-1">
@@ -168,16 +170,16 @@ export function ProductCard({
               </ul>
             </div>
           </div>
-          <div className="flex items-center justify-between pt-2 border-t">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t">
             <div>
               <p className="text-sm text-muted-foreground">Starting from</p>
               <p className="text-2xl font-bold text-primary">{getStartingPrice(product)}</p>
             </div>
-            <div className="flex gap-2">
-              <Button variant="outline" asChild>
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+              <Button variant="outline" asChild className="w-full sm:w-auto">
                 <Link href={`/${verticalSlug}/${product.slug}`}>Read Review</Link>
               </Button>
-              <Button asChild className="gradient-primary">
+              <Button asChild className="gradient-primary w-full sm:w-auto">
                 <a href={affiliateLink} target="_blank" rel="noopener noreferrer">
                   Visit {product.name}
                   <ExternalLink className="w-4 h-4 ml-2" />
@@ -244,13 +246,13 @@ export function ProductCard({
       </CardHeader>
       <CardContent className="space-y-3">
         <RatingBar score={product.overall_rating} showLabel />
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <div>
             <ul className="space-y-1">
               {product.pros.slice(0, 3).map((pro, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span className="line-clamp-1">{pro}</span>
+                  <span className="line-clamp-2 sm:line-clamp-1">{pro}</span>
                 </li>
               ))}
             </ul>
@@ -260,7 +262,7 @@ export function ProductCard({
               {product.cons.slice(0, 3).map((con, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <X className="w-4 h-4 text-danger flex-shrink-0 mt-0.5" />
-                  <span className="line-clamp-1">{con}</span>
+                  <span className="line-clamp-2 sm:line-clamp-1">{con}</span>
                 </li>
               ))}
             </ul>

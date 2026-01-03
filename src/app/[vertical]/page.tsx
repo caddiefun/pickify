@@ -217,17 +217,25 @@ export default async function VerticalPage({ params }: PageProps) {
                 </Button>
               </div>
             </div>
-            <div className="space-y-4">
-              {products.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  rank={index + 1}
-                  verticalSlug={verticalSlug}
-                  variant="default"
-                />
-              ))}
-            </div>
+            {products.length > 0 ? (
+              <div className="space-y-4">
+                {products.map((product, index) => (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    rank={index + 1}
+                    verticalSlug={verticalSlug}
+                    variant="default"
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12 border rounded-lg bg-card">
+                <p className="text-muted-foreground">
+                  No products available in this category yet. Check back soon!
+                </p>
+              </div>
+            )}
           </div>
         </section>
 
