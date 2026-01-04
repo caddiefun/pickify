@@ -134,18 +134,19 @@ export type { USState, USCity, ZipCodeData } from "./geo";
 
 import type { Product } from "@/types";
 import { CURRENT_YEAR } from "@/lib/constants";
-import { vpnProducts, getVpnProductBySlug } from "./products/vpn";
-import { hostingProducts, getHostingProductBySlug } from "./products/hosting";
-import { emailMarketingProducts, getEmailMarketingProductBySlug } from "./products/email-marketing";
-import { passwordManagerProducts, getPasswordManagerProductBySlug } from "./products/password-managers";
-import { projectManagementProducts, getProjectManagementProductBySlug } from "./products/project-management";
-import { crmProducts, getCrmProductBySlug } from "./products/crm";
-import { websiteBuilderProducts, getWebsiteBuilderProductBySlug } from "./products/website-builders";
-import { onlineLearningProducts, getOnlineLearningProductBySlug } from "./products/online-learning";
-import { ispProducts, getIspProductBySlug } from "./products/isp";
-import { antivirusProducts, getAntivirusProductBySlug } from "./products/antivirus";
-import { homeSecurityProducts, getHomeSecurityProductBySlug } from "./products/home-security";
-import { cloudStorageProducts, getCloudStorageProductBySlug } from "./products/cloud-storage";
+import { vpnProducts, getVpnProductBySlug, getEditorsChoiceVpn } from "./products/vpn";
+import { hostingProducts, getHostingProductBySlug, getEditorsChoiceHosting } from "./products/hosting";
+import { emailMarketingProducts, getEmailMarketingProductBySlug, getEditorsChoiceEmailMarketing } from "./products/email-marketing";
+import { passwordManagerProducts, getPasswordManagerProductBySlug, getEditorsChoicePasswordManager } from "./products/password-managers";
+import { projectManagementProducts, getProjectManagementProductBySlug, getEditorsChoiceProjectManagement } from "./products/project-management";
+import { crmProducts, getCrmProductBySlug, getEditorsChoiceCrm } from "./products/crm";
+import { websiteBuilderProducts, getWebsiteBuilderProductBySlug, getEditorsChoiceWebsiteBuilder } from "./products/website-builders";
+import { onlineLearningProducts, getOnlineLearningProductBySlug, getEditorsChoiceOnlineLearning } from "./products/online-learning";
+import { ispProducts, getIspProductBySlug, getEditorsChoiceIsp } from "./products/isp";
+import { antivirusProducts, getAntivirusProductBySlug, getEditorsChoiceAntivirus } from "./products/antivirus";
+import { homeSecurityProducts, getHomeSecurityProductBySlug, getEditorsChoiceHomeSecurity } from "./products/home-security";
+import { cloudStorageProducts, getCloudStorageProductBySlug, getEditorsChoiceCloudStorage } from "./products/cloud-storage";
+import { getActiveVerticals } from "./verticals";
 
 // Unified product fetching by vertical
 export function getProductsByVertical(verticalSlug: string): Product[] {
@@ -842,3 +843,63 @@ export const bestForConfigs = {
     },
   ],
 };
+
+// Get editor's choice product for a specific vertical
+export function getEditorsChoiceByVertical(verticalSlug: string): Product | undefined {
+  switch (verticalSlug) {
+    case "vpn":
+      return getEditorsChoiceVpn();
+    case "hosting":
+      return getEditorsChoiceHosting();
+    case "email-marketing":
+      return getEditorsChoiceEmailMarketing();
+    case "password-managers":
+      return getEditorsChoicePasswordManager();
+    case "project-management":
+      return getEditorsChoiceProjectManagement();
+    case "crm":
+      return getEditorsChoiceCrm();
+    case "website-builders":
+      return getEditorsChoiceWebsiteBuilder();
+    case "online-learning":
+      return getEditorsChoiceOnlineLearning();
+    case "internet-providers":
+      return getEditorsChoiceIsp();
+    case "antivirus":
+      return getEditorsChoiceAntivirus();
+    case "home-security":
+      return getEditorsChoiceHomeSecurity();
+    case "cloud-storage":
+      return getEditorsChoiceCloudStorage();
+    default:
+      return undefined;
+  }
+}
+
+// Get all editor's choice products for active verticals
+export function getAllEditorsChoiceProducts(): Array<{
+  vertical: { slug: string; name: string; color: string };
+  product: Product;
+}> {
+  const verticals = getActiveVerticals();
+  const results: Array<{
+    vertical: { slug: string; name: string; color: string };
+    product: Product;
+  }> = [];
+
+  for (const vertical of verticals) {
+    const product = getEditorsChoiceByVertical(vertical.slug);
+    if (product) {
+      results.push({
+        vertical: {
+          slug: vertical.slug,
+          name: vertical.name,
+          color: vertical.color,
+        },
+        product,
+      });
+    }
+  }
+
+  return results;
+}

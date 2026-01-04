@@ -8,3 +8,4 @@ export { LastUpdatedBadge } from "./last-updated-badge";
 export { CredibilityWarning } from "./credibility-warning";
 export type { CredibilityWarningType } from "./credibility-warning";
 export { PromoInfoCard } from "./promo-info-card";
+export { TopPicksTable } from "./top-picks-table";

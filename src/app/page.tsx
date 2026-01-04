@@ -16,16 +16,15 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { Header, Footer } from "@/components/layout";
-import { ProductCard, DisclosureBanner } from "@/components/comparison";
+import { DisclosureBanner, TopPicksTable } from "@/components/comparison";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getActiveVerticals, getFeaturedVpnProducts } from "@/data";
+import { getActiveVerticals, getAllEditorsChoiceProducts } from "@/data";
 import {
   OrganizationSchema,
   WebSiteSchema,
   ItemListSchema,
-  QuickAnswer,
 } from "@/components/seo";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -69,8 +68,8 @@ const features = [
 
 export default function HomePage() {
   const verticals = getActiveVerticals();
-  const featuredVpns = getFeaturedVpnProducts();
-  const topVpn = featuredVpns[0];
+  const topPicks = getAllEditorsChoiceProducts();
+  const topVpn = topPicks.find(p => p.vertical.slug === "vpn")?.product;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -81,7 +80,7 @@ export default function HomePage() {
         name="Best Software Comparison Tools 2025"
         description="Compare the best VPNs, web hosting, email marketing, and more with expert reviews and detailed comparisons."
         url="https://pickify.io"
-        products={featuredVpns}
+        products={topPicks.map(p => p.product)}
         verticalSlug="vpn"
       />
 
@@ -120,21 +119,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Quick Answer - AI Citation Optimized */}
+        {/* Top Picks by Category */}
         <section className="py-12 md:py-16 border-b">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <QuickAnswer
-                question="What is the best software comparison site in 2025?"
-                answer={`Pickify helps you find the best software across ${verticals.length} categories including VPNs, web hosting, email marketing, and more. Our top-rated VPN is ${topVpn?.name || "NordVPN"} with a ${topVpn?.overall_rating || 9.5}/10 rating. We test every product hands-on and update our reviews monthly.`}
-                supportingFacts={[
-                  { label: "Categories", value: `${verticals.length}` },
-                  { label: "Top VPN", value: topVpn?.name || "NordVPN" },
-                  { label: "VPN Rating", value: `${topVpn?.overall_rating || 9.5}/10` },
-                  { label: "Updated", value: "Monthly" },
-                ]}
-                updatedDate={new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" })}
-              />
+            <div className="max-w-5xl mx-auto">
+              <TopPicksTable picks={topPicks} />
             </div>
           </div>
         </section>
@@ -187,45 +176,6 @@ export default function HomePage() {
                   </Link>
                 );
               })}
-            </div>
-          </div>
-        </section>
-
-        {/* Featured VPNs */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <Badge variant="secondary" className="mb-2">
-                  Most Popular
-                </Badge>
-                <h2 className="text-3xl font-bold">Best VPNs of 2025</h2>
-              </div>
-              <Button variant="outline" asChild className="hidden md:flex">
-                <Link href="/vpn">
-                  View All VPNs
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
-            </div>
-            <div className="space-y-4">
-              {featuredVpns.slice(0, 3).map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  rank={index + 1}
-                  verticalSlug="vpn"
-                  variant={index === 0 ? "featured" : "default"}
-                />
-              ))}
-            </div>
-            <div className="mt-6 text-center md:hidden">
-              <Button asChild>
-                <Link href="/vpn">
-                  View All VPNs
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
             </div>
           </div>
         </section>
