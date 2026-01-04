@@ -13,34 +13,13 @@ export const TRUST_SIGNALS = {
 };
 
 // Author information for E-A-T signals
+// Using organization as author - add real Person authors when you have actual team members to credit
 export const AUTHORS = {
   editorial: {
     name: "Pickify Editorial Team",
     type: "Organization" as const,
     url: "https://pickify.io/about",
-    description: "Expert reviewers with 10+ years testing software and services",
-  },
-  // Individual authors can be added here for specific verticals
-  vpn: {
-    name: "Jake Morrison",
-    type: "Person" as const,
-    jobTitle: "Senior Security Analyst",
-    url: "https://pickify.io/about#jake-morrison",
-    description: "Cybersecurity expert with 12+ years testing VPNs and security software",
-    sameAs: [
-      "https://linkedin.com/in/jake-morrison-security",
-      "https://twitter.com/jakesecuritypro",
-    ],
-  },
-  hosting: {
-    name: "Sarah Chen",
-    type: "Person" as const,
-    jobTitle: "Web Infrastructure Specialist",
-    url: "https://pickify.io/about#sarah-chen",
-    description: "DevOps engineer with 8+ years evaluating hosting performance",
-    sameAs: [
-      "https://linkedin.com/in/sarah-chen-devops",
-    ],
+    description: "Independent reviewers testing and comparing software since 2020",
   },
 };
 

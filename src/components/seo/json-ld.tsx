@@ -1,4 +1,5 @@
 import type { Product } from "@/types";
+import { AUTHORS, CURRENT_YEAR } from "@/lib/constants";
 
 // Base JSON-LD component that safely injects structured data
 export function JsonLd({ data }: { data: Record<string, unknown> }) {
@@ -8,6 +9,27 @@ export function JsonLd({ data }: { data: Record<string, unknown> }) {
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
+}
+
+// Author types for E-A-T signals
+export type AuthorType = "Person" | "Organization";
+
+export interface AuthorInfo {
+  name: string;
+  type: AuthorType;
+  url?: string;
+  jobTitle?: string;
+  description?: string;
+  sameAs?: string[];
+}
+
+// Get author info based on vertical (for E-A-T signals)
+export function getAuthorForVertical(verticalSlug: string): AuthorInfo {
+  const verticalAuthor = AUTHORS[verticalSlug as keyof typeof AUTHORS];
+  if (verticalAuthor) {
+    return verticalAuthor as AuthorInfo;
+  }
+  return AUTHORS.editorial as AuthorInfo;
 }
 
 // Organization schema - for brand recognition in search
@@ -90,26 +112,51 @@ export function ProductSchema({ product, verticalSlug }: ProductSchemaProps) {
   return <JsonLd data={data} />;
 }
 
-// Review schema - for review snippets
+// Review schema - for review snippets with E-A-T author info
 interface ReviewSchemaProps {
   product: Product;
   verticalSlug: string;
 }
 
 export function ReviewSchema({ product, verticalSlug }: ReviewSchemaProps) {
+  const author = getAuthorForVertical(verticalSlug);
+
+  // Build author object based on type (Person or Organization)
+  const authorSchema = author.type === "Person"
+    ? {
+        "@type": "Person",
+        name: author.name,
+        url: author.url,
+        jobTitle: author.jobTitle,
+        description: author.description,
+        ...(author.sameAs && { sameAs: author.sameAs }),
+        worksFor: {
+          "@type": "Organization",
+          name: "Pickify",
+          url: "https://pickify.io",
+        },
+      }
+    : {
+        "@type": "Organization",
+        name: author.name,
+        url: author.url || "https://pickify.io",
+        description: author.description,
+      };
+
   const data = {
     "@context": "https://schema.org",
     "@type": "Review",
-    name: `${product.name} Review`,
+    name: `${product.name} Review ${CURRENT_YEAR}`,
     url: `https://pickify.io/${verticalSlug}/${product.slug}`,
-    author: {
-      "@type": "Organization",
-      name: "Pickify",
-    },
+    author: authorSchema,
     publisher: {
       "@type": "Organization",
       name: "Pickify",
       url: "https://pickify.io",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://pickify.io/logo.png",
+      },
     },
     datePublished: product.created_at,
     dateModified: product.updated_at,
@@ -440,14 +487,14 @@ export function LocalBusinessSchema({
   return <JsonLd data={data} />;
 }
 
-// Article schema with enhanced AI-friendly fields
+// Article schema with enhanced AI-friendly fields and E-A-T author info
 interface ArticleSchemaProps {
   headline: string;
   description: string;
   url: string;
   datePublished: string;
   dateModified: string;
-  author?: string;
+  verticalSlug?: string; // Optional - if provided, will use vertical-specific author
   about?: string[];
   speakable?: string[]; // Selectors for content suitable for TTS/voice search
 }
@@ -458,10 +505,34 @@ export function ArticleSchema({
   url,
   datePublished,
   dateModified,
-  author = "Pickify",
+  verticalSlug,
   about,
   speakable,
 }: ArticleSchemaProps) {
+  const author = verticalSlug ? getAuthorForVertical(verticalSlug) : AUTHORS.editorial;
+
+  // Build author object based on type (Person or Organization)
+  const authorSchema = author.type === "Person"
+    ? {
+        "@type": "Person",
+        name: author.name,
+        url: author.url,
+        jobTitle: author.jobTitle,
+        description: author.description,
+        ...(author.sameAs && { sameAs: author.sameAs }),
+        worksFor: {
+          "@type": "Organization",
+          name: "Pickify",
+          url: "https://pickify.io",
+        },
+      }
+    : {
+        "@type": "Organization",
+        name: author.name,
+        url: author.url || "https://pickify.io",
+        description: author.description,
+      };
+
   const data = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -470,10 +541,7 @@ export function ArticleSchema({
     url,
     datePublished,
     dateModified,
-    author: {
-      "@type": "Organization",
-      name: author,
-    },
+    author: authorSchema,
     publisher: {
       "@type": "Organization",
       name: "Pickify",

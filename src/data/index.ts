@@ -261,6 +261,7 @@ export function getComparisonPairs(products: Product[]): [Product, Product][] {
 // Best-for page configurations for all verticals
 export const bestForConfigs = {
   vpn: [
+    // Use case pages
     {
       slug: "streaming",
       usecase: "Streaming",
@@ -295,6 +296,142 @@ export const bestForConfigs = {
       title: "Best VPNs for Beginners",
       description: "Easy-to-use VPNs for first-time users",
       criteria: ["ease_of_use"],
+    },
+    {
+      slug: "travel",
+      usecase: "Travel",
+      title: "Best VPNs for Travel",
+      description: "Stay secure on public Wi-Fi and access content abroad",
+      criteria: ["servers", "speed"],
+    },
+    {
+      slug: "remote-work",
+      usecase: "Remote Work",
+      title: "Best VPNs for Remote Work",
+      description: "Secure your home office and business communications",
+      criteria: ["speed", "security"],
+    },
+    {
+      slug: "netflix",
+      usecase: "Netflix",
+      title: "Best VPNs for Netflix",
+      description: "Unblock Netflix US and international libraries",
+      criteria: ["streaming_support"],
+    },
+    // Device-specific pages
+    {
+      slug: "mac",
+      usecase: "Mac",
+      title: "Best VPNs for Mac",
+      description: "Native macOS apps with full feature parity",
+      criteria: ["macos_app", "speed"],
+    },
+    {
+      slug: "windows",
+      usecase: "Windows",
+      title: "Best VPNs for Windows",
+      description: "Optimized Windows apps with kill switch and split tunneling",
+      criteria: ["windows_app", "features"],
+    },
+    {
+      slug: "iphone",
+      usecase: "iPhone",
+      title: "Best VPNs for iPhone",
+      description: "iOS apps with IKEv2 and WireGuard support",
+      criteria: ["ios_app", "speed"],
+    },
+    {
+      slug: "android",
+      usecase: "Android",
+      title: "Best VPNs for Android",
+      description: "Feature-rich Android apps with split tunneling",
+      criteria: ["android_app", "features"],
+    },
+    {
+      slug: "router",
+      usecase: "Router",
+      title: "Best VPNs for Routers",
+      description: "Protect all devices with router-level VPN installation",
+      criteria: ["router_support", "speed"],
+    },
+    {
+      slug: "firestick",
+      usecase: "Fire TV",
+      title: "Best VPNs for Firestick",
+      description: "Stream securely on Amazon Fire TV and Fire Stick",
+      criteria: ["firestick_app", "streaming_support"],
+    },
+    {
+      slug: "linux",
+      usecase: "Linux",
+      title: "Best VPNs for Linux",
+      description: "Native Linux clients or easy OpenVPN configuration",
+      criteria: ["linux_app", "security"],
+    },
+    // Geographic pages
+    {
+      slug: "china",
+      usecase: "China",
+      title: "Best VPNs for China",
+      description: "Bypass the Great Firewall with obfuscation technology",
+      criteria: ["obfuscation", "china_servers"],
+    },
+    {
+      slug: "uae",
+      usecase: "UAE",
+      title: "Best VPNs for UAE & Dubai",
+      description: "Unblock VoIP and streaming in the United Arab Emirates",
+      criteria: ["obfuscation", "stealth"],
+    },
+    {
+      slug: "uk",
+      usecase: "UK",
+      title: "Best VPNs for UK",
+      description: "UK servers for BBC iPlayer and local content",
+      criteria: ["uk_servers", "streaming_support"],
+    },
+    {
+      slug: "usa",
+      usecase: "USA",
+      title: "Best VPNs for USA",
+      description: "Fast US servers for streaming and privacy",
+      criteria: ["us_servers", "speed"],
+    },
+    {
+      slug: "australia",
+      usecase: "Australia",
+      title: "Best VPNs for Australia",
+      description: "Australian servers and fast international connections",
+      criteria: ["au_servers", "speed"],
+    },
+    {
+      slug: "canada",
+      usecase: "Canada",
+      title: "Best VPNs for Canada",
+      description: "Canadian servers with strong privacy protection",
+      criteria: ["ca_servers", "no_logs"],
+    },
+    // Price tier pages
+    {
+      slug: "free",
+      usecase: "Free",
+      title: "Best Free VPNs",
+      description: "Secure free VPNs that respect your privacy",
+      criteria: ["free_tier"],
+    },
+    {
+      slug: "cheap",
+      usecase: "Budget",
+      title: "Best Cheap VPNs Under $3/Month",
+      description: "Premium VPN protection at budget-friendly prices",
+      criteria: ["price"],
+    },
+    {
+      slug: "trial",
+      usecase: "Free Trial",
+      title: "Best VPNs with Free Trials",
+      description: "Try premium VPNs risk-free before committing",
+      criteria: ["free_trial"],
     },
   ],
   hosting: [

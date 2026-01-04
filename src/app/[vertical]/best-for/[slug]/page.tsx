@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { BreadcrumbSchema, FAQSchema, ItemListSchema } from "@/components/seo";
 import { QuickAnswer, generateBestForQuickAnswer } from "@/components/seo/QuickAnswer";
 import { generateBestForFAQs } from "@/lib/faq-generator";
+import { CURRENT_YEAR } from "@/lib/constants";
 import {
   getVerticalBySlug,
   getProductsByVertical,
@@ -61,13 +62,13 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${config.title} in 2025 - Top ${vertical.name} Compared | Pickify`,
+    title: `${config.title} in ${CURRENT_YEAR} - Top ${vertical.name} Compared | Pickify`,
     description: `${config.description}. Compare the top ${vertical.name.toLowerCase()} for ${config.usecase.toLowerCase()} with expert reviews and ratings.`,
     alternates: {
       canonical: `https://pickify.io/${verticalSlug}/best-for/${bestForSlug}`,
     },
     openGraph: {
-      title: `${config.title} in 2025`,
+      title: `${config.title} in ${CURRENT_YEAR}`,
       description: config.description,
     },
   };
