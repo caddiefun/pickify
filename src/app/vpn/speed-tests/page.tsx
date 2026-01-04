@@ -22,14 +22,14 @@ import {
 export const metadata: Metadata = {
   title: "VPN Speed Tests 2025 - Real Performance Data | Pickify",
   description:
-    "Independent VPN speed test results from January 2025. We tested download speeds, upload speeds, and latency across multiple server locations.",
+    "VPN speed test results based on Security.org benchmark data. Compare download speeds, upload speeds, and latency for NordVPN, ExpressVPN, Surfshark and more.",
   alternates: {
     canonical: "https://pickify.io/vpn/speed-tests",
   },
   openGraph: {
     title: "VPN Speed Tests 2025 - Real Performance Data | Pickify",
     description:
-      "Independent VPN speed test results from January 2025. See how NordVPN, ExpressVPN, Surfshark and others perform.",
+      "VPN speed test results based on Security.org benchmark data. See how NordVPN, ExpressVPN, Surfshark and others perform.",
   },
 };
 
@@ -58,35 +58,35 @@ export default function VPNSpeedTestsPage() {
   const faqs = [
     {
       question: "What is the fastest VPN in 2025?",
-      answer: `${fastest?.product_name} is the fastest VPN in our January 2025 testing, averaging ${fastest?.avg_download} Mbps download speed with ${fastest?.retention}% speed retention.`,
+      answer: `Based on Security.org's benchmark testing, ${fastest?.product_name} achieved ${fastest?.avg_download} Mbps download speed with ${fastest?.retention}% speed retention on a ~95 Mbps baseline connection.`,
     },
     {
-      question: "How do you test VPN speeds?",
+      question: "How are VPN speeds tested?",
       answer:
-        "We test VPN speeds using a 100 Mbps baseline connection from multiple locations (New York, London, etc.). We measure download speed, upload speed, and latency with and without the VPN connected.",
+        "Speed tests measure download speed, upload speed, and latency (ping) with and without the VPN connected. Security.org runs 10 tests per VPN and averages the results, then calculates the percentage difference from baseline speeds.",
     },
     {
-      question: "How often do you update speed tests?",
+      question: "Where does this speed data come from?",
       answer:
-        "We run VPN speed tests monthly to ensure our data reflects current performance. Server infrastructure changes can affect speeds, so regular testing is essential.",
+        "This data is sourced from Security.org's independent VPN speed testing. They test each VPN multiple times and average the results against a ~95 Mbps baseline connection. We update this data periodically to reflect their latest benchmarks.",
     },
     {
       question: "What affects VPN speed?",
       answer:
-        "VPN speed depends on server distance, server load, encryption protocol, your base internet speed, and the VPN provider's infrastructure quality.",
+        "VPN speed depends on server distance, server load, encryption protocol, your base internet speed, and the VPN provider's infrastructure quality. WireGuard-based protocols like NordLynx typically offer the best performance.",
     },
   ];
 
   const quickAnswerProps = {
     question: "What is the fastest VPN?",
-    answer: `${fastest?.product_name} is the fastest VPN in our January 2025 speed tests, averaging ${fastest?.avg_download} Mbps with ${fastest?.retention}% speed retention across multiple server locations. Testing methodology: 100 Mbps baseline, multiple global locations.`,
+    answer: `Based on Security.org's speed testing, ${fastest?.product_name} is the fastest VPN, averaging ${fastest?.avg_download} Mbps download speed with ${fastest?.retention}% speed retention on a ~95 Mbps baseline connection.`,
     supportingFacts: [
       { label: "Fastest", value: fastest?.product_name || "N/A" },
       { label: "Avg Speed", value: `${fastest?.avg_download} Mbps` },
       { label: "Retention", value: `${fastest?.retention}%` },
-      { label: "Tested", value: `${products.length} VPNs` },
+      { label: "Source", value: "Security.org" },
     ],
-    updatedDate: "January 2025",
+    updatedDate: "December 2024",
     variant: "default" as const,
   };
 
@@ -96,10 +96,10 @@ export default function VPNSpeedTestsPage() {
       <BreadcrumbSchema items={breadcrumbs} />
       <FAQSchema faqs={faqs} />
       <DatasetSchema
-        name="Pickify VPN Speed Test Results 2025"
-        description="Monthly speed tests across major VPN providers measuring download speed, upload speed, and latency from multiple global locations."
+        name="VPN Speed Test Comparison - Data from Security.org"
+        description="VPN speed test results sourced from Security.org's independent benchmark testing. Includes download speed, upload speed, and latency measurements for major VPN providers."
         url="https://pickify.io/vpn/speed-tests"
-        temporalCoverage="2024-01/2025-01"
+        temporalCoverage="2024-12"
         variableMeasured={[
           "Download Speed (Mbps)",
           "Upload Speed (Mbps)",
@@ -117,24 +117,32 @@ export default function VPNSpeedTestsPage() {
             <div className="max-w-4xl">
               <Badge variant="secondary" className="mb-4">
                 <Zap className="w-3 h-3 mr-1" />
-                Original Research
+                Speed Benchmarks
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-                VPN Speed Tests 2025
+                VPN Speed Test Results
               </h1>
               <p className="text-xl text-muted-foreground mb-6">
-                Independent speed test results from our monthly VPN testing.
-                We measure real-world performance across multiple server
-                locations.
+                Real VPN speed data from independent testing by{" "}
+                <a
+                  href="https://www.security.org/vpn/speed-test/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Security.org
+                </a>
+                . Compare download speeds, upload speeds, and latency across
+                top VPN providers.
               </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  Last updated: January 2025
+                  Data from: December 2024
                 </span>
                 <span className="flex items-center gap-1">
                   <Zap className="w-4 h-4" />
-                  {products.length} VPNs tested
+                  {products.length} VPNs compared
                 </span>
               </div>
             </div>
@@ -164,7 +172,7 @@ export default function VPNSpeedTestsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Methodology</CardTitle>
+                  <CardTitle>Data Source & Methodology</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -172,25 +180,32 @@ export default function VPNSpeedTestsPage() {
                     <div>
                       <p className="font-medium">Baseline Connection</p>
                       <p className="text-sm text-muted-foreground">
-                        100 Mbps symmetrical fiber connection
+                        ~95 Mbps download / ~94 Mbps upload
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Upload className="w-5 h-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium">Test Locations</p>
+                      <p className="font-medium">Testing Method</p>
                       <p className="text-sm text-muted-foreground">
-                        New York, London, Tokyo, Sydney
+                        10 tests per VPN, averaged results
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Clock className="w-5 h-5 text-primary mt-0.5" />
                     <div>
-                      <p className="font-medium">Test Protocol</p>
+                      <p className="font-medium">Source</p>
                       <p className="text-sm text-muted-foreground">
-                        5 tests per server, averaged results
+                        <a
+                          href="https://www.security.org/vpn/speed-test/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-primary hover:underline"
+                        >
+                          Security.org VPN Speed Tests
+                        </a>
                       </p>
                     </div>
                   </div>
